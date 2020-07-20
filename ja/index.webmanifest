@@ -1,15 +1,15 @@
 {
   "name": "Radim",
   "short_name": "Radim",
-  "lang": "",
+  "lang": "ja",
   "theme_color": "#2962ff",
   "background_color": "#2962ff",
   "icons": [{
-    "src": "/images/icon_hu29c1bdeb84e46e17c2e4f6fec083de04_5336_192x192_fill_lanczos_center_2.png",
+    "src": "/images/icon_hub89e7b28a6abff2b4ec084e6c0608a00_13774_192x192_fill_lanczos_center_2.png",
     "sizes": "192x192",
     "type": "image/png"
     }, {
-    "src": "/images/icon_hu29c1bdeb84e46e17c2e4f6fec083de04_5336_512x512_fill_lanczos_center_2.png",
+    "src": "/images/icon_hub89e7b28a6abff2b4ec084e6c0608a00_13774_512x512_fill_lanczos_center_2.png",
     "sizes": "512x512",
     "type": "image/png"
      }],

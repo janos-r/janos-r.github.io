@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Code | Radim</title><link>/tag/code/</link><atom:link href="/tag/code/index.xml" rel="self" type="application/rss+xml"/><description>Code</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 19 Jul 2020 00:00:00 +0000</lastBuildDate><image><url>/images/icon_hub89e7b28a6abff2b4ec084e6c0608a00_13774_512x512_fill_lanczos_center_2.png</url><title>Code</title><link>/tag/code/</link></image><item><title>Circle</title><link>/project/circle/</link><pubDate>Sun, 19 Jul 2020 00:00:00 +0000</pubDate><guid>/project/circle/</guid><description>&lt;p>In my company, we are using AKS (Azure Kubernetes Service). With every git commit to the master branch, a new docker image is build and pushed to the repository with CircleCI. It is automatically deployed to the dev cluster. At a controlled release moment, we are then able to release all necessary docker images with their particular versions in one go to the production cluster using helm.&lt;/p>
+&lt;p>The project is quite big and all connected parts are quite complicated in their setup. That&amp;rsquo;s why I wanted to create my own small project and learn how to set up a similar CI (circular integration).&lt;/p>
+&lt;p>I did so June 2020. Link to the project above. Journey description bellow.&lt;/p>
+&lt;h2 id="what-to-push">What to push&lt;/h2>
+&lt;p>First decision was &lt;strong>what&lt;/strong> to build and push. I made a simple website with the static site generator
+&lt;a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo&lt;/a>. It was the first time I made a web with hugo, so this was in itself a very good learning experience. I stuck literary to the &amp;ldquo;quick start&amp;rdquo; guide to not lose too much time with this step, since the page itself is obviously not the goal of this project. But in general, I can only recommend Hugo.&lt;/p>
+&lt;h2 id="script-before-circle">Script before circle&lt;/h2>
+&lt;p>Obviously I wanted to use the same technologies that we are using on the company project. I was eager to get into CircleCI, but I quickly realized that is not the right approach. It turns out that the best approach for me was to leave the CI as the absolute last step. First make a long list of all the cli commands that you find useful. I put most of them in the readme.md of the project. This is not &amp;ldquo;best practice&amp;rdquo; for a readme, but I well, it was meant to be just my personal learning project and I wanted to have the commands visible. Only after you can do everything with your cli commands from beginning to end, than it makes sense to put it in a CI config.&lt;/p>
+&lt;h2 id="docker">Docker&lt;/h2>
+&lt;p>So first thing, I made my first successful docker image build. After running it with a port-forward and seeing that the Dockerfile took the correct content and I saw the page loaded in the browser, I have to say it feels good.&lt;/p>
+&lt;p>build image:&lt;br>
+&lt;code>docker build -t radimj/repo1 .&lt;/code>&lt;/p>
+&lt;p>run and forward port to localhost:&lt;br>
+&lt;code>docker run -d -p 80:80 radimj/repo1&lt;/code>&lt;/p>
+&lt;h2 id="docker-repository">Docker repository&lt;/h2>
+&lt;p>Next step, where to push the image? Unfortunately, you can&amp;rsquo;t treat docker images like ISOs or packages as the word &amp;ldquo;image&amp;rdquo; would suggest. There are command like &amp;ldquo;save&amp;rdquo; and &amp;ldquo;export&amp;rdquo;, you can look up the details yourself, but the main takeaway is that docker images are not meant to be sent around as packaged files. You have to use a repository. I saw guides for creating local repositories, but again, this is not the main purpose dockers exist. You simply should use a remote repository. You can store them on Azure too, but I didn&amp;rsquo;t have a free account there, so I just went with the simplest solution, I made a private
+&lt;a href="https://hub.docker.com/" target="_blank" rel="noopener">DockerHub&lt;/a> account.&lt;/p>
+&lt;p>Another a little unexpected process is that you don&amp;rsquo;t add the repository through some &amp;ldquo;add repo&amp;rdquo; or something, you have to &lt;code>docker login&lt;/code>. This will hash the login details in ~/.docker/config.json. As far as I know, that is the only place you can find out what repository your docker is using. After that, you have to make sure your image name (tag) that corresponds to your account and repository name, else it wouldn&amp;rsquo;t know where in your repository to add the image. After that a simple push should work.&lt;/p>
+&lt;p>push to docker hub:&lt;br>
+&lt;code>docker push radimj/repo1&lt;/code>&lt;/p>
+&lt;p>I&amp;rsquo;m noticing I&amp;rsquo;m being unnecessarily detailed and this project had so many small issues that this would end up being a little book. I will be more concise bellow.&lt;/p>
+&lt;h2 id="circleci">CircleCI&lt;/h2>
+&lt;p>Since I didn&amp;rsquo;t have a remote kubernetes cluster to push to, I was satisfied if my CI would just build the image and push it to the repository. The details of the CI config are in the &lt;code>/.circleci/config.yml&lt;/code> you can find it in the project. I kept it as simple as possible. A few notable points:&lt;/p>
+&lt;ul>
+&lt;li>Base image&lt;br>
+It takes a moment to chose a fitting base docker image, that is used for the whole CI process.&lt;/li>
+&lt;li>Docker&lt;br>
+Use docker with &amp;ldquo;- setup_remote_docker&amp;rdquo;. This creates a special environment that the CI uses to work with docker.&lt;/li>
+&lt;li>CLI tool&lt;br>
+Circle CI has a cli tool that lets you run the build locally. This is good to speed up the creation of the config, but don&amp;rsquo;t rely on it too much. For example the &amp;ldquo;setup_remote_docker&amp;rdquo; command didn&amp;rsquo;t work for me with it and I had to use &amp;ldquo;sudo&amp;rdquo; for the docker commands when running the cli localy.&lt;/li>
+&lt;li>SSH into the build&lt;br>
+When something breaks only remotely and you don&amp;rsquo;t know why, a last resort is SSH into the CI build. This was an interesting experience. It took a moment to set up, but if you just follow the guide in the docs you should be fine. I managed to get into the docker image that was sitting broken in the remote CI build where I found what was missing.&lt;/li>
+&lt;/ul>
+&lt;p>Being able to set up CircleCI was an empowering experience. CI really gives you the feeling like &amp;ldquo;set up once, never touch again&amp;rdquo;. When you first write it, the &amp;ldquo;never touch again&amp;rdquo; feels very good. But after some time, when you forget why you added this or that line&amp;hellip; &amp;ldquo;never touch again&amp;rdquo; can become scary 😂&lt;/p>
+&lt;h2 id="kubernetes">Kubernetes&lt;/h2>
+&lt;p>Kubernetes can be easily tested with Minikube, or similar tools that run a single node cluster on your local drive. Setting up a production ready Kubernetes on a private server is much harder than I expected. It is not like installing nginx or a machine and expecting it to work. I read there are ways how to do it, but for now that is beyond me. Production ready Kubernetes clusters are best chosen from established providers online. After realizing this, being able to use something like Minikube (or others) is a really amazing thing, since it behaves like a real cluster and is perfect for learning and basic testing.&lt;/p>
+&lt;p>In Kubernetes, everything is about deployment setups within .yaml files. You can write them by hand, or export them from a running deployment / service / pod with &amp;ndash;output yaml. The Kubernetes documentation is quite good, and every single of my steps here is better explained there. So I will not be rewriting the docs here. Rather, I will show you the process how I put brick on brick with small commands to get to a better understanding of the result.&lt;/p>
+&lt;p>First, you need to set up a secret in kubernetes that will be used for authorization when pulling docker images from repos. I did it from the docker login file:&lt;/p>
+&lt;pre>&lt;code>kubectl create secret generic regcred \
+--from-file=.dockerconfigjson=&amp;lt;path/to/.docker/config.json&amp;gt; \
+--type=kubernetes.io/dockerconfigjson
+&lt;/code>&lt;/pre>
+&lt;p>That can be tested by running once pod with the secret:&lt;br>
+&lt;code>kubectl run repo1 --overrides='{ &amp;quot;spec&amp;quot;: { &amp;quot;imagePullSecrets&amp;quot;: [{&amp;quot;name&amp;quot;: &amp;quot;regcred&amp;quot;}] } }' --image=radimj/repo1 --port=80&lt;/code>
+The &amp;ldquo;overrides&amp;rdquo; functionality makes more sense when already knowing how a standard yaml config would look like. It is basically just editing a default one.&lt;/p>
+&lt;p>The following commands give a way how to look into your pod. In my pod there is nginx exposing my website on port 80.&lt;/p>
+&lt;p>forward or expose pod:&lt;br>
+&lt;code>kubectl port-forward repo1 8080:80&lt;/code>&lt;br>
+&lt;code>kubectl expose pod repo1 --type=&amp;quot;NodePort&amp;quot;&lt;/code>&lt;/p>
+&lt;p>Deployments and services. I will not give examples how to create them or explain in detail what they are. Consult the official docs for details. But in essence, deployments are a bundle of pods, and services are configs how these resources are exposed on ports. They are created in a similar way like pods. All ideally with yaml files. Once you have them running, you can observe them with these commands.&lt;/p>
+&lt;p>expose deployment:&lt;br>
+&lt;code>kubectl expose deployment circle-deployment --type=LoadBalancer&lt;/code>&lt;/p>
+&lt;p>nodeport in:&lt;br>
+&lt;code>kubectl get svc&lt;/code>
+&lt;code>kubectl describe service repo1&lt;/code>&lt;/p>
+&lt;p>exposed on:&lt;br>
+&lt;code>(minikube ip):&amp;amp;nodePort&lt;/code>&lt;/p>
+&lt;h2 id="kubernetes-yaml-management">Kubernetes Yaml management:&lt;/h2>
+&lt;p>create new yaml file from:&lt;br>
+&lt;code>kubectl get (deploy / svc / pod ) -o yaml&lt;/code>&lt;/p>
+&lt;p>run pod / deployment from yaml:&lt;br>
+&lt;code>kubectl apply --filename private_deploy.yaml&lt;/code>&lt;/p>
+&lt;p>revert (delete) from yaml:&lt;br>
+&lt;code>kubectl delete -f private_deploy.yaml&lt;/code>&lt;/p>
+&lt;p>This is the roundabout way how to get to your yaml file. But a good learning experience.&lt;/p>
+&lt;h2 id="json-parsing">JSON parsing&lt;/h2>
+&lt;p>One of the most surprising discoveries on this project was
+&lt;a href="https://stedolan.github.io/jq/" target="_blank" rel="noopener">JQ&lt;/a>. When you work with Kubernetes or Azure, you get quickly used to large JSON outputs in your terminal. Both tools have inbuilt ways how to make this more manageable. In Kubernetes, you can query most outputs with &lt;code>--output jsonpath=&amp;quot;&amp;quot;&lt;/code> this is one of the query languages for parsing json. Azure uses &amp;ldquo;JMESPath&amp;rdquo; which is not the same. Azure also uses &lt;code>--output table&lt;/code> heavily, to make things more readable. If you make scripts and you are working only with one tool, than it is probably recommendable to use the inbuilt query parsing tool.&lt;/p>
+&lt;p>But let me tell you, to learn just one way that sits forever in your system, that you can use for any JSON string that enters your command line is a great thing! With JQ I was able to do things like:&lt;/p>
+&lt;p>display docker login secret from kubectl:\&lt;/p>
+&lt;pre>&lt;code>kubectl get secret regcred \
+--output jsonpath=&amp;quot;{.data.\.dockerconfigjson}&amp;quot; | \
+base64 --decode | \
+jq &amp;quot;.auths | map(.auth)[0]&amp;quot; -r | \
+base64 --decode
+&lt;/code>&lt;/pre>
+&lt;p>You can see the use of both &amp;ldquo;jsonpath&amp;rdquo; and &amp;ldquo;jq&amp;rdquo; here for comparison. The output tells you exactly what login your kubectl is using. Also good to understand how the secrets are stored in kubernetes.&lt;/p>
+&lt;h2 id="helm">Helm&lt;/h2>
+&lt;p>Again, I won&amp;rsquo;t go into details, this post is long enough. But simply put, helm is a bundle of kubernetes yaml config files, also called &amp;ldquo;manifests&amp;rdquo;. With helm, you can create files that hold variable names and you can distribute these variable through your manifests. This creates a setup where you can have a hundred manifests with thousands of lines, but if they all run together in a setup, you can just put variable names into all of them and than adjust the variable in just one place. Making releases of big projects manageable. This bundle of manifests is called a &amp;ldquo;chart&amp;rdquo; in helm. You can also have full repositories of charts, but I will not be getting into that here.&lt;/p>
+&lt;p>lint chart:&lt;br>
+&lt;code>helm lint circle-chart/&lt;/code>&lt;/p>
+&lt;p>In the bellow example, I am packaging the chart folder into a package. This is useful for distribution, but not necessary if you are running it from just one place. You can simply call the commands on the chart folder as well.&lt;/p>
+&lt;p>build package:&lt;br>
+&lt;code>helm package circle-chart/&lt;/code>&lt;/p>
+&lt;p>install: (name should be same as package name)&lt;br>
+&lt;code>helm install circle circle-0.2.0.tgz&lt;/code>
+&lt;code>helm install circle circle-chart/&lt;/code>&lt;/p>
+&lt;p>check release:&lt;br>
+&lt;code>helm ls&lt;/code>&lt;/p>
+&lt;p>uninstall totally:&lt;br>
+&lt;code>helm uninstall circle&lt;/code>&lt;/p>
+&lt;h3 id="rolling-update">rolling update:&lt;/h3>
+&lt;p>The fillowing command changes only necessary pods, it does not update to &amp;ldquo;latest&amp;rdquo;
+&lt;code>helm upgrade --install circle circle-chart/&lt;/code>&lt;/p>
+&lt;p>if you want to change &amp;ldquo;latest&amp;rdquo; tags, old way was:
+&lt;code>helm upgrade --install --recreate-pods circle circle-chart/&lt;/code>
+new way is to add a random annotation in mettadata:&lt;/p>
+&lt;pre>&lt;code> annotations:
+# creates a random 5 letter word, causing the pods to be recreated
+rollme: {{ randAlphaNum 5 | quote }}
+&lt;/code>&lt;/pre>
+&lt;h2 id="conclusion">Conclusion&lt;/h2></description></item></channel></rss>
