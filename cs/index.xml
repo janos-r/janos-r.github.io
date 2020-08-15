@@ -14,7 +14,12 @@
 &lt;h2 id="final-thoughts">Final thoughts&lt;/h2>
 &lt;p>By the time of writing, I don&amp;rsquo;t spend much time on Rust anymore. I have two other goals that I want to reach by the end of the year. But If I get the itch to play around with some Rust again, I still left some untouched exercises on the page and I&amp;rsquo;m sure I would have some good fun with it, while also learning some new practices and ways to think about coding.&lt;/p>
 &lt;h3 id="ps">PS&lt;/h3>
-&lt;p>At the beginning on this website, the picture slider, the second picture that is saying &amp;ldquo;Developer&amp;rdquo;. That background was my own screenshot, a little edited in gimp, from one of my last exercises on exercism.&lt;/p></description></item><item><title>API in Rust</title><link>/cs/project/graphql_rust/</link><pubDate>Thu, 30 Jul 2020 00:00:00 +0000</pubDate><guid>/cs/project/graphql_rust/</guid><description>&lt;h2 id="db-experience">DB experience&lt;/h2>
+&lt;p>At the beginning on this website, the picture slider, the second picture that is saying &amp;ldquo;Developer&amp;rdquo;. That background was my own screenshot, a little edited in gimp, from one of my last exercises on exercism.&lt;/p>
+&lt;figure >
+&lt;a data-fancybox="" href="/img/slider/code.png" >
+&lt;img src="/img/slider/code.png" alt="" >
+&lt;/a>
+&lt;/figure></description></item><item><title>API in Rust</title><link>/cs/project/graphql_rust/</link><pubDate>Thu, 30 Jul 2020 00:00:00 +0000</pubDate><guid>/cs/project/graphql_rust/</guid><description>&lt;h2 id="db-experience">DB experience&lt;/h2>
 &lt;p>During my 2 years of self study between 2017-2019, I spent a few months studying MongoDB. At that time, it was recommended as a good technology for the web. I knew some basic SQL, and I spent some time with SQLite in a Python project tutorial during my study, but MongoDB was a database that I really put in some effort and finished the free certificates that they have on their official website. I have to say that I like MongoDB, and I was lucky to find my current company starting 2019, where MongoDB is used exclusively.&lt;/p>
 &lt;h2 id="day-job">Day job&lt;/h2>
 &lt;p>Most of my work is focused on the backend of a big portal website for users and admins. Specifically, the creation and maintenance of APIs. Written in TypeScrip, stored in MongoDB and served with GraphQL. GraphQL was new to me when I started in the company, but once I got used to it, serving data via REST feels like some totally antiquated. Of course, we also use REST for necessary things, but the type safety of GraphQL and the schemas is something amazing.&lt;/p>
