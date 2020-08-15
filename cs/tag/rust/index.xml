@@ -16,8 +16,8 @@
 &lt;h3 id="ps">PS&lt;/h3>
 &lt;p>At the beginning on this website, the picture slider, the second picture that is saying &amp;ldquo;Developer&amp;rdquo;. That background was my own screenshot, a little edited in gimp, from one of my last exercises on exercism.&lt;/p>
 &lt;figure >
-&lt;a data-fancybox="" href="/img/slider/code.png" >
-&lt;img src="/img/slider/code.png" alt="" >
+&lt;a data-fancybox="" href="/media/slider/code.png" >
+&lt;img src="/media/slider/code.png" alt="" >
 &lt;/a>
 &lt;/figure></description></item><item><title>API in Rust</title><link>/cs/project/graphql_rust/</link><pubDate>Thu, 30 Jul 2020 00:00:00 +0000</pubDate><guid>/cs/project/graphql_rust/</guid><description>&lt;h2 id="db-experience">DB experience&lt;/h2>
 &lt;p>During my 2 years of self study between 2017-2019, I spent a few months studying MongoDB. At that time, it was recommended as a good technology for the web. I knew some basic SQL, and I spent some time with SQLite in a Python project tutorial during my study, but MongoDB was a database that I really put in some effort and finished the free certificates that they have on their official website. I have to say that I like MongoDB, and I was lucky to find my current company starting 2019, where MongoDB is used exclusively.&lt;/p>
