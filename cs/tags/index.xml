@@ -1,1 +1,16 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tags | Radim</title><link>/cs/tags/</link><atom:link href="/cs/tags/index.xml" rel="self" type="application/rss+xml"/><description>Tags</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>cs</language><lastBuildDate>Mon, 10 Aug 2020 00:00:00 +0000</lastBuildDate><image><url>/images/icon_hub89e7b28a6abff2b4ec084e6c0608a00_13774_512x512_fill_lanczos_center_2.png</url><title>Tags</title><link>/cs/tags/</link></image></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags | Radim</title>
+    <link>/cs/tags/</link>
+      <atom:link href="/cs/tags/index.xml" rel="self" type="application/rss+xml" />
+    <description>Tags</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>cs</language><lastBuildDate>Mon, 10 Aug 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/images/icon_hub89e7b28a6abff2b4ec084e6c0608a00_13774_512x512_fill_lanczos_center_2.png</url>
+      <title>Tags</title>
+      <link>/cs/tags/</link>
+    </image>
+    
+  </channel>
+</rss>

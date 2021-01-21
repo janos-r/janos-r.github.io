@@ -1,25 +1,1873 @@
-<!doctype html><html lang=ja><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=generator content="Source Themes Academic 4.8.0"><meta name=author content="ラディム　ヤノシュ Radim Janoš"><meta name=description content="デベロッパー"><link rel=alternate hreflang=cs href=/cs/><link rel=alternate hreflang=en href=/><link rel=alternate hreflang=ja href=/ja/><meta name=theme-color content="#2962ff"><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin=anonymous><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin=anonymous><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin=anonymous><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/github.min.css crossorigin=anonymous title=hl-light><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/dracula.min.css crossorigin=anonymous title=hl-dark disabled><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin=anonymous><script src=https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin=anonymous async></script><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap"><link rel=stylesheet href=/css/academic.css><script src=https://identity.netlify.com/v1/netlify-identity-widget.js></script><link rel=alternate href=/ja/index.xml type=application/rss+xml title=Radim><link rel=manifest href=/ja/index.webmanifest><link rel=icon type=image/png href=/images/icon_hub89e7b28a6abff2b4ec084e6c0608a00_13774_32x32_fill_lanczos_center_2.png><link rel=apple-touch-icon type=image/png href=/images/icon_hub89e7b28a6abff2b4ec084e6c0608a00_13774_192x192_fill_lanczos_center_2.png><link rel=canonical href=/ja/><meta property="twitter:card" content="summary"><meta property="og:site_name" content="Radim"><meta property="og:url" content="/ja/"><meta property="og:title" content="Radim"><meta property="og:description" content="デベロッパー"><meta property="og:image" content="/images/icon_hub89e7b28a6abff2b4ec084e6c0608a00_13774_512x512_fill_lanczos_center_2.png"><meta property="twitter:image" content="/images/icon_hub89e7b28a6abff2b4ec084e6c0608a00_13774_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="ja"><meta property="og:updated_time" content="2020-08-10T00:00:00+00:00"><script type=application/ld+json>{"@context":"https://schema.org","@type":"WebSite","potentialAction":{"@type":"SearchAction","target":"/?q={search_term_string}","query-input":"required name=search_term_string"},"url":"/"}</script><title>Radim</title></head><body id=top data-spy=scroll data-offset=70 data-target=#navbar-main><aside class=search-results id=search><div class=container><section class=search-header><div class="row no-gutters justify-content-between mb-3"><div class=col-6><h1>Search</h1></div><div class="col-6 col-search-close"><a class=js-search href=#><i class="fas fa-times-circle text-muted" aria-hidden=true></i></a></div></div><div id=search-box><input name=q id=search-query placeholder=検索... autocapitalize=off autocomplete=off autocorrect=off spellcheck=false type=search class=form-control></div></section><section class=section-search-results><div id=search-hits></div></section></div></aside><nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id=navbar-main><div class=container><div class="d-none d-lg-inline-flex"><a class=navbar-brand href=/ja>Radim</a></div><button type=button class=navbar-toggler data-toggle=collapse data-target=#navbar-content aria-controls=navbar aria-expanded=false aria-label=ナビゲーションの切り替え>
-<span><i class="fas fa-bars"></i></span></button><div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none"><a class=navbar-brand href=/ja>Radim</a></div><div class="navbar-collapse main-menu-item collapse justify-content-end" id=navbar-content><ul class="navbar-nav d-md-inline-flex"><li class=nav-item><a class=nav-link href=/ja/#about><span>私自身</span></a></li><li class=nav-item><a class=nav-link href=/ja/#skills_lang><span>技術</span></a></li><li class=nav-item><a class=nav-link href=/ja/#experience><span>経験</span></a></li><li class=nav-item><a class=nav-link href=/ja/#projects><span>計画</span></a></li><li class=nav-item><a class=nav-link href=/ja/#contact><span>連絡先</span></a></li></ul></div><ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2"><li class=nav-item><a class="nav-link js-search" href=# aria-label=Search><i class="fas fa-search" aria-hidden=true></i></a></li><li class="nav-item dropdown theme-dropdown"><a href=# class="nav-link js-theme-selector" data-toggle=dropdown aria-haspopup=true><i class="fas fa-palette" aria-hidden=true></i></a><div class=dropdown-menu><a href=# class="dropdown-item js-set-theme-light"><span>Light</span></a>
-<a href=# class="dropdown-item js-set-theme-dark"><span>Dark</span></a>
-<a href=# class="dropdown-item js-set-theme-auto"><span>Automatic</span></a></div></li><li class="nav-item dropdown i18n-dropdown"><a href=# class=nav-link data-toggle=dropdown aria-haspopup=true><i class="fas fa-globe mr-1" aria-hidden=true></i></a><div class=dropdown-menu><div class="dropdown-item dropdown-item-active"><span>日本語</span></div><a class=dropdown-item href=/cs/ data-target=/cs/><span>Česky</span></a>
-<a class=dropdown-item href=/ data-target=/><span>English</span></a></div></li></ul></div></nav><span class="js-widget-page d-none"></span><section id=slider class="home-section wg-slider carousel slide" data-ride=carousel data-interval=6000><ol class=carousel-indicators><li data-target=#slider data-slide-to=0 class=active></li><li data-target=#slider data-slide-to=1></li><li data-target=#slider data-slide-to=2></li></ol><div class=carousel-inner><div class="wg-hero dark carousel-item active" style="height:calc(100vh - 70px);background-color:#779;background-image:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url('/media/slider/buddha.jpg')"><div class=container style=text-align:center><h1 class=hero-title><strong>旅行人</strong></h1></div></div><div class="wg-hero dark carousel-item" style="height:calc(100vh - 70px);background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url('/media/slider/code.png')"><div class=container style=text-align:center><h1 class=hero-title><strong>デペロッパー</strong></h1><p class=hero-lead style="margin:0 auto">で情熱的なリナックスユーザー 🐧</p></div></div><div class="wg-hero dark carousel-item" style="height:calc(100vh - 70px);background-image:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url('/media/slider/go_board.jpg')"><div class=container style=text-align:center><h1 class=hero-title><strong>囲碁棋士</strong></h1></div></div></div><a class=carousel-control-prev href=#slider data-slide=prev><span class=carousel-control-prev-icon></span><span class=sr-only>Previous</span></a>
-<a class=carousel-control-next href=#slider data-slide=next><span class=carousel-control-next-icon></span><span class=sr-only>Next</span></a></section><section id=about class="home-section wg-about"><div class=container><div class=row><div class="col-12 col-lg-4"><div id=profile><img class="avatar avatar-circle" src=/ja/author/%E3%83%A9%E3%83%86%E3%82%A3%E3%83%A0-%E3%83%A4%E3%83%8E%E3%82%B7%E3%83%A5-radim-janos/avatar_hu64d921ec107bff3d62a3fb75542fa15a_49188_270x270_fill_q90_lanczos_center.jpg alt="ラディム　ヤノシュ Radim Janoš"><div class=portrait-title><h2>ラディム　ヤノシュ Radim Janoš</h2><h3>デベロッパー</h3><h3><span>プラハ、チェコ共和国</span></h3></div><ul class=network-icon aria-hidden=true><li><a href=/ja/#contact><i class="fas fa-envelope big-icon"></i></a></li><li><a href=https://github.com/janos-r target=_blank rel=noopener><i class="fab fa-github big-icon"></i></a></li><li><a href=/files/CV_Radim_Janos-%28en-jp%29.pdf><i class="ai ai-cv big-icon"></i></a></li></ul></div></div><div class="col-12 col-lg-8"><h1>伝記</h1><p>チェコ人の血と、北部チェコのドイツ人の家族の間で育ち、2016 年に経済学の修士を卒業し、2017 年に IT と、最新のテクノロジーに興味を持ってから、1.5 年を経て、現在の「Node.js」でのデベロッパーとしてのポジションを 2019 年から開始しました。新しいことを学び続け、バックエンドデベロッパーとしての道を楽しんでいます。最近は、社内で活動的に使うようになったクラウド(Azure, Docker, Kubernetes, Helm)に注力し始めました。</p><p>2018 年の初めに Linux Mint を試してみて、すぐに Windows から切り替えて、大きな Linux とフリーソフトウェアの提唱者になりました。</p><p>囲碁のゲームは、古くからの大きな趣味の内の 1 つです。地域の囲碁クラブで、生徒と管理をしたり、自分でウェブサイトを作ったり、4 年間もの間、年 1 回の全国のトーナメントを組織したりしました。</p><p>ご覧頂きまして、誠にありがとうございます</p><div class=row><div class=col-md-5><h3>興味・関心</h3><ul class=ul-interests><li>Cloud computing, Azure</li><li>Linux</li><li>TypeScript, Node.js</li><li>Rust</li></ul></div><div class=col-md-7><h3>学歴</h3><ul class="ul-edu fa-ul"><li><i class="fa-li fas fa-graduation-cap"></i><div class=description><p class=course>Master's in Business administration, 2016</p><p class=institution>Czech University of Life Sciences Prague</p></div></li><li><i class="fa-li fas fa-graduation-cap"></i><div class=description><p class=course>Bachelor's in Business and culture, 2012</p><p class=institution>Czech University of Life Sciences Prague</p></div></li><li><i class="fa-li fas fa-graduation-cap"></i><div class=description><p class=course>Exchange study program in South Korea, 2014 one semester</p><p class=institution>Chonnam national university in Gwangju</p></div></li></ul></div></div></div></div></div></section><section id=skills_lang class="home-section wg-featurette"><div class=container><div class="row featurette"><div class="col-md-12 section-heading"><h1>言語</h1></div><div class="col-12 col-sm-4"><div class=featurette-icon><img src=/images/icon-pack/flags/gb.svg alt=flags/gb class="svg-icon svg-baseline"></div><h3>英語</h3><p>とても良い</p></div><div class="col-12 col-sm-4"><div class=featurette-icon><img src=/images/icon-pack/flags/de.svg alt=flags/de class="svg-icon svg-baseline"></div><h3>ドイツ語</h3><p>流暢</p></div><div class="col-12 col-sm-4"><div class=featurette-icon><img src=/images/icon-pack/flags/cz.svg alt=flags/cz class="svg-icon svg-baseline"></div><h3>チェコ語</h3><p>ネイティブ</p></div><div class="col-12 col-sm-4"><div class=featurette-icon><img src=/images/icon-pack/flags/jp.svg alt=flags/jp class="svg-icon svg-baseline"></div><h3>日本語</h3><p>基本 (JLPT N4 級)</p></div></div></div></section><section id=skills class="home-section wg-featurette"><div class=container><div class="row featurette"><div class="col-md-12 section-heading"><h1>IT スキル</h1></div><div class="col-12 col-sm-4"><div class=featurette-icon><i class="fab fa-linux"></i></div><h3>Linux</h3></div><div class="col-12 col-sm-4"><div class=featurette-icon><i class="fab fa-js-square"></i></div><h3>JavaScript / TypeScript</h3></div><div class="col-12 col-sm-4"><div class=featurette-icon><img src=/images/icon-pack/logo/gql.svg alt=logo/gql class="svg-icon svg-baseline"></div><h3>GraphQL</h3></div><div class="col-12 col-sm-4"><div class=featurette-icon><i class="fas fa-database"></i></div><h3>MongoDB</h3></div><div class="col-12 col-sm-4"><div class=featurette-icon><i class="fab fa-docker"></i></div><h3>Docker</h3><p>Kubernetes, Helm, Azure</p></div><div class="col-12 col-sm-4"><div class=featurette-icon><img src=/images/icon-pack/logo/rust.svg alt=logo/rust class="svg-icon svg-baseline"></div><h3>Rust</h3><p>Favorite hobby language</p></div><div class="col-12 col-sm-4"><div class=featurette-icon><i class="fab fa-python"></i></div><h3>Python</h3><p>basics</p></div></div></div></section><section id=experience class="home-section wg-experience"><div class=container><div class=row><div class="col-12 col-lg-4 section-heading"><h1>経験</h1></div><div class="col-12 col-lg-8"><div class="row experience"><div class="col-auto text-center flex-column d-none d-sm-flex"><div class="row h-50"><div class=col>&nbsp;</div><div class=col>&nbsp;</div></div><div class=m-2><span class="badge badge-pill border exp-fill">&nbsp;</span></div><div class="row h-50"><div class="col border-right">&nbsp;</div><div class=col>&nbsp;</div></div></div><div class="col py-2"><div class=card><div class=card-body><h4 class="card-title exp-title text-muted mt-0 mb-1">Node.js バックエンドデベロッパー</h4><h4 class="card-title exp-company text-muted my-0">会社 非公開</h4><div class="text-muted exp-meta">01 / 2019 –
-Present
-<span class=middot-divider></span><span>プラハ</span></div><div class=card-text><p>プラハの若いIT会社で、私たちは一流のエネルギー会社とその顧客の為の新しいウェブポータルサイトを成功的に作りました。私自身のタスクは、フロントエンドと第3者からのAPIsアクセスで、保守と改良を行うことです。</p><p>Technologies used:</p><ul><li>TypeScript</li><li>GraphQL</li><li>MongoDB</li><li>Kubernetes, Helm</li><li>Kibana</li><li>Git</li></ul></div></div></div></div></div><div class="row experience"><div class="col-auto text-center flex-column d-none d-sm-flex"><div class="row h-50"><div class="col border-right">&nbsp;</div><div class=col>&nbsp;</div></div><div class=m-2><span class="badge badge-pill border">&nbsp;</span></div><div class="row h-50"><div class=col>&nbsp;</div><div class=col>&nbsp;</div></div></div><div class="col py-2"><div class=card><div class=card-body><h4 class="card-title exp-title text-muted mt-0 mb-1">EPR 製品サポート分析者</h4><h4 class="card-title exp-company text-muted my-0">Infor / CDK</h4><div class="text-muted exp-meta">11 / 2014 –
-12 / 2018
-<span class=middot-divider></span><span>プラハ</span></div><div class=card-text>製品のサポート分析者として、一流の国際企業の財政チームに所属し、お客様の技術的な問題を、内部再生とシステム機能のトレースファイルを通じて、分析しました。</div></div></div></div></div></div></div></div></section><section id=projects class="home-section wg-portfolio"><div class=container><div class=row><div class="col-12 col-lg-4 section-heading"><h1>計画</h1></div><div class="col-12 col-lg-8"><span class="d-none default-project-filter">*</span><div class=project-toolbar><div class=project-filters><div class=btn-toolbar><div class="btn-group flex-wrap"><a href=# data-filter=* class="btn btn-primary btn-lg active">All</a>
-<a href=# data-filter=.js-id-Code class="btn btn-primary btn-lg">Code</a>
-<a href=# data-filter=.js-id-Rust class="btn btn-primary btn-lg">Rust</a>
-<a href=# data-filter=.js-id-Linux class="btn btn-primary btn-lg">Linux</a>
-<a href=# data-filter=.js-id-Go class="btn btn-primary btn-lg">Go</a></div></div></div></div><div class="isotope projects-container js-layout-masonry"><div class="project-card project-item isotope-item js-id-Code js-id-Rust"><div class=card><a href=/ja/project/exercism/ class="card-image hover-overlay"><img src=/ja/project/exercism/featured_huc1dd1c149141a2cc740c7b40cff5806f_28468_550x0_resize_q90_lanczos_2.png alt class=img-responsive></a><div class=card-text><h4><a href=/ja/project/exercism/>Exercism.io</a></h4><div class=article-style><p>Exercises are a great way how to start learning a new language.</p></div></div></div></div><div class="project-card project-item isotope-item js-id-Code js-id-Rust"><div class=card><a href=/ja/project/graphql_rust/ class="card-image hover-overlay"><img src=/ja/project/graphql_rust/featured_hucec7699910b6a58c285250b598df814f_245310_550x0_resize_q90_lanczos_2.png alt class=img-responsive></a><div class=card-text><h4><a href=/ja/project/graphql_rust/>API in Rust</a></h4><div class=article-style><p>Creating a GraphQL and MongoDB web API in Rust.</p></div></div></div></div><div class="project-card project-item isotope-item js-id-Code"><div class=card><a href=/ja/project/circle/ class="card-image hover-overlay"><img src=/ja/project/circle/featured_hueccdc1a210f1a996f8319ef409ceac62_25732_550x0_resize_q90_lanczos_2.png alt class=img-responsive></a><div class=card-text><h4><a href=/ja/project/circle/>Circle CI/CD</a></h4><div class=article-style><p>Creating a simple CircleCI and Docker setup. With focus on Kubernetes and Helm.</p></div></div></div></div><div class="project-card project-item isotope-item js-id-Linux"><div class=card><a href=/ja/project/video/ class="card-image hover-overlay"><img src=/ja/project/video/featured_hufcfa4da0b4e8f38829ce5965058f4d8d_37320_550x0_resize_q90_lanczos_2.png alt class=img-responsive></a><div class=card-text><h4><a href=/ja/project/video/>Making a video</a></h4><div class=article-style><p>Dabbling in video editing on linux.</p></div></div></div></div><div class="project-card project-item isotope-item js-id-Go"><div class=card><a href=/ja/project/go_club/ class="card-image hover-overlay"><img src=/ja/project/go_club/featured_hud8fdc9d906886e5f9360895a01a466fe_165277_550x0_resize_q90_lanczos.JPG alt class=img-responsive></a><div class=card-text><h4><a href=/ja/project/go_club/>Go club and Tournament organization</a></h4><div class=article-style><p>A look into my humble go evangelism in my younger years.</p></div></div></div></div></div></div></div></div></section><section id=contact class="home-section wg-contact"><div class=container><div class="row contact-widget"><div class="col-12 col-lg-4 section-heading"><h1>連絡先</h1></div><div class="col-12 col-lg-8"><div class=mb-3><form name=contact method=post action=https://formspree.io/xlepojzl><div class="form-group form-inline"><label class=sr-only for=inputName>Name</label>
-<input type=text name=name class="form-control w-100" id=inputName placeholder=Name required></div><div class="form-group form-inline"><label class=sr-only for=inputEmail>Email</label>
-<input type=email name=email class="form-control w-100" id=inputEmail placeholder=Email required></div><div class=form-group><label class=sr-only for=inputMessage>Message</label>
-<textarea name=message class=form-control id=inputMessage rows=5 placeholder=Message required></textarea></div><button type=submit class="btn btn-outline-primary px-3 py-2">Send</button></form></div><ul class=fa-ul><li><i class="fa-li fas fa-map-marker fa-2x" aria-hidden=true></i><span id=person-address>Prague, Czech Republic</span></li></ul><div class=d-none><input id=map-provider value=2>
-<input id=map-lat value=50.09>
-<input id=map-lng value=14.42>
-<input id=map-dir value="Prague, Czech Republic">
-<input id=map-zoom value=15>
-<input id=map-api-key value></div><div id=map></div></div></div></div></section><script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js integrity="sha512-7t8APmYpzEsZP7CYoA7RfMPV9Bb+PJHa9x2WiUnDXZx3XHveuyWUtvNOexhkierl5flZ3tr92dP1mMS+SGlD+A==" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/r.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin=anonymous></script><script>const code_highlighting=true;</script><script>const isSiteThemeDark=false;</script><script>const search_config={"indexURI":"/ja/index.json","minLength":1,"threshold":0.3};const i18n={"no_results":"結果が見つかりませんでした","placeholder":"検索...","results":"results found"};const content_type={'post':"投稿",'project':"プロジェクト",'publication':"発表文献",'talk':"登壇",'slides':"Slides"};</script><script id=search-hit-fuse-template type=text/x-template>
+<!DOCTYPE html><html lang="ja" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  
+
+  
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="ラディム　ヤノシュ Radim Janoš">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="デベロッパー">
+
+  
+  <link rel="alternate" hreflang="cs" href="/cs/">
+  
+  <link rel="alternate" hreflang="en" href="/">
+  
+  <link rel="alternate" hreflang="ja" href="/ja/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+
+  
+  
+  
+  
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+        
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+    
+      
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+    
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+  
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  
+
+  
+  <link rel="alternate" href="/ja/index.xml" type="application/rss+xml" title="Radim">
+  
+
+  <link rel="manifest" href="/ja/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hub89e7b28a6abff2b4ec084e6c0608a00_13774_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hub89e7b28a6abff2b4ec084e6c0608a00_13774_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="/ja/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="Radim">
+  <meta property="og:url" content="/ja/">
+  <meta property="og:title" content="Radim">
+  <meta property="og:description" content="デベロッパー"><meta property="og:image" content="/images/icon_hub89e7b28a6abff2b4ec084e6c0608a00_13774_512x512_fill_lanczos_center_2.png">
+  <meta property="twitter:image" content="/images/icon_hub89e7b28a6abff2b4ec084e6c0608a00_13774_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="ja">
+  
+    <meta property="og:updated_time" content="2020-08-10T00:00:00&#43;00:00">
+  
+
+  
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  },
+  "url": "/"
+}
+</script>
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>Radim</title>
+
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#navbar-main" class=" ">
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="検索..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="form-control">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/ja">Radim</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="ナビゲーションの切り替え">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/ja">Radim</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-end" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/ja/#about"><span>私自身</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/ja/#skills_lang"><span>技術</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/ja/#experience"><span>経験</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/ja/#projects"><span>計画</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/ja/#contact"><span>連絡先</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#" aria-label="Search"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      <li class="nav-item dropdown theme-dropdown">
+        <a href="#" class="nav-link js-theme-selector" data-toggle="dropdown" aria-haspopup="true">
+          <i class="fas fa-palette" aria-hidden="true"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item js-set-theme-light">
+            <span>Light</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-dark">
+            <span>Dark</span>
+          </a>
+          <a href="#" class="dropdown-item js-set-theme-auto">
+            <span>Automatic</span>
+          </a>
+        </div>
+      </li>
+      
+
+      
+      <li class="nav-item dropdown i18n-dropdown">
+        <a href="#" class="nav-link " data-toggle="dropdown" aria-haspopup="true">
+          <i class="fas fa-globe mr-1" aria-hidden="true"></i></a>
+        <div class="dropdown-menu">
+          <div class="dropdown-item dropdown-item-active">
+            <span>日本語</span>
+          </div>
+          
+          <a class="dropdown-item" href="/cs/" data-target="/cs/">
+            <span>Česky</span>
+          </a>
+          
+          <a class="dropdown-item" href="/" data-target="/">
+            <span>English</span>
+          </a>
+          
+        </div>
+      </li>
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+<span class="js-widget-page d-none"></span>
+
+
+
+
+
+  
+  
+  
+  
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+  
+    
+    
+    
+  
+
+  
+
+  <section id="slider" class="home-section wg-slider    carousel slide"  data-ride="carousel" data-interval="6000">
+    
+      
+
+
+
+
+<ol class="carousel-indicators">
+  
+  <li data-target="#slider" data-slide-to="0" class="active"></li>
+  
+  <li data-target="#slider" data-slide-to="1" ></li>
+  
+  <li data-target="#slider" data-slide-to="2" ></li>
+  
+</ol>
+
+
+<div class="carousel-inner">
+  
+  <div class="wg-hero dark carousel-item active" style="height: calc(100vh - 70px);
+    
+    background-color: #779;
+    
+    
+    
+    background-image:
+    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+    url('/media/slider/buddha.jpg');
+    
+    ;">
+    <div class="container" style="text-align: center;">
+        <h1 class="hero-title">
+          <strong>旅行人</strong>
+        </h1>
+
+        
+
+        
+      </div>
+  </div>
+  
+  <div class="wg-hero dark carousel-item" style="height: calc(100vh - 70px);
+    
+    
+    
+    background-image:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+    url('/media/slider/code.png');
+    
+    ;">
+    <div class="container" style="text-align: center;">
+        <h1 class="hero-title">
+          <strong>デペロッパー</strong>
+        </h1>
+
+        
+        <p class="hero-lead" style="margin: 0 auto 0 auto;">
+          で情熱的なリナックスユーザー 🐧
+        </p>
+        
+
+        
+      </div>
+  </div>
+  
+  <div class="wg-hero dark carousel-item" style="height: calc(100vh - 70px);
+    
+    
+    
+    background-image:
+    linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+    url('/media/slider/go_board.jpg');
+    
+    ;">
+    <div class="container" style="text-align: center;">
+        <h1 class="hero-title">
+          <strong>囲碁棋士</strong>
+        </h1>
+
+        
+
+        
+      </div>
+  </div>
+  
+</div>
+
+
+<a class="carousel-control-prev" href="#slider" data-slide="prev">
+  <span class="carousel-control-prev-icon"></span>
+  <span class="sr-only">Previous</span>
+</a>
+<a class="carousel-control-next" href="#slider" data-slide="next">
+  <span class="carousel-control-next-icon"></span>
+  <span class="sr-only">Next</span>
+</a>
+
+    
+  </section>
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+  
+
+  
+
+  <section id="about" class="home-section wg-about   "  >
+    <div class="container">
+      
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+<div class="row">
+  <div class="col-12 col-lg-4">
+    <div id="profile">
+
+      
+      
+      <img class="avatar avatar-circle" src="/ja/author/%E3%83%A9%E3%83%86%E3%82%A3%E3%83%A0-%E3%83%A4%E3%83%8E%E3%82%B7%E3%83%A5-radim-janos/avatar_hu64d921ec107bff3d62a3fb75542fa15a_49188_270x270_fill_q90_lanczos_center.jpg" alt="ラディム　ヤノシュ Radim Janoš">
+      
+
+      <div class="portrait-title">
+        <h2>ラディム　ヤノシュ Radim Janoš</h2>
+        <h3>デベロッパー</h3>
+
+        
+        <h3>
+          
+          <span>プラハ、チェコ共和国</span>
+          
+        </h3>
+        
+      </div>
+
+      <ul class="network-icon" aria-hidden="true">
+        
+        
+        
+        
+          
+        
+        
+        
+        
+        
+          
+        
+        <li>
+          <a href="/ja/#contact" >
+            <i class="fas fa-envelope big-icon"></i>
+          </a>
+        </li>
+        
+        
+        
+        
+          
+        
+        
+        
+        
+        
+          
+        
+        <li>
+          <a href="https://github.com/janos-r" target="_blank" rel="noopener">
+            <i class="fab fa-github big-icon"></i>
+          </a>
+        </li>
+        
+        
+        
+        
+        
+        
+        
+        
+          
+        
+        <li>
+          <a href="/files/CV_Radim_Janos-%28en-jp%29.pdf" >
+            <i class="ai ai-cv big-icon"></i>
+          </a>
+        </li>
+        
+      </ul>
+
+    </div>
+  </div>
+  <div class="col-12 col-lg-8">
+
+    
+    <h1>伝記</h1>
+
+    <p>チェコ人の血と、北部チェコのドイツ人の家族の間で育ち、2016 年に経済学の修士を卒業し、2017 年に IT と、最新のテクノロジーに興味を持ってから、1.5 年を経て、現在の「Node.js」でのデベロッパーとしてのポジションを 2019 年から開始しました。新しいことを学び続け、バックエンドデベロッパーとしての道を楽しんでいます。最近は、社内で活動的に使うようになったクラウド(Azure, Docker, Kubernetes, Helm)に注力し始めました。</p>
+<p>2018 年の初めに Linux Mint を試してみて、すぐに Windows から切り替えて、大きな Linux とフリーソフトウェアの提唱者になりました。</p>
+<p>囲碁のゲームは、古くからの大きな趣味の内の 1 つです。地域の囲碁クラブで、生徒と管理をしたり、自分でウェブサイトを作ったり、4 年間もの間、年 1 回の全国のトーナメントを組織したりしました。</p>
+<p>ご覧頂きまして、誠にありがとうございます</p>
+
+
+    <div class="row">
+
+      
+      <div class="col-md-5">
+        <h3>興味・関心</h3>
+        <ul class="ul-interests">
+          
+          <li>Cloud computing, Azure</li>
+          
+          <li>Linux</li>
+          
+          <li>TypeScript, Node.js</li>
+          
+          <li>Rust</li>
+          
+        </ul>
+      </div>
+      
+
+      
+      <div class="col-md-7">
+        <h3>学歴</h3>
+        <ul class="ul-edu fa-ul">
+          
+          <li>
+            <i class="fa-li fas fa-graduation-cap"></i>
+            <div class="description">
+              <p class="course">Master&#39;s in Business administration, 2016</p>
+              <p class="institution">Czech University of Life Sciences Prague</p>
+            </div>
+          </li>
+          
+          <li>
+            <i class="fa-li fas fa-graduation-cap"></i>
+            <div class="description">
+              <p class="course">Bachelor&#39;s in Business and culture, 2012</p>
+              <p class="institution">Czech University of Life Sciences Prague</p>
+            </div>
+          </li>
+          
+          <li>
+            <i class="fa-li fas fa-graduation-cap"></i>
+            <div class="description">
+              <p class="course">Exchange study program in South Korea, 2014 one semester</p>
+              <p class="institution">Chonnam national university in Gwangju</p>
+            </div>
+          </li>
+          
+        </ul>
+      </div>
+      
+
+    </div>
+  </div>
+</div>
+
+    </div>
+  </section>
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+  
+
+  
+
+  <section id="skills_lang" class="home-section wg-featurette   "  >
+    <div class="container">
+      
+
+
+<div class="row featurette">
+  
+  <div class="col-md-12 section-heading">
+    <h1>言語</h1>
+    
+  </div>
+  
+
+  
+
+  
+  
+  
+  
+  <div class="col-12 col-sm-4">
+    
+    <div class="featurette-icon"><img src="/images/icon-pack/flags/gb.svg" alt="flags/gb" class="svg-icon svg-baseline"></div>
+    
+    <h3>英語</h3>
+    <p>とても良い</p>
+  </div>
+  
+  
+  
+  
+  <div class="col-12 col-sm-4">
+    
+    <div class="featurette-icon"><img src="/images/icon-pack/flags/de.svg" alt="flags/de" class="svg-icon svg-baseline"></div>
+    
+    <h3>ドイツ語</h3>
+    <p>流暢</p>
+  </div>
+  
+  
+  
+  
+  <div class="col-12 col-sm-4">
+    
+    <div class="featurette-icon"><img src="/images/icon-pack/flags/cz.svg" alt="flags/cz" class="svg-icon svg-baseline"></div>
+    
+    <h3>チェコ語</h3>
+    <p>ネイティブ</p>
+  </div>
+  
+  
+  
+  
+  <div class="col-12 col-sm-4">
+    
+    <div class="featurette-icon"><img src="/images/icon-pack/flags/jp.svg" alt="flags/jp" class="svg-icon svg-baseline"></div>
+    
+    <h3>日本語</h3>
+    <p>基本 (JLPT N4 級)</p>
+  </div>
+  
+</div>
+
+    </div>
+  </section>
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+  
+
+  
+
+  <section id="skills" class="home-section wg-featurette   "  >
+    <div class="container">
+      
+
+
+<div class="row featurette">
+  
+  <div class="col-md-12 section-heading">
+    <h1>IT スキル</h1>
+    
+  </div>
+  
+
+  
+
+  
+  
+  
+  
+    
+  
+  <div class="col-12 col-sm-4">
+    
+    <div class="featurette-icon"><i class="fab fa-linux"></i></div>
+    
+    <h3>Linux</h3>
+    
+  </div>
+  
+  
+  
+  
+    
+  
+  <div class="col-12 col-sm-4">
+    
+    <div class="featurette-icon"><i class="fab fa-js-square"></i></div>
+    
+    <h3>JavaScript / TypeScript</h3>
+    
+  </div>
+  
+  
+  
+  
+  <div class="col-12 col-sm-4">
+    
+    <div class="featurette-icon"><img src="/images/icon-pack/logo/gql.svg" alt="logo/gql" class="svg-icon svg-baseline"></div>
+    
+    <h3>GraphQL</h3>
+    
+  </div>
+  
+  
+  
+  
+    
+  
+  <div class="col-12 col-sm-4">
+    
+    <div class="featurette-icon"><i class="fas fa-database"></i></div>
+    
+    <h3>MongoDB</h3>
+    
+  </div>
+  
+  
+  
+  
+    
+  
+  <div class="col-12 col-sm-4">
+    
+    <div class="featurette-icon"><i class="fab fa-docker"></i></div>
+    
+    <h3>Docker</h3>
+    <p>Kubernetes, Helm, Azure</p>
+  </div>
+  
+  
+  
+  
+  <div class="col-12 col-sm-4">
+    
+    <div class="featurette-icon"><img src="/images/icon-pack/logo/rust.svg" alt="logo/rust" class="svg-icon svg-baseline"></div>
+    
+    <h3>Rust</h3>
+    <p>Favorite hobby language</p>
+  </div>
+  
+  
+  
+  
+    
+  
+  <div class="col-12 col-sm-4">
+    
+    <div class="featurette-icon"><i class="fab fa-python"></i></div>
+    
+    <h3>Python</h3>
+    <p>basics</p>
+  </div>
+  
+</div>
+
+    </div>
+  </section>
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+  
+
+  
+
+  <section id="experience" class="home-section wg-experience   "  >
+    <div class="container">
+      
+
+
+
+<div class="row">
+  <div class="col-12 col-lg-4 section-heading">
+    <h1>経験</h1>
+    
+  </div>
+  <div class="col-12 col-lg-8">
+    
+
+    
+    
+    
+    <div class="row experience">
+      
+      <div class="col-auto text-center flex-column d-none d-sm-flex">
+        <div class="row h-50">
+          <div class="col ">&nbsp;</div>
+          <div class="col">&nbsp;</div>
+        </div>
+        <div class="m-2">
+          <span class="badge badge-pill border exp-fill">&nbsp;</span>
+        </div>
+        <div class="row h-50">
+          <div class="col border-right">&nbsp;</div>
+          <div class="col">&nbsp;</div>
+        </div>
+      </div>
+      
+      <div class="col py-2">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title exp-title text-muted mt-0 mb-1">Node.js バックエンドデベロッパー</h4>
+            <h4 class="card-title exp-company text-muted my-0">会社 非公開</h4>
+            <div class="text-muted exp-meta">
+              01 / 2019 –
+              
+                Present
+              
+              
+                <span class="middot-divider"></span>
+                <span>プラハ</span>
+              
+            </div>
+            <div class="card-text"><p>プラハの若いIT会社で、私たちは一流のエネルギー会社とその顧客の為の新しいウェブポータルサイトを成功的に作りました。私自身のタスクは、フロントエンドと第3者からのAPIsアクセスで、保守と改良を行うことです。</p>
+<p>Technologies used:</p>
+<ul>
+<li>TypeScript</li>
+<li>GraphQL</li>
+<li>MongoDB</li>
+<li>Kubernetes, Helm</li>
+<li>Kibana</li>
+<li>Git</li>
+</ul>
+</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row experience">
+      
+      <div class="col-auto text-center flex-column d-none d-sm-flex">
+        <div class="row h-50">
+          <div class="col border-right">&nbsp;</div>
+          <div class="col">&nbsp;</div>
+        </div>
+        <div class="m-2">
+          <span class="badge badge-pill border ">&nbsp;</span>
+        </div>
+        <div class="row h-50">
+          <div class="col ">&nbsp;</div>
+          <div class="col">&nbsp;</div>
+        </div>
+      </div>
+      
+      <div class="col py-2">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title exp-title text-muted mt-0 mb-1">EPR 製品サポート分析者</h4>
+            <h4 class="card-title exp-company text-muted my-0">Infor / CDK</h4>
+            <div class="text-muted exp-meta">
+              11 / 2014 –
+              
+                12 / 2018
+              
+              
+                <span class="middot-divider"></span>
+                <span>プラハ</span>
+              
+            </div>
+            <div class="card-text">製品のサポート分析者として、一流の国際企業の財政チームに所属し、お客様の技術的な問題を、内部再生とシステム機能のトレースファイルを通じて、分析しました。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+  </div>
+</div>
+
+    </div>
+  </section>
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+  
+
+  
+
+  <section id="projects" class="home-section wg-portfolio   "  >
+    <div class="container">
+      
+
+
+
+
+
+
+
+
+
+
+<div class="row">
+  <div class="col-12 col-lg-4 section-heading">
+
+    <h1>計画</h1>
+    
+
+  </div>
+  <div class="col-12 col-lg-8">
+
+
+
+    
+
+    
+
+      
+
+      
+      
+      
+      
+        
+      
+
+      <span class="d-none default-project-filter">*</span>
+
+      
+      
+      <div class="project-toolbar">
+        <div class="project-filters">
+          <div class="btn-toolbar">
+            <div class="btn-group flex-wrap">
+              
+                
+                
+                
+                  
+                
+                <a href="#" data-filter="*" class="btn btn-primary btn-lg active">All</a>
+              
+                
+                
+                
+                <a href="#" data-filter=".js-id-Code" class="btn btn-primary btn-lg">Code</a>
+              
+                
+                
+                
+                <a href="#" data-filter=".js-id-Rust" class="btn btn-primary btn-lg">Rust</a>
+              
+                
+                
+                
+                <a href="#" data-filter=".js-id-Linux" class="btn btn-primary btn-lg">Linux</a>
+              
+                
+                
+                
+                <a href="#" data-filter=".js-id-Go" class="btn btn-primary btn-lg">Go</a>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    
+
+    <div class="isotope projects-container js-layout-masonry ">
+      
+
+        
+        
+        
+
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+<div class="project-card project-item isotope-item js-id-Code js-id-Rust">
+  <div class="card">
+    
+    
+    <a href="/ja/project/exercism/"  class="card-image hover-overlay">
+      <img src="/ja/project/exercism/featured_huc1dd1c149141a2cc740c7b40cff5806f_28468_550x0_resize_q90_lanczos_2.png" alt="" class="img-responsive">
+    </a>
+    
+    <div class="card-text">
+      <h4><a href="/ja/project/exercism/" >Exercism.io</a></h4>
+      
+      <div class="article-style">
+        <p>Exercises are a great way how to start learning a new language.</p>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+        
+
+      
+
+        
+        
+        
+
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+<div class="project-card project-item isotope-item js-id-Code js-id-Rust">
+  <div class="card">
+    
+    
+    <a href="/ja/project/graphql_rust/"  class="card-image hover-overlay">
+      <img src="/ja/project/graphql_rust/featured_hucec7699910b6a58c285250b598df814f_245310_550x0_resize_q90_lanczos_2.png" alt="" class="img-responsive">
+    </a>
+    
+    <div class="card-text">
+      <h4><a href="/ja/project/graphql_rust/" >API in Rust</a></h4>
+      
+      <div class="article-style">
+        <p>Creating a GraphQL and MongoDB web API in Rust.</p>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+        
+
+      
+
+        
+        
+        
+
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+<div class="project-card project-item isotope-item js-id-Code">
+  <div class="card">
+    
+    
+    <a href="/ja/project/circle/"  class="card-image hover-overlay">
+      <img src="/ja/project/circle/featured_hueccdc1a210f1a996f8319ef409ceac62_25732_550x0_resize_q90_lanczos_2.png" alt="" class="img-responsive">
+    </a>
+    
+    <div class="card-text">
+      <h4><a href="/ja/project/circle/" >Circle CI/CD</a></h4>
+      
+      <div class="article-style">
+        <p>Creating a simple CircleCI and Docker setup. With focus on Kubernetes and Helm.</p>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+        
+
+      
+
+        
+        
+        
+
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+<div class="project-card project-item isotope-item js-id-Linux">
+  <div class="card">
+    
+    
+    <a href="/ja/project/video/"  class="card-image hover-overlay">
+      <img src="/ja/project/video/featured_hufcfa4da0b4e8f38829ce5965058f4d8d_37320_550x0_resize_q90_lanczos_2.png" alt="" class="img-responsive">
+    </a>
+    
+    <div class="card-text">
+      <h4><a href="/ja/project/video/" >Making a video</a></h4>
+      
+      <div class="article-style">
+        <p>Dabbling in video editing on linux.</p>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+        
+
+      
+
+        
+        
+        
+
+        
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+<div class="project-card project-item isotope-item js-id-Go">
+  <div class="card">
+    
+    
+    <a href="/ja/project/go_club/"  class="card-image hover-overlay">
+      <img src="/ja/project/go_club/featured_hud8fdc9d906886e5f9360895a01a466fe_165277_550x0_resize_q90_lanczos.JPG" alt="" class="img-responsive">
+    </a>
+    
+    <div class="card-text">
+      <h4><a href="/ja/project/go_club/" >Go club and Tournament organization</a></h4>
+      
+      <div class="article-style">
+        <p>A look into my humble go evangelism in my younger years.</p>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+        
+
+      
+    </div>
+
+  </div>
+</div>
+
+    </div>
+  </section>
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+  
+
+  
+
+  <section id="contact" class="home-section wg-contact   "  >
+    <div class="container">
+      
+
+
+
+
+
+
+<div class="row contact-widget ">
+  
+    
+      <div class="col-12 col-lg-4 section-heading">
+        <h1>連絡先</h1>
+        
+      </div>
+    
+  
+  <div class="col-12 col-lg-8">
+    
+
+    
+
+    
+    
+      
+      
+    
+
+    <div class="mb-3">
+      <form name="contact" method="POST" action="https://formspree.io/xlepojzl"  >
+        <div class="form-group form-inline">
+          <label class="sr-only" for="inputName">Name</label>
+          <input type="text" name="name" class="form-control w-100" id="inputName" placeholder="Name" required>
+        </div>
+        <div class="form-group form-inline">
+          <label class="sr-only" for="inputEmail">Email</label>
+          <input type="email" name="email" class="form-control w-100" id="inputEmail" placeholder="Email" required>
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="inputMessage">Message</label>
+          <textarea name="message" class="form-control" id="inputMessage" rows="5" placeholder="Message" required></textarea>
+        </div>
+        
+        
+        <button type="submit" class="btn btn-outline-primary px-3 py-2">Send</button>
+      </form>
+    </div>
+    
+
+    <ul class="fa-ul">
+
+      
+
+      
+
+      
+      
+        
+        <li>
+          <i class="fa-li fas fa-map-marker fa-2x" aria-hidden="true"></i>
+          <span id="person-address">Prague, Czech Republic </span>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+      
+
+    </ul>
+
+    
+    <div class="d-none">
+      <input id="map-provider" value="2">
+      <input id="map-lat" value="50.09">
+      <input id="map-lng" value="14.42">
+      <input id="map-dir" value="Prague, Czech Republic ">
+      <input id="map-zoom" value="15">
+      <input id="map-api-key" value="">
+    </div>
+    <div id="map"></div>
+    
+
+  </div>
+</div>
+
+    </div>
+  </section>
+
+
+
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js" integrity="sha512-7t8APmYpzEsZP7CYoA7RfMPV9Bb+PJHa9x2WiUnDXZx3XHveuyWUtvNOexhkierl5flZ3tr92dP1mMS+SGlD+A==" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js" integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    <script>const isSiteThemeDark = false;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/ja/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"結果が見つかりませんでした","placeholder":"検索...","results":"results found"};
+      const content_type = {
+        'post': "投稿",
+        'project': "プロジェクト",
+        'publication' : "発表文献",
+        'talk' : "登壇",
+        'slides' : "Slides"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
       <div class="search-hit" id="summary-{{key}}">
       <div class="search-hit-content">
         <div class="search-hit-name">
@@ -29,6 +1877,118 @@ Present
         </div>
       </div>
       </div>
-    </script><script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin=anonymous></script><script>if(window.netlifyIdentity){window.netlifyIdentity.on("init",user=>{if(!user){window.netlifyIdentity.on("login",()=>{document.location.href="/admin/";});}});}</script><script src=/js/academic.min.3b2b658c61ebd725bd5fc606c89fe44c.js></script><div class=container><footer class=site-footer><p class=powered-by><span class=float-right aria-hidden=true><a href=# class=back-to-top><span class=button_icon><i class="fas fa-chevron-up fa-2x"></i></span></a></span></p></footer></div><div id=modal class="modal fade" role=dialog><div class=modal-dialog><div class=modal-content><div class=modal-header><h5 class=modal-title>引用</h5><button type=button class=close data-dismiss=modal aria-label=Close>
-<span aria-hidden=true>&#215;</span></button></div><div class=modal-body><pre><code class="tex hljs"></code></pre></div><div class=modal-footer><a class="btn btn-outline-primary my-1 js-copy-cite" href=# target=_blank><i class="fas fa-copy"></i>コピー</a>
-<a class="btn btn-outline-primary my-1 js-download-cite" href=# target=_blank><i class="fas fa-download"></i>ダウンロード</a><div id=modal-error></div></div></div></div></div></body></html>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    <script>
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", user => {
+          if (!user) {
+            window.netlifyIdentity.on("login", () => {
+              document.location.href = "/admin/";
+            });
+          }
+        });
+      }
+    </script>
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.3b2b658c61ebd725bd5fc606c89fe44c.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">引用</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> コピー
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> ダウンロード
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

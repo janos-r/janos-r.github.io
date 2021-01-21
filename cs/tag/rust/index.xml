@@ -1,39 +1,100 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Rust | Radim</title><link>/cs/tag/rust/</link><atom:link href="/cs/tag/rust/index.xml" rel="self" type="application/rss+xml"/><description>Rust</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>cs</language><lastBuildDate>Mon, 10 Aug 2020 00:00:00 +0000</lastBuildDate><image><url>/images/icon_hub89e7b28a6abff2b4ec084e6c0608a00_13774_512x512_fill_lanczos_center_2.png</url><title>Rust</title><link>/cs/tag/rust/</link></image><item><title>Exercism.io</title><link>/cs/project/exercism/</link><pubDate>Mon, 10 Aug 2020 00:00:00 +0000</pubDate><guid>/cs/project/exercism/</guid><description>&lt;h2 id="a-new-language">A new language&lt;/h2>
-&lt;p>When I started learning Rust in the second half of 2019, I first read &amp;ldquo;
-&lt;a href="https://doc.rust-lang.org/book/" target="_blank" rel="noopener">The Book&lt;/a>&amp;rdquo; from the official website. I can highly recommend it. It takes a little longer to get going and many people prefer to go right into writing code, but my first step into this very new territory was intentionally cautious and thorough. I spent my fair share of time on the book.&lt;/p>
-&lt;h2 id="after-the-basics">After the basics&lt;/h2>
-&lt;p>There is also &amp;ldquo;Rust by example&amp;rdquo; which is more hands on. I went through it after reading the book relatively quickly, it is also very well made. At this stage jumping on some exercises is the perfect time. Experimenting with different approaches to new problems and fighting the typical hurdles of a new programming language is ideal. Rust especially has a slightly higher learning curve than other languages that try to be more similar to each other. On the other hand, I only spent a lot of time on JavaScript before Rust, so I went into it with a still rather flexible mind. I&amp;rsquo;m sure that helped allot.&lt;/p>
-&lt;h2 id="where-to-exercise">Where to exercise&lt;/h2>
-&lt;p>When learning JavaScript, I also used to do some exercises on pages like
-&lt;a href="https://codecademy.com" target="_blank" rel="noopener">codecademy.com&lt;/a>,
-&lt;a href="https://codingame.com" target="_blank" rel="noopener">codingame.com&lt;/a> and
-&lt;a href="https://codewars.com" target="_blank" rel="noopener">codewars.com&lt;/a>. All of them are wonderful and totally free options for beginners. Especially codewars seamed to provide close to unlimited content and a great way how to compare solutions with others. It&amp;rsquo;s really amazing how many good and free options there are to learn and improve at coding.&lt;/p>
-&lt;h2 id="exercism">Exercism&lt;/h2>
-&lt;p>In the Rust community, I heard recommendations about
-&lt;a href="https://exercism.io" target="_blank" rel="noopener">exercism.io&lt;/a>. That&amp;rsquo;s where I first found the page. I can&amp;rsquo;t praise this website enough. I spent a few months around the end of 2019, doing exercises in Rust several times a week. At that time, I was able to get real reviews by mentors on the page, guiding me through the solutions. Later when the language became more popular, there were not enough mentors to give direct reviews. It was still possible to progress through an &amp;ldquo;unguided&amp;rdquo; track though and compare your solutions to those from other users.&lt;/p>
-&lt;h2 id="final-thoughts">Final thoughts&lt;/h2>
-&lt;p>By the time of writing, I don&amp;rsquo;t spend much time on Rust anymore. I have two other goals that I want to reach by the end of the year. But If I get the itch to play around with some Rust again, I still left some untouched exercises on the page and I&amp;rsquo;m sure I would have some good fun with it, while also learning some new practices and ways to think about coding.&lt;/p>
-&lt;h3 id="ps">PS&lt;/h3>
-&lt;p>At the beginning on this website, the picture slider, the second picture that is saying &amp;ldquo;Developer&amp;rdquo;. That background was my own screenshot, a little edited in gimp, from one of my last exercises on exercism.&lt;/p>
-&lt;figure >
-&lt;a data-fancybox="" href="/media/slider/code.png" >
-&lt;img src="/media/slider/code.png" alt="" >
-&lt;/a>
-&lt;/figure></description></item><item><title>API in Rust</title><link>/cs/project/graphql_rust/</link><pubDate>Thu, 30 Jul 2020 00:00:00 +0000</pubDate><guid>/cs/project/graphql_rust/</guid><description>&lt;h2 id="db-experience">DB experience&lt;/h2>
-&lt;p>During my 2 years of self study between 2017-2019, I spent a few months studying MongoDB. At that time, it was recommended as a good technology for the web. I knew some basic SQL, and I spent some time with SQLite in a Python project tutorial during my study, but MongoDB was a database that I really put in some effort and finished the free certificates that they have on their official website. I have to say that I like MongoDB, and I was lucky to find my current company starting 2019, where MongoDB is used exclusively.&lt;/p>
-&lt;h2 id="day-job">Day job&lt;/h2>
-&lt;p>Most of my work is focused on the backend of a big portal website for users and admins. Specifically, the creation and maintenance of APIs. Written in TypeScrip, stored in MongoDB and served with GraphQL. GraphQL was new to me when I started in the company, but once I got used to it, serving data via REST feels like some totally antiquated. Of course, we also use REST for necessary things, but the type safety of GraphQL and the schemas is something amazing.&lt;/p>
-&lt;h2 id="rust">Rust&lt;/h2>
-&lt;p>During 2019, I wanted to learn a new programming language. Most of my time 2017-2019 I spent learning JavaScript. I spent a some time on C and Python too. I like python, but I already did a small project with it, some intermediate tutorials, and although I definitely could learn much more in Python, It didn&amp;rsquo;t really feel challenging enough and I wanted something that would push my knowledge as a developer. C was interesting, but way too hard for me to spend too much time on it. I wanted something practical and modern. The purpose was to learn to be a better programmer, but I felt like I would spend too much time on suffering while trying to build something in C. A colleague at work started to learn GOlang a little. I felt tempted to read up on it a little and stumbled upon this wave of new programming languages growing in 2019 like go, rust or julia. Julia felt too esoteric to me and GO somehow too popular to be cool. But when I was reading about Rust and their attempt to make memory management like in C accessible and safe for even beginner programmers, I was very intrigued. I don&amp;rsquo;t regret my choice in Rust a bit. It was exactly what I was looking for. Something more challenging on a technical level, but also holding your hand in the process, making for a great learning experience.&lt;/p>
-&lt;p>First I read &amp;ldquo;The book&amp;rdquo; from the official website. The book took a while, but it is very good. I prefer taking my time while studying anything and go step by step a bit every day. So I didn&amp;rsquo;t mind the length of the book. After maybe a few months, I started with tutorials on Exercism. It is an amazing website and I might make an article about it exclusively in the future.&lt;/p>
-&lt;h2 id="project">Project&lt;/h2>
-&lt;p>After a few weeks / months of tutorials, I felt the need to try something personal. It doesn&amp;rsquo;t need to be something production-ready, I just wanted to try to put together something new. I soon began thinking if my favorite MongoDB + GraphQL could work with Rust. I found an article from 2018 that looked a little scary, but when reading the docs of the GraphQL library for Rust, I realized 2018 might be already old information.&lt;/p>
-&lt;p>I made the simple web API by the end of 2019. I will not be talking about the technical specifics of the project and its libraries. Under the link above, in the project&amp;rsquo;s readme.md, you can find the technical details. I also left plenty of comments in the code itself for me or anybody else if you are interested. But below are some memories that I have of the experience writing it.&lt;/p>
-&lt;h2 id="rust-with-mongodb">Rust with MongoDB&lt;/h2>
-&lt;p>The library for MongoDB could have been better. I remember thinking that using MongoDB in TypeScript with Mongoose is honestly a much better experience. In rust, the objects have to be translated through a parsing library like Serde. But I guess this is not an issue exclusive to Rust, more like a benefit when using JavaScript with JSON. It was not trivial, but possible!&lt;/p>
-&lt;h2 id="rust-with-graphql">Rust with GraphQL&lt;/h2>
-&lt;p>The library for GraphQL on the other hand was surprisingly nice to use. I loved how it used macros and simple Rust structs to generate its necessary objects. It was easy to create the schemas, much nicer than I remembered from the crazy 2018 article. I remember being amazed that I could easily recommend this, even though I&amp;rsquo;m not a programming veteran, and I am writing this in Rust, supposedly one of the fastest and most powerful languages out there.&lt;/p>
-&lt;h2 id="final-thoughts">Final thoughts&lt;/h2>
-&lt;p>So, I was very happy when this was running. Later I changed the module tree and I implemented logging. Both simply for experience and making the project feel a little more complete, even though this was basically more like a proof of concept. A challenge for myself.&lt;/p>
-&lt;h2 id="would-i-change-it">Would I change it?&lt;/h2>
-&lt;p>I imagine that in the past 7 months since then, both libraries got only better. I didn&amp;rsquo;t look at them since then. Also, I had a hard time to choose the web server library. I tried several till I stuck with Iron. Were I to do it over, at this time of writing, I would probably use Actix-web instead. But the library landscape of Rust is evolving quickly and it&amp;rsquo;s no surprise that there are many changes. I will not touch this project again. It serves as the memory of my experience from that time. My first personal github project.&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rust | Radim</title>
+    <link>/cs/tag/rust/</link>
+      <atom:link href="/cs/tag/rust/index.xml" rel="self" type="application/rss+xml" />
+    <description>Rust</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>cs</language><lastBuildDate>Mon, 10 Aug 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/images/icon_hub89e7b28a6abff2b4ec084e6c0608a00_13774_512x512_fill_lanczos_center_2.png</url>
+      <title>Rust</title>
+      <link>/cs/tag/rust/</link>
+    </image>
+    
+    <item>
+      <title>Exercism.io</title>
+      <link>/cs/project/exercism/</link>
+      <pubDate>Mon, 10 Aug 2020 00:00:00 +0000</pubDate>
+      <guid>/cs/project/exercism/</guid>
+      <description>&lt;h2 id=&#34;a-new-language&#34;&gt;A new language&lt;/h2&gt;
+&lt;p&gt;When I started learning Rust in the second half of 2019, I first read &amp;ldquo;
+&lt;a href=&#34;https://doc.rust-lang.org/book/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;The Book&lt;/a&gt;&amp;rdquo; from the official website. I can highly recommend it. It takes a little longer to get going and many people prefer to go right into writing code, but my first step into this very new territory was intentionally cautious and thorough. I spent my fair share of time on the book.&lt;/p&gt;
+&lt;h2 id=&#34;after-the-basics&#34;&gt;After the basics&lt;/h2&gt;
+&lt;p&gt;There is also &amp;ldquo;Rust by example&amp;rdquo; which is more hands on. I went through it after reading the book relatively quickly, it is also very well made. At this stage jumping on some exercises is the perfect time. Experimenting with different approaches to new problems and fighting the typical hurdles of a new programming language is ideal. Rust especially has a slightly higher learning curve than other languages that try to be more similar to each other. On the other hand, I only spent a lot of time on JavaScript before Rust, so I went into it with a still rather flexible mind. I&amp;rsquo;m sure that helped allot.&lt;/p&gt;
+&lt;h2 id=&#34;where-to-exercise&#34;&gt;Where to exercise&lt;/h2&gt;
+&lt;p&gt;When learning JavaScript, I also used to do some exercises on pages like 
+&lt;a href=&#34;https://codecademy.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;codecademy.com&lt;/a&gt;, 
+&lt;a href=&#34;https://codingame.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;codingame.com&lt;/a&gt; and 
+&lt;a href=&#34;https://codewars.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;codewars.com&lt;/a&gt;. All of them are wonderful and totally free options for beginners. Especially codewars seamed to provide close to unlimited content and a great way how to compare solutions with others. It&amp;rsquo;s really amazing how many good and free options there are to learn and improve at coding.&lt;/p&gt;
+&lt;h2 id=&#34;exercism&#34;&gt;Exercism&lt;/h2&gt;
+&lt;p&gt;In the Rust community, I heard recommendations about 
+&lt;a href=&#34;https://exercism.io&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;exercism.io&lt;/a&gt;. That&amp;rsquo;s where I first found the page. I can&amp;rsquo;t praise this website enough. I spent a few months around the end of 2019, doing exercises in Rust several times a week. At that time, I was able to get real reviews by mentors on the page, guiding me through the solutions. Later when the language became more popular, there were not enough mentors to give direct reviews. It was still possible to progress through an &amp;ldquo;unguided&amp;rdquo; track though and compare your solutions to those from other users.&lt;/p&gt;
+&lt;h2 id=&#34;final-thoughts&#34;&gt;Final thoughts&lt;/h2&gt;
+&lt;p&gt;By the time of writing, I don&amp;rsquo;t spend much time on Rust anymore. I have two other goals that I want to reach by the end of the year. But If I get the itch to play around with some Rust again, I still left some untouched exercises on the page and I&amp;rsquo;m sure I would have some good fun with it, while also learning some new practices and ways to think about coding.&lt;/p&gt;
+&lt;h3 id=&#34;ps&#34;&gt;PS&lt;/h3&gt;
+&lt;p&gt;At the beginning on this website, the picture slider, the second picture that is saying &amp;ldquo;Developer&amp;rdquo;. That background was my own screenshot, a little edited in gimp, from one of my last exercises on exercism.&lt;/p&gt;
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure &gt;
+
+
+  &lt;a data-fancybox=&#34;&#34; href=&#34;/media/slider/code.png&#34; &gt;
+
+
+  &lt;img src=&#34;/media/slider/code.png&#34; alt=&#34;&#34;  &gt;
+&lt;/a&gt;
+
+
+
+&lt;/figure&gt;
+
+</description>
+    </item>
+    
+    <item>
+      <title>API in Rust</title>
+      <link>/cs/project/graphql_rust/</link>
+      <pubDate>Thu, 30 Jul 2020 00:00:00 +0000</pubDate>
+      <guid>/cs/project/graphql_rust/</guid>
+      <description>&lt;h2 id=&#34;db-experience&#34;&gt;DB experience&lt;/h2&gt;
+&lt;p&gt;During my 2 years of self study between 2017-2019, I spent a few months studying MongoDB. At that time, it was recommended as a good technology for the web. I knew some basic SQL, and I spent some time with SQLite in a Python project tutorial during my study, but MongoDB was a database that I really put in some effort and finished the free certificates that they have on their official website. I have to say that I like MongoDB, and I was lucky to find my current company starting 2019, where MongoDB is used exclusively.&lt;/p&gt;
+&lt;h2 id=&#34;day-job&#34;&gt;Day job&lt;/h2&gt;
+&lt;p&gt;Most of my work is focused on the backend of a big portal website for users and admins. Specifically, the creation and maintenance of APIs. Written in TypeScrip, stored in MongoDB and served with GraphQL. GraphQL was new to me when I started in the company, but once I got used to it, serving data via REST feels like some totally antiquated. Of course, we also use REST for necessary things, but the type safety of GraphQL and the schemas is something amazing.&lt;/p&gt;
+&lt;h2 id=&#34;rust&#34;&gt;Rust&lt;/h2&gt;
+&lt;p&gt;During 2019, I wanted to learn a new programming language. Most of my time 2017-2019 I spent learning JavaScript. I spent a some time on C and Python too. I like python, but I already did a small project with it, some intermediate tutorials, and although I definitely could learn much more in Python, It didn&amp;rsquo;t really feel challenging enough and I wanted something that would push my knowledge as a developer. C was interesting, but way too hard for me to spend too much time on it. I wanted something practical and modern. The purpose was to learn to be a better programmer, but I felt like I would spend too much time on suffering while trying to build something in C. A colleague at work started to learn GOlang a little. I felt tempted to read up on it a little and stumbled upon this wave of new programming languages growing in 2019 like go, rust or julia. Julia felt too esoteric to me and GO somehow too popular to be cool. But when I was reading about Rust and their attempt to make memory management like in C accessible and safe for even beginner programmers, I was very intrigued. I don&amp;rsquo;t regret my choice in Rust a bit. It was exactly what I was looking for. Something more challenging on a technical level, but also holding your hand in the process, making for a great learning experience.&lt;/p&gt;
+&lt;p&gt;First I read &amp;ldquo;The book&amp;rdquo; from the official website. The book took a while, but it is very good. I prefer taking my time while studying anything and go step by step a bit every day. So I didn&amp;rsquo;t mind the length of the book. After maybe a few months, I started with tutorials on Exercism. It is an amazing website and I might make an article about it exclusively in the future.&lt;/p&gt;
+&lt;h2 id=&#34;project&#34;&gt;Project&lt;/h2&gt;
+&lt;p&gt;After a few weeks / months of tutorials, I felt the need to try something personal. It doesn&amp;rsquo;t need to be something production-ready, I just wanted to try to put together something new. I soon began thinking if my favorite MongoDB + GraphQL could work with Rust. I found an article from 2018 that looked a little scary, but when reading the docs of the GraphQL library for Rust, I realized 2018 might be already old information.&lt;/p&gt;
+&lt;p&gt;I made the simple web API by the end of 2019. I will not be talking about the technical specifics of the project and its libraries. Under the link above, in the project&amp;rsquo;s readme.md, you can find the technical details. I also left plenty of comments in the code itself for me or anybody else if you are interested. But below are some memories that I have of the experience writing it.&lt;/p&gt;
+&lt;h2 id=&#34;rust-with-mongodb&#34;&gt;Rust with MongoDB&lt;/h2&gt;
+&lt;p&gt;The library for MongoDB could have been better. I remember thinking that using MongoDB in TypeScript with Mongoose is honestly a much better experience. In rust, the objects have to be translated through a parsing library like Serde. But I guess this is not an issue exclusive to Rust, more like a benefit when using JavaScript with JSON. It was not trivial, but possible!&lt;/p&gt;
+&lt;h2 id=&#34;rust-with-graphql&#34;&gt;Rust with GraphQL&lt;/h2&gt;
+&lt;p&gt;The library for GraphQL on the other hand was surprisingly nice to use. I loved how it used macros and simple Rust structs to generate its necessary objects. It was easy to create the schemas, much nicer than I remembered from the crazy 2018 article. I remember being amazed that I could easily recommend this, even though I&amp;rsquo;m not a programming veteran, and I am writing this in Rust, supposedly one of the fastest and most powerful languages out there.&lt;/p&gt;
+&lt;h2 id=&#34;final-thoughts&#34;&gt;Final thoughts&lt;/h2&gt;
+&lt;p&gt;So, I was very happy when this was running. Later I changed the module tree and I implemented logging. Both simply for experience and making the project feel a little more complete, even though this was basically more like a proof of concept. A challenge for myself.&lt;/p&gt;
+&lt;h2 id=&#34;would-i-change-it&#34;&gt;Would I change it?&lt;/h2&gt;
+&lt;p&gt;I imagine that in the past 7 months since then, both libraries got only better. I didn&amp;rsquo;t look at them since then. Also, I had a hard time to choose the web server library. I tried several till I stuck with Iron. Were I to do it over, at this time of writing, I would probably use Actix-web instead. But the library landscape of Rust is evolving quickly and it&amp;rsquo;s no surprise that there are many changes. I will not touch this project again. It serves as the memory of my experience from that time. My first personal github project.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

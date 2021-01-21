@@ -1,11 +1,36 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Linux | Radim</title><link>/ja/tag/linux/</link><atom:link href="/ja/tag/linux/index.xml" rel="self" type="application/rss+xml"/><description>Linux</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>ja</language><lastBuildDate>Sat, 18 Jul 2020 00:00:00 +0000</lastBuildDate><image><url>/images/icon_hub89e7b28a6abff2b4ec084e6c0608a00_13774_512x512_fill_lanczos_center_2.png</url><title>Linux</title><link>/ja/tag/linux/</link></image><item><title>Making a video</title><link>/ja/project/video/</link><pubDate>Sat, 18 Jul 2020 00:00:00 +0000</pubDate><guid>/ja/project/video/</guid><description>&lt;p>I started my linux journey February 2018 with linux mint. Half a year later I knew that this is the system for me and I felt an obligation to give back to the community something. I wasn&amp;rsquo;t ready yet to contribute code to some specific project, but there was one thing that put me in a special category. I am using Japanese input on the pc sometimes and when it became broken in Linux Mint 19, I felt an opportunity to contribute. Also, I never made a YouTube video before and I wanted to learn a little about video editing on linux.&lt;/p>
-&lt;p>For the desktop capture I used OBS studio. This is probably the by far the easiest and best choice. There is also &amp;ldquo;simple screen recorder&amp;rdquo;, which will do the job if you don&amp;rsquo;t need to manage any windows and you want only a &amp;ldquo;simple screen recording&amp;rdquo; as the name suggests. But chances are, especially if you want to continue making videos, OBS is the better choice and it is simple enough to use even for simple recordings.&lt;/p>
-&lt;p>The bigger question was what video editor to use. Here the answer is much less clear cut (pun intended). The top free recommendations, in this order, are probably Kdenlive and Shotcut. If for some reason both don&amp;rsquo;t work for you well, there are many other options. Another simple editor is OpenShot, which I didn&amp;rsquo;t like too much, or also &amp;ldquo;DaVinci resolve&amp;rdquo;, which got very popular, but is catered more towards professional editing with emphasis on color adjustment and might be more than you need for simple video cutting. If you google &amp;ldquo;free video editors&amp;rdquo; you will get a plethora of top 10s, but take them always with a grain of salt. There is always bias in those rankings.&lt;/p>
-&lt;p>In my case, Kdenlive did the job well. I just edited some small parts, added a fitting free music track into the background and rendered.&lt;/p>
-&lt;p>In conclusion, were I to redo the video today, I would still use the same tools, but I would do it on a better machine. Preferably with a good microphone. It was done on an old laptop, and recording while running a virtual machine can be an issue. I would also make more small recording/edit samples, to make sure that the final result will have a high resolution, which mine was lacking. Also, a lesson was, that when doing a video, where text is of importance, it&amp;rsquo;s always better to scale up system text, to make it more visible to viewers.&lt;/p>
-&lt;p>
-&lt;div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-&lt;iframe src="https://www.youtube.com/embed/UIKm67gDGEk" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video">&lt;/iframe>
-&lt;/div>
-&lt;br/>&lt;/p>
-&lt;p>PS: The main bug that convinced me to make the video was announced to be fixed just a couple of days after my video was done. I was pleasantly surprised that this issue didn&amp;rsquo;t go unnoticed by the developers. I talked briefly with Clem, the main developer of Linux Mint and tested the fix when the beta came out. The video is not only about the installation and bug fix, but talks also about how to setup and use the Japanese input, so I think it can still be useful and I kept it online.&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux | Radim</title>
+    <link>/ja/tag/linux/</link>
+      <atom:link href="/ja/tag/linux/index.xml" rel="self" type="application/rss+xml" />
+    <description>Linux</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>ja</language><lastBuildDate>Sat, 18 Jul 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/images/icon_hub89e7b28a6abff2b4ec084e6c0608a00_13774_512x512_fill_lanczos_center_2.png</url>
+      <title>Linux</title>
+      <link>/ja/tag/linux/</link>
+    </image>
+    
+    <item>
+      <title>Making a video</title>
+      <link>/ja/project/video/</link>
+      <pubDate>Sat, 18 Jul 2020 00:00:00 +0000</pubDate>
+      <guid>/ja/project/video/</guid>
+      <description>&lt;p&gt;I started my linux journey February 2018 with linux mint. Half a year later I knew that this is the system for me and I felt an obligation to give back to the community something. I wasn&amp;rsquo;t ready yet to contribute code to some specific project, but there was one thing that put me in a special category. I am using Japanese input on the pc sometimes and when it became broken in Linux Mint 19, I felt an opportunity to contribute. Also, I never made a YouTube video before and I wanted to learn a little about video editing on linux.&lt;/p&gt;
+&lt;p&gt;For the desktop capture I used OBS studio. This is probably the by far the easiest and best choice. There is also &amp;ldquo;simple screen recorder&amp;rdquo;, which will do the job if you don&amp;rsquo;t need to manage any windows and you want only a &amp;ldquo;simple screen recording&amp;rdquo; as the name suggests. But chances are, especially if you want to continue making videos, OBS is the better choice and it is simple enough to use even for simple recordings.&lt;/p&gt;
+&lt;p&gt;The bigger question was what video editor to use. Here the answer is much less clear cut (pun intended). The top free recommendations, in this order, are probably Kdenlive and Shotcut. If for some reason both don&amp;rsquo;t work for you well, there are many other options. Another simple editor is OpenShot, which I didn&amp;rsquo;t like too much, or also &amp;ldquo;DaVinci resolve&amp;rdquo;, which got very popular, but is catered more towards professional editing with emphasis on color adjustment and might be more than you need for simple video cutting. If you google &amp;ldquo;free video editors&amp;rdquo; you will get a plethora of top 10s, but take them always with a grain of salt. There is always bias in those rankings.&lt;/p&gt;
+&lt;p&gt;In my case, Kdenlive did the job well. I just edited some small parts, added a fitting free music track into the background and rendered.&lt;/p&gt;
+&lt;p&gt;In conclusion, were I to redo the video today, I would still use the same tools, but I would do it on a better machine. Preferably with a good microphone. It was done on an old laptop, and recording while running a virtual machine can be an issue. I would also make more small recording/edit samples, to make sure that the final result will have a high resolution, which mine was lacking. Also, a lesson was, that when doing a video, where text is of importance, it&amp;rsquo;s always better to scale up system text, to make it more visible to viewers.&lt;/p&gt;
+&lt;p&gt;
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://www.youtube.com/embed/UIKm67gDGEk&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;br/&gt;&lt;/p&gt;
+&lt;p&gt;PS: The main bug that convinced me to make the video was announced to be fixed just a couple of days after my video was done. I was pleasantly surprised that this issue didn&amp;rsquo;t go unnoticed by the developers. I talked briefly with Clem, the main developer of Linux Mint and tested the fix when the beta came out. The video is not only about the installation and bug fix, but talks also about how to setup and use the Japanese input, so I think it can still be useful and I kept it online.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
