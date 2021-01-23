@@ -5,12 +5,125 @@
     <link>/project/</link>
       <atom:link href="/project/index.xml" rel="self" type="application/rss+xml" />
     <description>Projects</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 10 Aug 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sat, 23 Jan 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/images/icon_hub89e7b28a6abff2b4ec084e6c0608a00_13774_512x512_fill_lanczos_center_2.png</url>
       <title>Projects</title>
       <link>/project/</link>
     </image>
+    
+    <item>
+      <title>Yewban</title>
+      <link>/project/yewban/</link>
+      <pubDate>Sat, 23 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>/project/yewban/</guid>
+      <description>&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;
+&lt;h4 id=&#34;searching-for-a-frontend-experience&#34;&gt;Searching for a frontend experience&lt;/h4&gt;
+&lt;p&gt;During my day job I work with APIs, databases and general backend code. Last time I did anything frontend related were tutorials and small projects with react around 2018. So I decided to do something frontend UI related and interesting. My tendency was to use rust and my first idea was to make a regular desktop app with gtk3. I thought that making a board game grid would be a good and simple enough idea. I was fiddling around with GTK3 in Glade, which is a great tool, and was learning about basic graphical setups with Cairo. But it was all still too new to me and I gave up on making a board with Cairo. But regular desktop apps with GTK3 are a great choice for Rust too it seams. I might do something with that in the future.&lt;/p&gt;
+&lt;p&gt;A few days later I stumbled upon a nice new 
+&lt;a href=&#34;http://www.sheshbabu.com/posts/rust-wasm-yew-single-page-application/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;blog post&lt;/a&gt; about a full featured frontend web framework with rust and WebAssembly using 
+&lt;a href=&#34;https://yew.rs/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Yew&lt;/a&gt;. I heard about Yew before so it caught my attention. I started thinking about how I would make a game grid using css.&lt;/p&gt;
+&lt;h2 id=&#34;development-process&#34;&gt;Development process&lt;/h2&gt;
+&lt;h3 id=&#34;css&#34;&gt;CSS&lt;/h3&gt;
+&lt;p&gt;So I did the grid with css. This part is always tedious, especially when not doing it often, but it worked. I decided that I would simply make the grid lines not visible, put the goban picture as a scalable background, and the stones as images inside the grid fields. In the end, all the pictures I used are png. It would be better with svg, but as a proof of concept this is good enough.&lt;/p&gt;
+&lt;h3 id=&#34;yew&#34;&gt;Yew&lt;/h3&gt;
+&lt;p&gt;I read through the short docs on 
+&lt;a href=&#34;https://yew.rs/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Yew&lt;/a&gt;. It took me a while to realize that the recommended examples on their github are described in their &amp;ldquo;next&amp;rdquo; version of the docs, where they recommend 
+&lt;a href=&#34;https://crates.io/crates/trunk&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;trunk&lt;/a&gt; for building the wasm/js bindings. Even the few months old blog post is using a different process. One can really feel that this is still an evolving technology. At the same time, one clearly sees how much better and easier the building process got, from the older tools mentioned in the yew docs all the way to the quite new trunk crate. I can say that using trunk was a breeze. Bellow I write down the common commands and it should be obvious how intuitive and strait forward it is. This was definitely a pleasant and appreciated surprise, since I remember reading some months ago that the rust wasm packaging for javascript was quite tedious.&lt;/p&gt;
+&lt;p&gt;Yew as a framework itself was also a pleasant surprise.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;It is very similar to react, so the concepts were very easy to pick up.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;There were almost zero issues regarding fighting with the compiler.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I write TypeScript every day at work and since it&amp;rsquo;s just a superset of JavaScript, it&amp;rsquo;s a syntax that lets you get away with allot. So you tend to write the code fast, but later you have to search for bugs if they arise. This is a feature not a bug. Websites are not rocket engines. Employers don&amp;rsquo;t want to spend 5x the amount of money/time to put the same buttons on the screen, just because there could be less time needed for bug fixing. I totally understand this and that is why nobody expected rust to be a viable frontend language. I am not an expert on this topic to present some definite answer. But what I am trying to say, is that I expected much more pain and surprisingly there was none. Not even a little, really none. Well actually, there was 1 compiler error. I wrote down the short 80 lines of code that create the logic of putting stones into the grids and the one and only compiler error I had was that I didn&amp;rsquo;t use the &amp;ldquo;move&amp;rdquo; command before the closure. It took a moment to realize why it is necessary, but even without the realization, the compiler itself suggested to solve it that way. Prior to writing the 80 lines, I also took some inspiration from the 
+&lt;a href=&#34;https://github.com/yewstack/yew/tree/master/examples/game_of_life&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;game_of_life&lt;/a&gt; example. That also helped.&lt;/p&gt;
+&lt;h3 id=&#34;gimp&#34;&gt;Gimp&lt;/h3&gt;
+&lt;p&gt;Now I had a clickable board, placing a dummy image into a grid. Proof of concept achieved! Felt good, but this doesn&amp;rsquo;t look like a goban at all. The time came to get rid of the cell borders and somehow fit bellow them a goban grid, where the stones have to sit on the intersections, not in the fields. In the total beginning, I tried to make that somehow work with lines drawn with CSS, but I didn&amp;rsquo;t find a way how to make that work. I think having one grid virtual and using it for stone pictures and the other grid as a background picture is still a good solution.&lt;/p&gt;
+&lt;p&gt;As a big linux and libre-software enthusiast, I spent a few weeks last year learning some gimp basics. That came incredibly in handy at this moment. There are surprisingly many great free sources of gimp tutorials. Among other there is for example the excellent 
+&lt;a href=&#34;https://www.daviesmediadesign.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;daviesmediadesign&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I need only two things on two layers. A good wood (ideally pine) pattern, and a grid.
+Finding the wood pattern was surprisingly a bigger challenge than I expected. Writing this article is already much more time than I wanted to spend on pattern acquisition. I couldn&amp;rsquo;t find a free external gimp pattern and I also couldn&amp;rsquo;t find an appropriate good and free pine wood picture. This is just a concept to get something little slightly better than making the background plain yellow. I used the by default in gimp installed pattern. There are 13 wood patterns and they all look horrible, with the exception of one, my savior called just &amp;ldquo;pine&amp;rdquo;. I put it on a 1920x1920 canvas and the result was surprisingly good.&lt;/p&gt;
+&lt;p&gt;Than View &amp;gt; Show guides, Image &amp;gt; Guides &amp;gt; New by percent. One horizontal, one vertical, and you have the grid middle. A simple google search for drawing grids in gimp told me that there is a tool for it under Filters &amp;gt; Render &amp;gt; Pattern &amp;gt; Grid. It also has a &amp;ldquo;offset&amp;rdquo; property, that allowed me to shift the grid perfectly into the center of the guides, while making appropriate space on the border.&lt;/p&gt;
+&lt;p&gt;The overflowing grid lines on the border were cut with a layer mask. The dots were painted individually by hand with the pencil tool.&lt;/p&gt;
+&lt;p&gt;And thats it. Export as png. Than just a few google searches for some large go stone pictures, I found surprisingly good ones. And thats it. Add everything into the CSS and I was blown away how great the result looked, compared to how little time it took.&lt;/p&gt;
+&lt;p&gt;I expected that there would be some misalignment issues on the edges. That was nicely solved by having in the css &lt;code&gt;box-sizing: border-box;&lt;/code&gt; where a dynamic &lt;code&gt;padding: calc(var(--size) / 90);&lt;/code&gt; pushes the invisible grid inwards, perfectly fitting the png under it, with any scale of the window. Wonderful.&lt;/p&gt;
+&lt;h3 id=&#34;external-goban-library&#34;&gt;External Goban library&lt;/h3&gt;
+&lt;p&gt;Now I had a perfectly looking 5-in-a-row game. Almost go. Still I thought lets push just a little more. I want to at least capture the stones. That is no trivial matter. I could try writing this logic by myself, but previously I found 
+&lt;a href=&#34;https://crates.io/crates/goban&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;this&lt;/a&gt; great library that was just under development with only days after the last commit.&lt;/p&gt;
+&lt;p&gt;I spent some time reading through it, trying to understand it and thinking how to fit it onto my existing code. In the end, I found that he stores the stone values also simply in a vector. I got that out with his &amp;ldquo;.raw()&amp;rdquo; method. Mapped that on the board and suddenly I was able to capture my stones. It was like magic. The magic of open source, haha. I found a tiny bug, reported it to him, and he even fixed it in a few short hours. I feel the love for go and code connecting us, haha.&lt;/p&gt;
+&lt;p&gt;I added the right panel that shows captured stones and I could add much more still. And maybe I will in the future, but for now I feel like the project&amp;rsquo;s purpose was achieved.&lt;/p&gt;
+&lt;p&gt;A frontend written purely in rust, under 80 lines of code (in main.rs). Compiled to WebAssembly. Sitting relaxed on my website. It was a great experience and I had many pleasant surprises.&lt;/p&gt;
+&lt;p&gt;Please feel free to click on the link on the top of this page and place a stone or two.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;install&#34;&gt;Install&lt;/h2&gt;
+&lt;h4 id=&#34;install-the-build-tools&#34;&gt;install the build tools&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;cargo install trunk wasm-bindgen-cli
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;Trunk is really amazing. At the time of writing it is recommended only in the non-stable version of the yew documentation. Trunk mentions that in the future, the &lt;code&gt;wasm-bindgen-cli&lt;/code&gt; package will be installed as part of trunk.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;install-the-rust-wasm-toolchain&#34;&gt;install the rust wasm toolchain&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;rustup target add wasm32-unknown-unknown
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;Otherwise &lt;code&gt;trunk build&lt;/code&gt; won&amp;rsquo;t go through.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;development&#34;&gt;Development&lt;/h2&gt;
+&lt;h4 id=&#34;build&#34;&gt;Build&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;trunk build
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;This creates the &lt;code&gt;/dist&lt;/code&gt; folder. Under the hood it also runs &lt;code&gt;cargo build&lt;/code&gt; that creates the &lt;code&gt;/target&lt;/code&gt; folder. So you can still normally use cargo&amp;rsquo;s check, build or clippy for checking code.&lt;/li&gt;
+&lt;li&gt;
+&lt;h4 id=&#34;static-files&#34;&gt;Static files:&lt;/h4&gt;
+The folder &lt;code&gt;/static&lt;/code&gt; and its contents are copied via trunk automatically to &lt;code&gt;/dist&lt;/code&gt; thanks to this line in &lt;code&gt;index.html&lt;/code&gt;:&lt;br&gt;
+&amp;ldquo;&lt;code&gt;&amp;lt;link data-trunk rel=&amp;quot;copy-dir&amp;quot; href=&amp;quot;static&amp;quot;/&amp;gt;&lt;/code&gt;&amp;rdquo;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;build-view-and-rebuild-code-on-the-fly&#34;&gt;Build, view and rebuild code on the fly&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;trunk serve
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;sharing-the-result&#34;&gt;Sharing the result&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;To cut the total size, get a clean output folder (if previous builds were made). This deletes the &lt;code&gt;./dist&lt;/code&gt; folder.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;trunk clean
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Make a new optimized build.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;trunk build --release
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If you want to run the html directly, for example on a different system, just launching &lt;code&gt;index.html&lt;/code&gt; from &lt;code&gt;./dist/&lt;/code&gt; won&amp;rsquo;t work! If you need to use the &lt;code&gt;index.html&lt;/code&gt; directly (for example in a link on your web), you have to change the 3 addresses for the .css, .js and .wasm inside. That is what I did on this web. Otherwise by default it is searching for them in root.&lt;/p&gt;
+&lt;p&gt;But locally the simplest way is to serve the folder:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;take the content of &lt;code&gt;./dist/&lt;/code&gt; and serve it with any of these:
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;rust tool:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;miniserve ./dist --index index.html
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;npm (nodejs) tool:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;http-server ./dist
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;usually present by default on linux (run from inside the folder):&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;python3 -m http.server
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>Exercism.io</title>
