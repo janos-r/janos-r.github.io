@@ -1,346 +1,167 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Go | Radim</title>
-    <link>/ja/tag/go/</link>
-      <atom:link href="/ja/tag/go/index.xml" rel="self" type="application/rss+xml" />
-    <description>Go</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>ja</language><lastBuildDate>Sat, 23 Jan 2021 00:00:00 +0000</lastBuildDate>
-    <image>
-      <url>/images/icon_hub89e7b28a6abff2b4ec084e6c0608a00_13774_512x512_fill_lanczos_center_2.png</url>
-      <title>Go</title>
-      <link>/ja/tag/go/</link>
-    </image>
-    
-    <item>
-      <title>Yewban</title>
-      <link>/ja/project/yewban/</link>
-      <pubDate>Sat, 23 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>/ja/project/yewban/</guid>
-      <description>&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;
-&lt;h4 id=&#34;searching-for-a-frontend-experience&#34;&gt;Searching for a frontend experience&lt;/h4&gt;
-&lt;p&gt;During my day job I work with APIs, databases and general backend code. Last time I did anything frontend related were tutorials and small projects with react around 2018. So I decided to do something frontend UI related and interesting. My tendency was to use rust and my first idea was to make a regular desktop app with gtk3. I thought that making a board game grid would be a good and simple enough idea. I was fiddling around with GTK3 in Glade, which is a great tool, and was learning about basic graphical setups with Cairo. But it was all still too new to me and I gave up on making a board with Cairo. But regular desktop apps with GTK3 are a great choice for Rust too it seams. I might do something with that in the future.&lt;/p&gt;
-&lt;p&gt;A few days later I stumbled upon a nice new 
-&lt;a href=&#34;http://www.sheshbabu.com/posts/rust-wasm-yew-single-page-application/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;blog post&lt;/a&gt; about a full featured frontend web framework with rust and WebAssembly using 
-&lt;a href=&#34;https://yew.rs/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Yew&lt;/a&gt;. I heard about Yew before so it caught my attention. I started thinking about how I would make a game grid using css.&lt;/p&gt;
-&lt;h2 id=&#34;development-process&#34;&gt;Development process&lt;/h2&gt;
-&lt;h3 id=&#34;css&#34;&gt;CSS&lt;/h3&gt;
-&lt;p&gt;So I did the grid with css. This part is always tedious, especially when not doing it often, but it worked. I decided that I would simply make the grid lines not visible, put the goban picture as a scalable background, and the stones as images inside the grid fields. In the end, all the pictures I used are png. It would be better with svg, but as a proof of concept this is good enough.&lt;/p&gt;
-&lt;h3 id=&#34;yew&#34;&gt;Yew&lt;/h3&gt;
-&lt;p&gt;I read through the short docs on 
-&lt;a href=&#34;https://yew.rs/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Yew&lt;/a&gt;. It took me a while to realize that the recommended examples on their github are described in their &amp;ldquo;next&amp;rdquo; version of the docs, where they recommend 
-&lt;a href=&#34;https://crates.io/crates/trunk&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;trunk&lt;/a&gt; for building the wasm/js bindings. Even the few months old blog post is using a different process. One can really feel that this is still an evolving technology. At the same time, one clearly sees how much better and easier the building process got, from the older tools mentioned in the yew docs all the way to the quite new trunk crate. I can say that using trunk was a breeze. Bellow I write down the common commands and it should be obvious how intuitive and strait forward it is. This was definitely a pleasant and appreciated surprise, since I remember reading some months ago that the rust wasm packaging for javascript was quite tedious.&lt;/p&gt;
-&lt;p&gt;Yew as a framework itself was also a pleasant surprise.&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;It is very similar to react, so the concepts were very easy to pick up.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;There were almost zero issues regarding fighting with the compiler.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;I write TypeScript every day at work and since it&amp;rsquo;s just a superset of JavaScript, it&amp;rsquo;s a syntax that lets you get away with allot. So you tend to write the code fast, but later you have to search for bugs if they arise. This is a feature not a bug. Websites are not rocket engines. Employers don&amp;rsquo;t want to spend 5x the amount of money/time to put the same buttons on the screen, just because there could be less time needed for bug fixing. I totally understand this and that is why nobody expected rust to be a viable frontend language. I am not an expert on this topic to present some definite answer. But what I am trying to say, is that I expected much more pain and surprisingly there was none. Not even a little, really none. Well actually, there was 1 compiler error. I wrote down the short 80 lines of code that create the logic of putting stones into the grids and the one and only compiler error I had was that I didn&amp;rsquo;t use the &amp;ldquo;move&amp;rdquo; command before the closure. It took a moment to realize why it is necessary, but even without the realization, the compiler itself suggested to solve it that way. Prior to writing the 80 lines, I also took some inspiration from the 
-&lt;a href=&#34;https://github.com/yewstack/yew/tree/master/examples/game_of_life&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;game_of_life&lt;/a&gt; example. That also helped.&lt;/p&gt;
-&lt;h3 id=&#34;gimp&#34;&gt;Gimp&lt;/h3&gt;
-&lt;p&gt;Now I had a clickable board, placing a dummy image into a grid. Proof of concept achieved! Felt good, but this doesn&amp;rsquo;t look like a goban at all. The time came to get rid of the cell borders and somehow fit bellow them a goban grid, where the stones have to sit on the intersections, not in the fields. In the total beginning, I tried to make that somehow work with lines drawn with CSS, but I didn&amp;rsquo;t find a way how to make that work. I think having one grid virtual and using it for stone pictures and the other grid as a background picture is still a good solution.&lt;/p&gt;
-&lt;p&gt;As a big linux and libre-software enthusiast, I spent a few weeks last year learning some gimp basics. That came incredibly in handy at this moment. There are surprisingly many great free sources of gimp tutorials. Among other there is for example the excellent 
-&lt;a href=&#34;https://www.daviesmediadesign.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;daviesmediadesign&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;I need only two things on two layers. A good wood (ideally pine) pattern, and a grid.
-Finding the wood pattern was surprisingly a bigger challenge than I expected. Writing this article is already much more time than I wanted to spend on pattern acquisition. I couldn&amp;rsquo;t find a free external gimp pattern and I also couldn&amp;rsquo;t find an appropriate good and free pine wood picture. This is just a concept. I wanna get something slightly better than making the background plain yellow. In the end I used a gimp preinstalled pattern. There are 13 wood patterns and they all look horrible, with the exception of one, my savior called just &amp;ldquo;pine&amp;rdquo;. I put it on a 1920x1920 canvas and the result was surprisingly good.&lt;/p&gt;
-&lt;p&gt;Than View &amp;gt; Show guides, Image &amp;gt; Guides &amp;gt; New by percent. One horizontal, one vertical, and you have the grid middle. A simple google search for drawing grids in gimp told me that there is a tool for it under Filters &amp;gt; Render &amp;gt; Pattern &amp;gt; Grid. It also has a &amp;ldquo;offset&amp;rdquo; property, that allowed me to shift the grid perfectly into the center of the guides, while making appropriate space on the border.&lt;/p&gt;
-&lt;p&gt;The overflowing grid lines on the border were cut with a layer mask. The dots were painted individually by hand with the pencil tool.&lt;/p&gt;
-&lt;p&gt;And thats it. Export as png. Than just a few google searches for some large go stone pictures. I found surprisingly good ones. And thats it. Add everything into the CSS and I was blown away how great the result looked, compared to how little time and prior experience it took.&lt;/p&gt;
-&lt;p&gt;The center of both grids were aligned nicely, but as expected, there were some misalignment issues on the edges. That was nicely solved by having in the css &lt;code&gt;box-sizing: border-box;&lt;/code&gt; where a dynamic &lt;code&gt;padding: calc(var(--size) / 90);&lt;/code&gt; shrinks the invisible grid inwards, perfectly fitting the png under it. Holding with any scale of the window. Wonderful!&lt;/p&gt;
-&lt;h3 id=&#34;external-goban-library&#34;&gt;External Goban library&lt;/h3&gt;
-&lt;p&gt;Now I had a perfectly looking 5-in-a-row game. Almost go. Still I thought lets push just a little more. I want to at least capture the stones. That is no trivial matter. I could try writing this logic by myself, but previously I found 
-&lt;a href=&#34;https://crates.io/crates/goban&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;this&lt;/a&gt; great library that was just under development with only days after the last commit.&lt;/p&gt;
-&lt;p&gt;I spent some time reading through it, trying to understand it and thinking how to fit it onto my existing code. In the end, I found that he stores the stone values also simply in a vector. Just how I did previously. Than simply mapping them as DIVs into the grid container. I got that out with his &amp;ldquo;.raw()&amp;rdquo; method. Mapped that on the board and suddenly I was able to capture my stones! It was like magic. The magic of open source, haha. I found a tiny bug, reported it to him, and he even fixed it in a few short hours. I feel the love for go and code connecting us, haha.&lt;/p&gt;
-&lt;p&gt;I added the right panel that shows captured stones and I could add much more still. And maybe I will in the future, but for now I feel like the project&amp;rsquo;s purpose was achieved.&lt;/p&gt;
-&lt;p&gt;A frontend written purely in rust, under 80 lines of code in &lt;code&gt;main.rs&lt;/code&gt;. Compiled to WebAssembly. Sitting relaxed on my website. It was a great experience and I had many pleasant surprises.&lt;/p&gt;
-&lt;p&gt;Please feel free to click on the link on the top of this page and place a stone or two.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;install&#34;&gt;Install&lt;/h2&gt;
-&lt;h4 id=&#34;install-the-build-tools&#34;&gt;install the build tools&lt;/h4&gt;
-&lt;pre&gt;&lt;code&gt;cargo install trunk wasm-bindgen-cli
-&lt;/code&gt;&lt;/pre&gt;
-&lt;ul&gt;
-&lt;li&gt;Trunk is really amazing. At the time of writing it is recommended only in the non-stable version of the yew documentation. Trunk mentions that in the future, the &lt;code&gt;wasm-bindgen-cli&lt;/code&gt; package will be installed as part of trunk.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&#34;install-the-rust-wasm-toolchain&#34;&gt;install the rust wasm toolchain&lt;/h4&gt;
-&lt;pre&gt;&lt;code&gt;rustup target add wasm32-unknown-unknown
-&lt;/code&gt;&lt;/pre&gt;
-&lt;ul&gt;
-&lt;li&gt;Otherwise &lt;code&gt;trunk build&lt;/code&gt; won&amp;rsquo;t go through.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;development&#34;&gt;Development&lt;/h2&gt;
-&lt;h4 id=&#34;build&#34;&gt;Build&lt;/h4&gt;
-&lt;pre&gt;&lt;code&gt;trunk build
-&lt;/code&gt;&lt;/pre&gt;
-&lt;ul&gt;
-&lt;li&gt;This creates the &lt;code&gt;/dist&lt;/code&gt; folder. Under the hood it also runs &lt;code&gt;cargo build&lt;/code&gt; that creates the &lt;code&gt;/target&lt;/code&gt; folder. So you can still normally use cargo&amp;rsquo;s check, build or clippy for checking code.&lt;/li&gt;
-&lt;li&gt;
-&lt;h4 id=&#34;static-files&#34;&gt;Static files:&lt;/h4&gt;
-The folder &lt;code&gt;/static&lt;/code&gt; and its contents are copied via trunk automatically to &lt;code&gt;/dist&lt;/code&gt; thanks to this line in &lt;code&gt;index.html&lt;/code&gt;:&lt;br&gt;
-&amp;ldquo;&lt;code&gt;&amp;lt;link data-trunk rel=&amp;quot;copy-dir&amp;quot; href=&amp;quot;static&amp;quot;/&amp;gt;&lt;/code&gt;&amp;rdquo;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&#34;build-view-and-rebuild-code-on-the-fly&#34;&gt;Build, view and rebuild code on the fly&lt;/h4&gt;
-&lt;pre&gt;&lt;code&gt;trunk serve
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;sharing-the-result&#34;&gt;Sharing the result&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;To cut the total size, get a clean output folder (if previous builds were made). This deletes the &lt;code&gt;./dist&lt;/code&gt; folder.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;trunk clean
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Make a new optimized build.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;trunk build --release
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;If you want to run the html directly, for example on a different system, just launching &lt;code&gt;index.html&lt;/code&gt; from &lt;code&gt;./dist/&lt;/code&gt; won&amp;rsquo;t work! If you need to use the &lt;code&gt;index.html&lt;/code&gt; directly (for example in a link on your web), you have to change the 3 addresses for the .css, .js and .wasm inside. That is what I did on this web. Otherwise by default it is searching for them in root.&lt;/p&gt;
-&lt;p&gt;But locally the simplest way is to serve the folder:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;take the content of &lt;code&gt;./dist/&lt;/code&gt; and serve it with any of these:
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;rust tool:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;miniserve ./dist --index index.html
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;npm (nodejs) tool:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;http-server ./dist
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;usually present by default on linux (run from inside the folder):&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;python3 -m http.server
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Go club and Tournament organization</title>
-      <link>/ja/project/go_club/</link>
-      <pubDate>Tue, 14 Jul 2020 00:00:00 +0000</pubDate>
-      <guid>/ja/project/go_club/</guid>
-      <description>&lt;p&gt;Go has been for a long time one of my big passions. When I was still living in Děčín, the town where I grew up in, I managed to set up a club, where a few members were meeting once a week to learn, play and discuss go together. I also did a few presentations about go (its history and rules) in high schools, local festivals and tea houses.&lt;/p&gt;
-&lt;p&gt;During 2011-2014 we were holding a nationwide tournament every Spring. Below are a few pictures. Especially the tournament 2013 was important, as it was the qualification for that year&amp;rsquo;s national championship. We hosted a few international players from neighboring countries and had a small column in the local newspaper about it.&lt;/p&gt;
-&lt;p&gt;Later 2014, after I got back from my 6-month exchange student program in South Korea, I moved to Prague for a better job. I left the go club that I started in my hometown, but I will always remember those years with joy. I am very proud that I could spread the love of go in my hometown, but also that I was able to give back and support a little the go community in my country.&lt;/p&gt;
-&lt;h2 id=&#34;tournaments-2010---2014&#34;&gt;Tournaments (2010 - 2014)&lt;/h2&gt;
-
-
-
-
-
-
-
-
-  
-  
-
-
-&lt;div class=&#34;gallery&#34;&gt;
-
-  
-  
-  
-  
-    
-    
-    
-    
-    
-  &lt;a data-fancybox=&#34;gallery-tournament&#34; href=&#34;/ja/project/go_club/tournament/1_DSC06727_resize.JPG&#34; &gt;
-  &lt;img data-src=&#34;/ja/project/go_club/tournament/1_DSC06727_resize_hu1cbff1ff7a97b9fbd8c27277482801d5_196452_0x190_resize_q90_lanczos.JPG&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;284&#34; height=&#34;190&#34;&gt;
-  &lt;/a&gt;
-  
-    
-    
-    
-    
-    
-  &lt;a data-fancybox=&#34;gallery-tournament&#34; href=&#34;/ja/project/go_club/tournament/2_IMG_5055_resize.JPG&#34; &gt;
-  &lt;img data-src=&#34;/ja/project/go_club/tournament/2_IMG_5055_resize_hu1fae3b6633047687057f8f76b87b60c2_173246_0x190_resize_q90_lanczos.JPG&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;285&#34; height=&#34;190&#34;&gt;
-  &lt;/a&gt;
-  
-    
-    
-    
-    
-    
-  &lt;a data-fancybox=&#34;gallery-tournament&#34; href=&#34;/ja/project/go_club/tournament/DSC02847.JPG&#34; &gt;
-  &lt;img data-src=&#34;/ja/project/go_club/tournament/DSC02847_hu9bd9d8f108d4c3df2890afebc4e5b775_254769_0x190_resize_q90_lanczos.JPG&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;284&#34; height=&#34;190&#34;&gt;
-  &lt;/a&gt;
-  
-    
-    
-    
-    
-    
-  &lt;a data-fancybox=&#34;gallery-tournament&#34; href=&#34;/ja/project/go_club/tournament/IMG_2658.JPG&#34; &gt;
-  &lt;img data-src=&#34;/ja/project/go_club/tournament/IMG_2658_hu5e2e8fbc3d0f474a1be4a3a89fb2f35e_171205_0x190_resize_q90_lanczos.JPG&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;285&#34; height=&#34;190&#34;&gt;
-  &lt;/a&gt;
-  
-    
-    
-    
-    
-    
-  &lt;a data-fancybox=&#34;gallery-tournament&#34; href=&#34;/ja/project/go_club/tournament/IMG_2661.JPG&#34; &gt;
-  &lt;img data-src=&#34;/ja/project/go_club/tournament/IMG_2661_hue5c33e7310b8c70b9056e5d76352d7fa_179781_0x190_resize_q90_lanczos.JPG&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;285&#34; height=&#34;190&#34;&gt;
-  &lt;/a&gt;
-  
-    
-    
-    
-    
-    
-  &lt;a data-fancybox=&#34;gallery-tournament&#34; href=&#34;/ja/project/go_club/tournament/IMG_2662.JPG&#34; &gt;
-  &lt;img data-src=&#34;/ja/project/go_club/tournament/IMG_2662_hu2b7091cf260d9bfc3ec8a25d900095f4_152473_0x190_resize_q90_lanczos.JPG&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;285&#34; height=&#34;190&#34;&gt;
-  &lt;/a&gt;
-  
-    
-    
-    
-    
-    
-  &lt;a data-fancybox=&#34;gallery-tournament&#34; href=&#34;/ja/project/go_club/tournament/IMG_2663.JPG&#34; &gt;
-  &lt;img data-src=&#34;/ja/project/go_club/tournament/IMG_2663_hud8fdc9d906886e5f9360895a01a466fe_165277_0x190_resize_q90_lanczos.JPG&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;285&#34; height=&#34;190&#34;&gt;
-  &lt;/a&gt;
-  
-    
-    
-    
-    
-    
-  &lt;a data-fancybox=&#34;gallery-tournament&#34; href=&#34;/ja/project/go_club/tournament/IMG_2717.JPG&#34; &gt;
-  &lt;img data-src=&#34;/ja/project/go_club/tournament/IMG_2717_huef0e4c0891c04db6bb3164fa27d81314_220361_0x190_resize_q90_lanczos.JPG&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;127&#34; height=&#34;190&#34;&gt;
-  &lt;/a&gt;
-  
-    
-    
-    
-    
-    
-  &lt;a data-fancybox=&#34;gallery-tournament&#34; href=&#34;/ja/project/go_club/tournament/IMG_5190_resize.JPG&#34; &gt;
-  &lt;img data-src=&#34;/ja/project/go_club/tournament/IMG_5190_resize_hue8fdab6e51257f5444d03272a09dc69b_205084_0x190_resize_q90_lanczos.JPG&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;285&#34; height=&#34;190&#34;&gt;
-  &lt;/a&gt;
-  
-    
-    
-    
-    
-    
-  &lt;a data-fancybox=&#34;gallery-tournament&#34; href=&#34;/ja/project/go_club/tournament/P1010349.JPG&#34; &gt;
-  &lt;img data-src=&#34;/ja/project/go_club/tournament/P1010349_hu93bfde04217410072ab8f898301d7cd3_277420_0x190_resize_q90_lanczos.JPG&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;142&#34; height=&#34;190&#34;&gt;
-  &lt;/a&gt;
-  
-    
-    
-    
-    
-    
-  &lt;a data-fancybox=&#34;gallery-tournament&#34; href=&#34;/ja/project/go_club/tournament/go_princip.JPG&#34; &gt;
-  &lt;img data-src=&#34;/ja/project/go_club/tournament/go_princip_hu9dda310738050e223870d8aaba163bcf_770785_0x190_resize_q90_lanczos.JPG&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;192&#34; height=&#34;190&#34;&gt;
-  &lt;/a&gt;
-  
-
-  
-&lt;/div&gt;
-&lt;h2 id=&#34;club-activities-2007---2014&#34;&gt;Club activities (2007 - 2014)&lt;/h2&gt;
-
-
-
-
-
-
-
-
-  
-  
-
-
-&lt;div class=&#34;gallery&#34;&gt;
-
-  
-  
-  
-  
-    
-    
-    
-    
-    
-  &lt;a data-fancybox=&#34;gallery-club&#34; href=&#34;/ja/project/go_club/club/02.JPG&#34; &gt;
-  &lt;img data-src=&#34;/ja/project/go_club/club/02_hu93afc63e56e5bf4f8dbc60b34fcd3274_199293_0x190_resize_q90_lanczos.JPG&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;253&#34; height=&#34;190&#34;&gt;
-  &lt;/a&gt;
-  
-    
-    
-    
-    
-    
-  &lt;a data-fancybox=&#34;gallery-club&#34; href=&#34;/ja/project/go_club/club/07.JPG&#34; &gt;
-  &lt;img data-src=&#34;/ja/project/go_club/club/07_hub023c0c99dfef1771bfb40775f4cdca7_177309_0x190_resize_q90_lanczos.JPG&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;253&#34; height=&#34;190&#34;&gt;
-  &lt;/a&gt;
-  
-    
-    
-    
-    
-    
-  &lt;a data-fancybox=&#34;gallery-club&#34; href=&#34;/ja/project/go_club/club/P1010135.JPG&#34; &gt;
-  &lt;img data-src=&#34;/ja/project/go_club/club/P1010135_hufc7660a17140301b368f8c76de4c15c1_183546_0x190_resize_q90_lanczos.JPG&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;253&#34; height=&#34;190&#34;&gt;
-  &lt;/a&gt;
-  
-    
-    
-    
-    
-    
-  &lt;a data-fancybox=&#34;gallery-club&#34; href=&#34;/ja/project/go_club/club/P1010390.JPG&#34; &gt;
-  &lt;img data-src=&#34;/ja/project/go_club/club/P1010390_hu35acb9ec00447669f367c0ac28f3264d_1583477_0x190_resize_q90_lanczos.JPG&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;253&#34; height=&#34;190&#34;&gt;
-  &lt;/a&gt;
-  
-    
-    
-    
-    
-    
-  &lt;a data-fancybox=&#34;gallery-club&#34; href=&#34;/ja/project/go_club/club/P1010392.JPG&#34; &gt;
-  &lt;img data-src=&#34;/ja/project/go_club/club/P1010392_hu3a35763e0da4676d23222ab5e433a093_1398371_0x190_resize_q90_lanczos.JPG&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;253&#34; height=&#34;190&#34;&gt;
-  &lt;/a&gt;
-  
-    
-    
-    
-    
-    
-  &lt;a data-fancybox=&#34;gallery-club&#34; href=&#34;/ja/project/go_club/club/P1010468.JPG&#34; &gt;
-  &lt;img data-src=&#34;/ja/project/go_club/club/P1010468_hu387bafd2963ccafe1a64dc69a9765815_1534293_0x190_resize_q90_lanczos.JPG&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;253&#34; height=&#34;190&#34;&gt;
-  &lt;/a&gt;
-  
-    
-    
-    
-    
-    
-  &lt;a data-fancybox=&#34;gallery-club&#34; href=&#34;/ja/project/go_club/club/park.jpg&#34; &gt;
-  &lt;img data-src=&#34;/ja/project/go_club/club/park_hucd3a4d91d21db72bfa3cf1f957defcb0_697741_0x190_resize_q90_lanczos.jpg&#34; class=&#34;lazyload&#34; alt=&#34;&#34; width=&#34;253&#34; height=&#34;190&#34;&gt;
-  &lt;/a&gt;
-  
-
-  
-&lt;/div&gt;
-</description>
-    </item>
-    
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Go | Radim</title><link>/ja/tag/go/</link><atom:link href="/ja/tag/go/index.xml" rel="self" type="application/rss+xml"/><description>Go</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>ja</language><lastBuildDate>Sat, 23 Jan 2021 00:00:00 +0000</lastBuildDate><image><url>/images/icon_hub89e7b28a6abff2b4ec084e6c0608a00_13774_512x512_fill_lanczos_center_2.png</url><title>Go</title><link>/ja/tag/go/</link></image><item><title>Yewban</title><link>/ja/project/yewban/</link><pubDate>Sat, 23 Jan 2021 00:00:00 +0000</pubDate><guid>/ja/project/yewban/</guid><description>&lt;h2 id="motivation">Motivation&lt;/h2>
+&lt;h4 id="searching-for-a-frontend-experience">Searching for a frontend experience&lt;/h4>
+&lt;p>During my day job I work with APIs, databases and general backend code. Last time I did anything frontend related were tutorials and small projects with react around 2018. So I decided to do something frontend UI related and interesting. My tendency was to use rust and my first idea was to make a regular desktop app with gtk3. I thought that making a board game grid would be a good and simple enough idea. I was fiddling around with GTK3 in Glade, which is a great tool, and was learning about basic graphical setups with Cairo. But it was all still too new to me and I gave up on making a board with Cairo. But regular desktop apps with GTK3 are a great choice for Rust too it seams. I might do something with that in the future.&lt;/p>
+&lt;p>A few days later I stumbled upon a nice new
+&lt;a href="http://www.sheshbabu.com/posts/rust-wasm-yew-single-page-application/" target="_blank" rel="noopener">blog post&lt;/a> about a full featured frontend web framework with rust and WebAssembly using
+&lt;a href="https://yew.rs/" target="_blank" rel="noopener">Yew&lt;/a>. I heard about Yew before so it caught my attention. I started thinking about how I would make a game grid using css.&lt;/p>
+&lt;h2 id="development-process">Development process&lt;/h2>
+&lt;h3 id="css">CSS&lt;/h3>
+&lt;p>So I did the grid with css. This part is always tedious, especially when not doing it often, but it worked. I decided that I would simply make the grid lines not visible, put the goban picture as a scalable background, and the stones as images inside the grid fields. In the end, all the pictures I used are png. It would be better with svg, but as a proof of concept this is good enough.&lt;/p>
+&lt;h3 id="yew">Yew&lt;/h3>
+&lt;p>I read through the short docs on
+&lt;a href="https://yew.rs/" target="_blank" rel="noopener">Yew&lt;/a>. It took me a while to realize that the recommended examples on their github are described in their &amp;ldquo;next&amp;rdquo; version of the docs, where they recommend
+&lt;a href="https://crates.io/crates/trunk" target="_blank" rel="noopener">trunk&lt;/a> for building the wasm/js bindings. Even the few months old blog post is using a different process. One can really feel that this is still an evolving technology. At the same time, one clearly sees how much better and easier the building process got, from the older tools mentioned in the yew docs all the way to the quite new trunk crate. I can say that using trunk was a breeze. Bellow I write down the common commands and it should be obvious how intuitive and strait forward it is. This was definitely a pleasant and appreciated surprise, since I remember reading some months ago that the rust wasm packaging for javascript was quite tedious.&lt;/p>
+&lt;p>Yew as a framework itself was also a pleasant surprise.&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>It is very similar to react, so the concepts were very easy to pick up.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>There were almost zero issues regarding fighting with the compiler.&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;p>I write TypeScript every day at work and since it&amp;rsquo;s just a superset of JavaScript, it&amp;rsquo;s a syntax that lets you get away with allot. So you tend to write the code fast, but later you have to search for bugs if they arise. This is a feature not a bug. Websites are not rocket engines. Employers don&amp;rsquo;t want to spend 5x the amount of money/time to put the same buttons on the screen, just because there could be less time needed for bug fixing. I totally understand this and that is why nobody expected rust to be a viable frontend language. I am not an expert on this topic to present some definite answer. But what I am trying to say, is that I expected much more pain and surprisingly there was none. Not even a little, really none. Well actually, there was 1 compiler error. I wrote down the short 80 lines of code that create the logic of putting stones into the grids and the one and only compiler error I had was that I didn&amp;rsquo;t use the &amp;ldquo;move&amp;rdquo; command before the closure. It took a moment to realize why it is necessary, but even without the realization, the compiler itself suggested to solve it that way. Prior to writing the 80 lines, I also took some inspiration from the
+&lt;a href="https://github.com/yewstack/yew/tree/master/examples/game_of_life" target="_blank" rel="noopener">game_of_life&lt;/a> example. That also helped.&lt;/p>
+&lt;h3 id="gimp">Gimp&lt;/h3>
+&lt;p>Now I had a clickable board, placing a dummy image into a grid. Proof of concept achieved! Felt good, but this doesn&amp;rsquo;t look like a goban at all. The time came to get rid of the cell borders and somehow fit bellow them a goban grid, where the stones have to sit on the intersections, not in the fields. In the total beginning, I tried to make that somehow work with lines drawn with CSS, but I didn&amp;rsquo;t find a way how to make that work. I think having one grid virtual and using it for stone pictures and the other grid as a background picture is still a good solution.&lt;/p>
+&lt;p>As a big linux and libre-software enthusiast, I spent a few weeks last year learning some gimp basics. That came incredibly in handy at this moment. There are surprisingly many great free sources of gimp tutorials. Among other there is for example the excellent
+&lt;a href="https://www.daviesmediadesign.com/" target="_blank" rel="noopener">daviesmediadesign&lt;/a>.&lt;/p>
+&lt;p>I need only two things on two layers. A good wood (ideally pine) pattern, and a grid.
+Finding the wood pattern was surprisingly a bigger challenge than I expected. Writing this article is already much more time than I wanted to spend on pattern acquisition. I couldn&amp;rsquo;t find a free external gimp pattern and I also couldn&amp;rsquo;t find an appropriate good and free pine wood picture. This is just a concept. I wanna get something slightly better than making the background plain yellow. In the end I used a gimp preinstalled pattern. There are 13 wood patterns and they all look horrible, with the exception of one, my savior called just &amp;ldquo;pine&amp;rdquo;. I put it on a 1920x1920 canvas and the result was surprisingly good.&lt;/p>
+&lt;p>Than View &amp;gt; Show guides, Image &amp;gt; Guides &amp;gt; New by percent. One horizontal, one vertical, and you have the grid middle. A simple google search for drawing grids in gimp told me that there is a tool for it under Filters &amp;gt; Render &amp;gt; Pattern &amp;gt; Grid. It also has a &amp;ldquo;offset&amp;rdquo; property, that allowed me to shift the grid perfectly into the center of the guides, while making appropriate space on the border.&lt;/p>
+&lt;p>The overflowing grid lines on the border were cut with a layer mask. The dots were painted individually by hand with the pencil tool.&lt;/p>
+&lt;p>And thats it. Export as png. Than just a few google searches for some large go stone pictures. I found surprisingly good ones. And thats it. Add everything into the CSS and I was blown away how great the result looked, compared to how little time and prior experience it took.&lt;/p>
+&lt;p>The center of both grids were aligned nicely, but as expected, there were some misalignment issues on the edges. That was nicely solved by having in the css &lt;code>box-sizing: border-box;&lt;/code> where a dynamic &lt;code>padding: calc(var(--size) / 90);&lt;/code> shrinks the invisible grid inwards, perfectly fitting the png under it. Holding with any scale of the window. Wonderful!&lt;/p>
+&lt;h3 id="external-goban-library">External Goban library&lt;/h3>
+&lt;p>Now I had a perfectly looking 5-in-a-row game. Almost go. Still I thought lets push just a little more. I want to at least capture the stones. That is no trivial matter. I could try writing this logic by myself, but previously I found
+&lt;a href="https://crates.io/crates/goban" target="_blank" rel="noopener">this&lt;/a> great library that was just under development with only days after the last commit.&lt;/p>
+&lt;p>I spent some time reading through it, trying to understand it and thinking how to fit it onto my existing code. In the end, I found that he stores the stone values also simply in a vector. Just how I did previously. Than simply mapping them as DIVs into the grid container. I got that out with his &amp;ldquo;.raw()&amp;rdquo; method. Mapped that on the board and suddenly I was able to capture my stones! It was like magic. The magic of open source, haha. I found a tiny bug, reported it to him, and he even fixed it in a few short hours. I feel the love for go and code connecting us, haha.&lt;/p>
+&lt;p>I added the right panel that shows captured stones and I could add much more still. And maybe I will in the future, but for now I feel like the project&amp;rsquo;s purpose was achieved.&lt;/p>
+&lt;p>A frontend written purely in rust, under 80 lines of code in &lt;code>main.rs&lt;/code>. Compiled to WebAssembly. Sitting relaxed on my website. It was a great experience and I had many pleasant surprises.&lt;/p>
+&lt;p>Please feel free to click on the link on the top of this page and place a stone or two.&lt;/p>
+&lt;hr>
+&lt;h2 id="install">Install&lt;/h2>
+&lt;h4 id="install-the-build-tools">install the build tools&lt;/h4>
+&lt;pre>&lt;code>cargo install trunk wasm-bindgen-cli
+&lt;/code>&lt;/pre>
+&lt;ul>
+&lt;li>Trunk is really amazing. At the time of writing it is recommended only in the non-stable version of the yew documentation. Trunk mentions that in the future, the &lt;code>wasm-bindgen-cli&lt;/code> package will be installed as part of trunk.&lt;/li>
+&lt;/ul>
+&lt;h4 id="install-the-rust-wasm-toolchain">install the rust wasm toolchain&lt;/h4>
+&lt;pre>&lt;code>rustup target add wasm32-unknown-unknown
+&lt;/code>&lt;/pre>
+&lt;ul>
+&lt;li>Otherwise &lt;code>trunk build&lt;/code> won&amp;rsquo;t go through.&lt;/li>
+&lt;/ul>
+&lt;h2 id="development">Development&lt;/h2>
+&lt;h4 id="build">Build&lt;/h4>
+&lt;pre>&lt;code>trunk build
+&lt;/code>&lt;/pre>
+&lt;ul>
+&lt;li>This creates the &lt;code>/dist&lt;/code> folder. Under the hood it also runs &lt;code>cargo build&lt;/code> that creates the &lt;code>/target&lt;/code> folder. So you can still normally use cargo&amp;rsquo;s check, build or clippy for checking code.&lt;/li>
+&lt;li>
+&lt;h4 id="static-files">Static files:&lt;/h4>
+The folder &lt;code>/static&lt;/code> and its contents are copied via trunk automatically to &lt;code>/dist&lt;/code> thanks to this line in &lt;code>index.html&lt;/code>:&lt;br>
+&amp;ldquo;&lt;code>&amp;lt;link data-trunk rel=&amp;quot;copy-dir&amp;quot; href=&amp;quot;static&amp;quot;/&amp;gt;&lt;/code>&amp;rdquo;&lt;/li>
+&lt;/ul>
+&lt;h4 id="build-view-and-rebuild-code-on-the-fly">Build, view and rebuild code on the fly&lt;/h4>
+&lt;pre>&lt;code>trunk serve
+&lt;/code>&lt;/pre>
+&lt;h2 id="sharing-the-result">Sharing the result&lt;/h2>
+&lt;ul>
+&lt;li>
+&lt;p>To cut the total size, get a clean output folder (if previous builds were made). This deletes the &lt;code>./dist&lt;/code> folder.&lt;/p>
+&lt;pre>&lt;code>trunk clean
+&lt;/code>&lt;/pre>
+&lt;/li>
+&lt;li>
+&lt;p>Make a new optimized build.&lt;/p>
+&lt;pre>&lt;code>trunk build --release
+&lt;/code>&lt;/pre>
+&lt;/li>
+&lt;/ul>
+&lt;p>If you want to run the html directly, for example on a different system, just launching &lt;code>index.html&lt;/code> from &lt;code>./dist/&lt;/code> won&amp;rsquo;t work! If you need to use the &lt;code>index.html&lt;/code> directly (for example in a link on your web), you have to change the 3 addresses for the .css, .js and .wasm inside. That is what I did on this web. Otherwise by default it is searching for them in root.&lt;/p>
+&lt;p>But locally the simplest way is to serve the folder:&lt;/p>
+&lt;ul>
+&lt;li>take the content of &lt;code>./dist/&lt;/code> and serve it with any of these:
+&lt;ul>
+&lt;li>
+&lt;p>rust tool:&lt;/p>
+&lt;pre>&lt;code>miniserve ./dist --index index.html
+&lt;/code>&lt;/pre>
+&lt;/li>
+&lt;li>
+&lt;p>npm (nodejs) tool:&lt;/p>
+&lt;pre>&lt;code>http-server ./dist
+&lt;/code>&lt;/pre>
+&lt;/li>
+&lt;li>
+&lt;p>usually present by default on linux (run from inside the folder):&lt;/p>
+&lt;pre>&lt;code>python3 -m http.server
+&lt;/code>&lt;/pre>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul></description></item><item><title>Go club and Tournament organization</title><link>/ja/project/go_club/</link><pubDate>Tue, 14 Jul 2020 00:00:00 +0000</pubDate><guid>/ja/project/go_club/</guid><description>&lt;p>Go has been for a long time one of my big passions. When I was still living in Děčín, the town where I grew up in, I managed to set up a club, where a few members were meeting once a week to learn, play and discuss go together. I also did a few presentations about go (its history and rules) in high schools, local festivals and tea houses.&lt;/p>
+&lt;p>During 2011-2014 we were holding a nationwide tournament every Spring. Below are a few pictures. Especially the tournament 2013 was important, as it was the qualification for that year&amp;rsquo;s national championship. We hosted a few international players from neighboring countries and had a small column in the local newspaper about it.&lt;/p>
+&lt;p>Later 2014, after I got back from my 6-month exchange student program in South Korea, I moved to Prague for a better job. I left the go club that I started in my hometown, but I will always remember those years with joy. I am very proud that I could spread the love of go in my hometown, but also that I was able to give back and support a little the go community in my country.&lt;/p>
+&lt;h2 id="tournaments-2010---2014">Tournaments (2010 - 2014)&lt;/h2>
+&lt;div class="gallery">
+&lt;a data-fancybox="gallery-tournament" href="/ja/project/go_club/tournament/1_DSC06727_resize.JPG" >
+&lt;img data-src="/ja/project/go_club/tournament/1_DSC06727_resize_hu1cbff1ff7a97b9fbd8c27277482801d5_196452_0x190_resize_q90_lanczos.JPG" class="lazyload" alt="" width="284" height="190">
+&lt;/a>
+&lt;a data-fancybox="gallery-tournament" href="/ja/project/go_club/tournament/2_IMG_5055_resize.JPG" >
+&lt;img data-src="/ja/project/go_club/tournament/2_IMG_5055_resize_hu1fae3b6633047687057f8f76b87b60c2_173246_0x190_resize_q90_lanczos.JPG" class="lazyload" alt="" width="285" height="190">
+&lt;/a>
+&lt;a data-fancybox="gallery-tournament" href="/ja/project/go_club/tournament/DSC02847.JPG" >
+&lt;img data-src="/ja/project/go_club/tournament/DSC02847_hu9bd9d8f108d4c3df2890afebc4e5b775_254769_0x190_resize_q90_lanczos.JPG" class="lazyload" alt="" width="284" height="190">
+&lt;/a>
+&lt;a data-fancybox="gallery-tournament" href="/ja/project/go_club/tournament/IMG_2658.JPG" >
+&lt;img data-src="/ja/project/go_club/tournament/IMG_2658_hu5e2e8fbc3d0f474a1be4a3a89fb2f35e_171205_0x190_resize_q90_lanczos.JPG" class="lazyload" alt="" width="285" height="190">
+&lt;/a>
+&lt;a data-fancybox="gallery-tournament" href="/ja/project/go_club/tournament/IMG_2661.JPG" >
+&lt;img data-src="/ja/project/go_club/tournament/IMG_2661_hue5c33e7310b8c70b9056e5d76352d7fa_179781_0x190_resize_q90_lanczos.JPG" class="lazyload" alt="" width="285" height="190">
+&lt;/a>
+&lt;a data-fancybox="gallery-tournament" href="/ja/project/go_club/tournament/IMG_2662.JPG" >
+&lt;img data-src="/ja/project/go_club/tournament/IMG_2662_hu2b7091cf260d9bfc3ec8a25d900095f4_152473_0x190_resize_q90_lanczos.JPG" class="lazyload" alt="" width="285" height="190">
+&lt;/a>
+&lt;a data-fancybox="gallery-tournament" href="/ja/project/go_club/tournament/IMG_2663.JPG" >
+&lt;img data-src="/ja/project/go_club/tournament/IMG_2663_hud8fdc9d906886e5f9360895a01a466fe_165277_0x190_resize_q90_lanczos.JPG" class="lazyload" alt="" width="285" height="190">
+&lt;/a>
+&lt;a data-fancybox="gallery-tournament" href="/ja/project/go_club/tournament/IMG_2717.JPG" >
+&lt;img data-src="/ja/project/go_club/tournament/IMG_2717_huef0e4c0891c04db6bb3164fa27d81314_220361_0x190_resize_q90_lanczos.JPG" class="lazyload" alt="" width="127" height="190">
+&lt;/a>
+&lt;a data-fancybox="gallery-tournament" href="/ja/project/go_club/tournament/IMG_5190_resize.JPG" >
+&lt;img data-src="/ja/project/go_club/tournament/IMG_5190_resize_hue8fdab6e51257f5444d03272a09dc69b_205084_0x190_resize_q90_lanczos.JPG" class="lazyload" alt="" width="285" height="190">
+&lt;/a>
+&lt;a data-fancybox="gallery-tournament" href="/ja/project/go_club/tournament/P1010349.JPG" >
+&lt;img data-src="/ja/project/go_club/tournament/P1010349_hu93bfde04217410072ab8f898301d7cd3_277420_0x190_resize_q90_lanczos.JPG" class="lazyload" alt="" width="142" height="190">
+&lt;/a>
+&lt;a data-fancybox="gallery-tournament" href="/ja/project/go_club/tournament/go_princip.JPG" >
+&lt;img data-src="/ja/project/go_club/tournament/go_princip_hu9dda310738050e223870d8aaba163bcf_770785_0x190_resize_q90_lanczos.JPG" class="lazyload" alt="" width="192" height="190">
+&lt;/a>
+&lt;/div>
+&lt;h2 id="club-activities-2007---2014">Club activities (2007 - 2014)&lt;/h2>
+&lt;div class="gallery">
+&lt;a data-fancybox="gallery-club" href="/ja/project/go_club/club/02.JPG" >
+&lt;img data-src="/ja/project/go_club/club/02_hu93afc63e56e5bf4f8dbc60b34fcd3274_199293_0x190_resize_q90_lanczos.JPG" class="lazyload" alt="" width="253" height="190">
+&lt;/a>
+&lt;a data-fancybox="gallery-club" href="/ja/project/go_club/club/07.JPG" >
+&lt;img data-src="/ja/project/go_club/club/07_hub023c0c99dfef1771bfb40775f4cdca7_177309_0x190_resize_q90_lanczos.JPG" class="lazyload" alt="" width="253" height="190">
+&lt;/a>
+&lt;a data-fancybox="gallery-club" href="/ja/project/go_club/club/P1010135.JPG" >
+&lt;img data-src="/ja/project/go_club/club/P1010135_hufc7660a17140301b368f8c76de4c15c1_183546_0x190_resize_q90_lanczos.JPG" class="lazyload" alt="" width="253" height="190">
+&lt;/a>
+&lt;a data-fancybox="gallery-club" href="/ja/project/go_club/club/P1010390.JPG" >
+&lt;img data-src="/ja/project/go_club/club/P1010390_hu35acb9ec00447669f367c0ac28f3264d_1583477_0x190_resize_q90_lanczos.JPG" class="lazyload" alt="" width="253" height="190">
+&lt;/a>
+&lt;a data-fancybox="gallery-club" href="/ja/project/go_club/club/P1010392.JPG" >
+&lt;img data-src="/ja/project/go_club/club/P1010392_hu3a35763e0da4676d23222ab5e433a093_1398371_0x190_resize_q90_lanczos.JPG" class="lazyload" alt="" width="253" height="190">
+&lt;/a>
+&lt;a data-fancybox="gallery-club" href="/ja/project/go_club/club/P1010468.JPG" >
+&lt;img data-src="/ja/project/go_club/club/P1010468_hu387bafd2963ccafe1a64dc69a9765815_1534293_0x190_resize_q90_lanczos.JPG" class="lazyload" alt="" width="253" height="190">
+&lt;/a>
+&lt;a data-fancybox="gallery-club" href="/ja/project/go_club/club/park.jpg" >
+&lt;img data-src="/ja/project/go_club/club/park_hucd3a4d91d21db72bfa3cf1f957defcb0_697741_0x190_resize_q90_lanczos.jpg" class="lazyload" alt="" width="253" height="190">
+&lt;/a>
+&lt;/div></description></item></channel></rss>

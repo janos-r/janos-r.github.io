@@ -1,324 +1,326 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Code | Radim</title>
-    <link>/ja/tag/code/</link>
-      <atom:link href="/ja/tag/code/index.xml" rel="self" type="application/rss+xml" />
-    <description>Code</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>ja</language><lastBuildDate>Sat, 23 Jan 2021 00:00:00 +0000</lastBuildDate>
-    <image>
-      <url>/images/icon_hub89e7b28a6abff2b4ec084e6c0608a00_13774_512x512_fill_lanczos_center_2.png</url>
-      <title>Code</title>
-      <link>/ja/tag/code/</link>
-    </image>
-    
-    <item>
-      <title>Yewban</title>
-      <link>/ja/project/yewban/</link>
-      <pubDate>Sat, 23 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>/ja/project/yewban/</guid>
-      <description>&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;
-&lt;h4 id=&#34;searching-for-a-frontend-experience&#34;&gt;Searching for a frontend experience&lt;/h4&gt;
-&lt;p&gt;During my day job I work with APIs, databases and general backend code. Last time I did anything frontend related were tutorials and small projects with react around 2018. So I decided to do something frontend UI related and interesting. My tendency was to use rust and my first idea was to make a regular desktop app with gtk3. I thought that making a board game grid would be a good and simple enough idea. I was fiddling around with GTK3 in Glade, which is a great tool, and was learning about basic graphical setups with Cairo. But it was all still too new to me and I gave up on making a board with Cairo. But regular desktop apps with GTK3 are a great choice for Rust too it seams. I might do something with that in the future.&lt;/p&gt;
-&lt;p&gt;A few days later I stumbled upon a nice new 
-&lt;a href=&#34;http://www.sheshbabu.com/posts/rust-wasm-yew-single-page-application/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;blog post&lt;/a&gt; about a full featured frontend web framework with rust and WebAssembly using 
-&lt;a href=&#34;https://yew.rs/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Yew&lt;/a&gt;. I heard about Yew before so it caught my attention. I started thinking about how I would make a game grid using css.&lt;/p&gt;
-&lt;h2 id=&#34;development-process&#34;&gt;Development process&lt;/h2&gt;
-&lt;h3 id=&#34;css&#34;&gt;CSS&lt;/h3&gt;
-&lt;p&gt;So I did the grid with css. This part is always tedious, especially when not doing it often, but it worked. I decided that I would simply make the grid lines not visible, put the goban picture as a scalable background, and the stones as images inside the grid fields. In the end, all the pictures I used are png. It would be better with svg, but as a proof of concept this is good enough.&lt;/p&gt;
-&lt;h3 id=&#34;yew&#34;&gt;Yew&lt;/h3&gt;
-&lt;p&gt;I read through the short docs on 
-&lt;a href=&#34;https://yew.rs/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Yew&lt;/a&gt;. It took me a while to realize that the recommended examples on their github are described in their &amp;ldquo;next&amp;rdquo; version of the docs, where they recommend 
-&lt;a href=&#34;https://crates.io/crates/trunk&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;trunk&lt;/a&gt; for building the wasm/js bindings. Even the few months old blog post is using a different process. One can really feel that this is still an evolving technology. At the same time, one clearly sees how much better and easier the building process got, from the older tools mentioned in the yew docs all the way to the quite new trunk crate. I can say that using trunk was a breeze. Bellow I write down the common commands and it should be obvious how intuitive and strait forward it is. This was definitely a pleasant and appreciated surprise, since I remember reading some months ago that the rust wasm packaging for javascript was quite tedious.&lt;/p&gt;
-&lt;p&gt;Yew as a framework itself was also a pleasant surprise.&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;It is very similar to react, so the concepts were very easy to pick up.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;There were almost zero issues regarding fighting with the compiler.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;I write TypeScript every day at work and since it&amp;rsquo;s just a superset of JavaScript, it&amp;rsquo;s a syntax that lets you get away with allot. So you tend to write the code fast, but later you have to search for bugs if they arise. This is a feature not a bug. Websites are not rocket engines. Employers don&amp;rsquo;t want to spend 5x the amount of money/time to put the same buttons on the screen, just because there could be less time needed for bug fixing. I totally understand this and that is why nobody expected rust to be a viable frontend language. I am not an expert on this topic to present some definite answer. But what I am trying to say, is that I expected much more pain and surprisingly there was none. Not even a little, really none. Well actually, there was 1 compiler error. I wrote down the short 80 lines of code that create the logic of putting stones into the grids and the one and only compiler error I had was that I didn&amp;rsquo;t use the &amp;ldquo;move&amp;rdquo; command before the closure. It took a moment to realize why it is necessary, but even without the realization, the compiler itself suggested to solve it that way. Prior to writing the 80 lines, I also took some inspiration from the 
-&lt;a href=&#34;https://github.com/yewstack/yew/tree/master/examples/game_of_life&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;game_of_life&lt;/a&gt; example. That also helped.&lt;/p&gt;
-&lt;h3 id=&#34;gimp&#34;&gt;Gimp&lt;/h3&gt;
-&lt;p&gt;Now I had a clickable board, placing a dummy image into a grid. Proof of concept achieved! Felt good, but this doesn&amp;rsquo;t look like a goban at all. The time came to get rid of the cell borders and somehow fit bellow them a goban grid, where the stones have to sit on the intersections, not in the fields. In the total beginning, I tried to make that somehow work with lines drawn with CSS, but I didn&amp;rsquo;t find a way how to make that work. I think having one grid virtual and using it for stone pictures and the other grid as a background picture is still a good solution.&lt;/p&gt;
-&lt;p&gt;As a big linux and libre-software enthusiast, I spent a few weeks last year learning some gimp basics. That came incredibly in handy at this moment. There are surprisingly many great free sources of gimp tutorials. Among other there is for example the excellent 
-&lt;a href=&#34;https://www.daviesmediadesign.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;daviesmediadesign&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;I need only two things on two layers. A good wood (ideally pine) pattern, and a grid.
-Finding the wood pattern was surprisingly a bigger challenge than I expected. Writing this article is already much more time than I wanted to spend on pattern acquisition. I couldn&amp;rsquo;t find a free external gimp pattern and I also couldn&amp;rsquo;t find an appropriate good and free pine wood picture. This is just a concept. I wanna get something slightly better than making the background plain yellow. In the end I used a gimp preinstalled pattern. There are 13 wood patterns and they all look horrible, with the exception of one, my savior called just &amp;ldquo;pine&amp;rdquo;. I put it on a 1920x1920 canvas and the result was surprisingly good.&lt;/p&gt;
-&lt;p&gt;Than View &amp;gt; Show guides, Image &amp;gt; Guides &amp;gt; New by percent. One horizontal, one vertical, and you have the grid middle. A simple google search for drawing grids in gimp told me that there is a tool for it under Filters &amp;gt; Render &amp;gt; Pattern &amp;gt; Grid. It also has a &amp;ldquo;offset&amp;rdquo; property, that allowed me to shift the grid perfectly into the center of the guides, while making appropriate space on the border.&lt;/p&gt;
-&lt;p&gt;The overflowing grid lines on the border were cut with a layer mask. The dots were painted individually by hand with the pencil tool.&lt;/p&gt;
-&lt;p&gt;And thats it. Export as png. Than just a few google searches for some large go stone pictures. I found surprisingly good ones. And thats it. Add everything into the CSS and I was blown away how great the result looked, compared to how little time and prior experience it took.&lt;/p&gt;
-&lt;p&gt;The center of both grids were aligned nicely, but as expected, there were some misalignment issues on the edges. That was nicely solved by having in the css &lt;code&gt;box-sizing: border-box;&lt;/code&gt; where a dynamic &lt;code&gt;padding: calc(var(--size) / 90);&lt;/code&gt; shrinks the invisible grid inwards, perfectly fitting the png under it. Holding with any scale of the window. Wonderful!&lt;/p&gt;
-&lt;h3 id=&#34;external-goban-library&#34;&gt;External Goban library&lt;/h3&gt;
-&lt;p&gt;Now I had a perfectly looking 5-in-a-row game. Almost go. Still I thought lets push just a little more. I want to at least capture the stones. That is no trivial matter. I could try writing this logic by myself, but previously I found 
-&lt;a href=&#34;https://crates.io/crates/goban&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;this&lt;/a&gt; great library that was just under development with only days after the last commit.&lt;/p&gt;
-&lt;p&gt;I spent some time reading through it, trying to understand it and thinking how to fit it onto my existing code. In the end, I found that he stores the stone values also simply in a vector. Just how I did previously. Than simply mapping them as DIVs into the grid container. I got that out with his &amp;ldquo;.raw()&amp;rdquo; method. Mapped that on the board and suddenly I was able to capture my stones! It was like magic. The magic of open source, haha. I found a tiny bug, reported it to him, and he even fixed it in a few short hours. I feel the love for go and code connecting us, haha.&lt;/p&gt;
-&lt;p&gt;I added the right panel that shows captured stones and I could add much more still. And maybe I will in the future, but for now I feel like the project&amp;rsquo;s purpose was achieved.&lt;/p&gt;
-&lt;p&gt;A frontend written purely in rust, under 80 lines of code in &lt;code&gt;main.rs&lt;/code&gt;. Compiled to WebAssembly. Sitting relaxed on my website. It was a great experience and I had many pleasant surprises.&lt;/p&gt;
-&lt;p&gt;Please feel free to click on the link on the top of this page and place a stone or two.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;install&#34;&gt;Install&lt;/h2&gt;
-&lt;h4 id=&#34;install-the-build-tools&#34;&gt;install the build tools&lt;/h4&gt;
-&lt;pre&gt;&lt;code&gt;cargo install trunk wasm-bindgen-cli
-&lt;/code&gt;&lt;/pre&gt;
-&lt;ul&gt;
-&lt;li&gt;Trunk is really amazing. At the time of writing it is recommended only in the non-stable version of the yew documentation. Trunk mentions that in the future, the &lt;code&gt;wasm-bindgen-cli&lt;/code&gt; package will be installed as part of trunk.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&#34;install-the-rust-wasm-toolchain&#34;&gt;install the rust wasm toolchain&lt;/h4&gt;
-&lt;pre&gt;&lt;code&gt;rustup target add wasm32-unknown-unknown
-&lt;/code&gt;&lt;/pre&gt;
-&lt;ul&gt;
-&lt;li&gt;Otherwise &lt;code&gt;trunk build&lt;/code&gt; won&amp;rsquo;t go through.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;development&#34;&gt;Development&lt;/h2&gt;
-&lt;h4 id=&#34;build&#34;&gt;Build&lt;/h4&gt;
-&lt;pre&gt;&lt;code&gt;trunk build
-&lt;/code&gt;&lt;/pre&gt;
-&lt;ul&gt;
-&lt;li&gt;This creates the &lt;code&gt;/dist&lt;/code&gt; folder. Under the hood it also runs &lt;code&gt;cargo build&lt;/code&gt; that creates the &lt;code&gt;/target&lt;/code&gt; folder. So you can still normally use cargo&amp;rsquo;s check, build or clippy for checking code.&lt;/li&gt;
-&lt;li&gt;
-&lt;h4 id=&#34;static-files&#34;&gt;Static files:&lt;/h4&gt;
-The folder &lt;code&gt;/static&lt;/code&gt; and its contents are copied via trunk automatically to &lt;code&gt;/dist&lt;/code&gt; thanks to this line in &lt;code&gt;index.html&lt;/code&gt;:&lt;br&gt;
-&amp;ldquo;&lt;code&gt;&amp;lt;link data-trunk rel=&amp;quot;copy-dir&amp;quot; href=&amp;quot;static&amp;quot;/&amp;gt;&lt;/code&gt;&amp;rdquo;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&#34;build-view-and-rebuild-code-on-the-fly&#34;&gt;Build, view and rebuild code on the fly&lt;/h4&gt;
-&lt;pre&gt;&lt;code&gt;trunk serve
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;sharing-the-result&#34;&gt;Sharing the result&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;To cut the total size, get a clean output folder (if previous builds were made). This deletes the &lt;code&gt;./dist&lt;/code&gt; folder.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;trunk clean
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Make a new optimized build.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;trunk build --release
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;If you want to run the html directly, for example on a different system, just launching &lt;code&gt;index.html&lt;/code&gt; from &lt;code&gt;./dist/&lt;/code&gt; won&amp;rsquo;t work! If you need to use the &lt;code&gt;index.html&lt;/code&gt; directly (for example in a link on your web), you have to change the 3 addresses for the .css, .js and .wasm inside. That is what I did on this web. Otherwise by default it is searching for them in root.&lt;/p&gt;
-&lt;p&gt;But locally the simplest way is to serve the folder:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;take the content of &lt;code&gt;./dist/&lt;/code&gt; and serve it with any of these:
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;rust tool:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;miniserve ./dist --index index.html
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;npm (nodejs) tool:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;http-server ./dist
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;usually present by default on linux (run from inside the folder):&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;python3 -m http.server
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Exercism.io</title>
-      <link>/ja/project/exercism/</link>
-      <pubDate>Mon, 10 Aug 2020 00:00:00 +0000</pubDate>
-      <guid>/ja/project/exercism/</guid>
-      <description>&lt;h2 id=&#34;a-new-language&#34;&gt;A new language&lt;/h2&gt;
-&lt;p&gt;When I started learning Rust in the second half of 2019, I first read &amp;ldquo;
-&lt;a href=&#34;https://doc.rust-lang.org/book/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;The Book&lt;/a&gt;&amp;rdquo; from the official website. I can highly recommend it. It takes a little longer to get going and many people prefer to go right into writing code, but my first step into this very new territory was intentionally cautious and thorough. I spent my fair share of time on the book.&lt;/p&gt;
-&lt;h2 id=&#34;after-the-basics&#34;&gt;After the basics&lt;/h2&gt;
-&lt;p&gt;There is also &amp;ldquo;Rust by example&amp;rdquo; which is more hands on. I went through it after reading the book relatively quickly, it is also very well made. At this stage jumping on some exercises is the perfect time. Experimenting with different approaches to new problems and fighting the typical hurdles of a new programming language is ideal. Rust especially has a slightly higher learning curve than other languages that try to be more similar to each other. On the other hand, I only spent a lot of time on JavaScript before Rust, so I went into it with a still rather flexible mind. I&amp;rsquo;m sure that helped allot.&lt;/p&gt;
-&lt;h2 id=&#34;where-to-exercise&#34;&gt;Where to exercise&lt;/h2&gt;
-&lt;p&gt;When learning JavaScript, I also used to do some exercises on pages like 
-&lt;a href=&#34;https://codecademy.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;codecademy.com&lt;/a&gt;, 
-&lt;a href=&#34;https://codingame.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;codingame.com&lt;/a&gt; and 
-&lt;a href=&#34;https://codewars.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;codewars.com&lt;/a&gt;. All of them are wonderful and totally free options for beginners. Especially codewars seamed to provide close to unlimited content and a great way how to compare solutions with others. It&amp;rsquo;s really amazing how many good and free options there are to learn and improve at coding.&lt;/p&gt;
-&lt;h2 id=&#34;exercism&#34;&gt;Exercism&lt;/h2&gt;
-&lt;p&gt;In the Rust community, I heard recommendations about 
-&lt;a href=&#34;https://exercism.io&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;exercism.io&lt;/a&gt;. That&amp;rsquo;s where I first found the page. I can&amp;rsquo;t praise this website enough. I spent a few months around the end of 2019, doing exercises in Rust several times a week. At that time, I was able to get real reviews by mentors on the page, guiding me through the solutions. Later when the language became more popular, there were not enough mentors to give direct reviews. It was still possible to progress through an &amp;ldquo;unguided&amp;rdquo; track though and compare your solutions to those from other users.&lt;/p&gt;
-&lt;h2 id=&#34;final-thoughts&#34;&gt;Final thoughts&lt;/h2&gt;
-&lt;p&gt;By the time of writing, I don&amp;rsquo;t spend much time on Rust anymore. I have two other goals that I want to reach by the end of the year. But If I get the itch to play around with some Rust again, I still left some untouched exercises on the page and I&amp;rsquo;m sure I would have some good fun with it, while also learning some new practices and ways to think about coding.&lt;/p&gt;
-&lt;h3 id=&#34;ps&#34;&gt;PS&lt;/h3&gt;
-&lt;p&gt;At the beginning on this website, the picture slider, the second picture that is saying &amp;ldquo;Developer&amp;rdquo;. That background was my own screenshot, a little edited in gimp, from one of my last exercises on exercism.&lt;/p&gt;
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-&lt;figure &gt;
-
-
-  &lt;a data-fancybox=&#34;&#34; href=&#34;/media/slider/code.png&#34; &gt;
-
-
-  &lt;img src=&#34;/media/slider/code.png&#34; alt=&#34;&#34;  &gt;
-&lt;/a&gt;
-
-
-
-&lt;/figure&gt;
-
-</description>
-    </item>
-    
-    <item>
-      <title>API in Rust</title>
-      <link>/ja/project/graphql_rust/</link>
-      <pubDate>Thu, 30 Jul 2020 00:00:00 +0000</pubDate>
-      <guid>/ja/project/graphql_rust/</guid>
-      <description>&lt;h2 id=&#34;db-experience&#34;&gt;DB experience&lt;/h2&gt;
-&lt;p&gt;During my 2 years of self study between 2017-2019, I spent a few months studying MongoDB. At that time, it was recommended as a good technology for the web. I knew some basic SQL, and I spent some time with SQLite in a Python project tutorial during my study, but MongoDB was a database that I really put in some effort and finished the free certificates that they have on their official website. I have to say that I like MongoDB, and I was lucky to find my current company starting 2019, where MongoDB is used exclusively.&lt;/p&gt;
-&lt;h2 id=&#34;day-job&#34;&gt;Day job&lt;/h2&gt;
-&lt;p&gt;Most of my work is focused on the backend of a big portal website for users and admins. Specifically, the creation and maintenance of APIs. Written in TypeScrip, stored in MongoDB and served with GraphQL. GraphQL was new to me when I started in the company, but once I got used to it, serving data via REST feels like some totally antiquated. Of course, we also use REST for necessary things, but the type safety of GraphQL and the schemas is something amazing.&lt;/p&gt;
-&lt;h2 id=&#34;rust&#34;&gt;Rust&lt;/h2&gt;
-&lt;p&gt;During 2019, I wanted to learn a new programming language. Most of my time 2017-2019 I spent learning JavaScript. I spent a some time on C and Python too. I like python, but I already did a small project with it, some intermediate tutorials, and although I definitely could learn much more in Python, It didn&amp;rsquo;t really feel challenging enough and I wanted something that would push my knowledge as a developer. C was interesting, but way too hard for me to spend too much time on it. I wanted something practical and modern. The purpose was to learn to be a better programmer, but I felt like I would spend too much time on suffering while trying to build something in C. A colleague at work started to learn GOlang a little. I felt tempted to read up on it a little and stumbled upon this wave of new programming languages growing in 2019 like go, rust or julia. Julia felt too esoteric to me and GO somehow too popular to be cool. But when I was reading about Rust and their attempt to make memory management like in C accessible and safe for even beginner programmers, I was very intrigued. I don&amp;rsquo;t regret my choice in Rust a bit. It was exactly what I was looking for. Something more challenging on a technical level, but also holding your hand in the process, making for a great learning experience.&lt;/p&gt;
-&lt;p&gt;First I read &amp;ldquo;The book&amp;rdquo; from the official website. The book took a while, but it is very good. I prefer taking my time while studying anything and go step by step a bit every day. So I didn&amp;rsquo;t mind the length of the book. After maybe a few months, I started with tutorials on Exercism. It is an amazing website and I might make an article about it exclusively in the future.&lt;/p&gt;
-&lt;h2 id=&#34;project&#34;&gt;Project&lt;/h2&gt;
-&lt;p&gt;After a few weeks / months of tutorials, I felt the need to try something personal. It doesn&amp;rsquo;t need to be something production-ready, I just wanted to try to put together something new. I soon began thinking if my favorite MongoDB + GraphQL could work with Rust. I found an article from 2018 that looked a little scary, but when reading the docs of the GraphQL library for Rust, I realized 2018 might be already old information.&lt;/p&gt;
-&lt;p&gt;I made the simple web API by the end of 2019. I will not be talking about the technical specifics of the project and its libraries. Under the link above, in the project&amp;rsquo;s readme.md, you can find the technical details. I also left plenty of comments in the code itself for me or anybody else if you are interested. But below are some memories that I have of the experience writing it.&lt;/p&gt;
-&lt;h2 id=&#34;rust-with-mongodb&#34;&gt;Rust with MongoDB&lt;/h2&gt;
-&lt;p&gt;The library for MongoDB could have been better. I remember thinking that using MongoDB in TypeScript with Mongoose is honestly a much better experience. In rust, the objects have to be translated through a parsing library like Serde. But I guess this is not an issue exclusive to Rust, more like a benefit when using JavaScript with JSON. It was not trivial, but possible!&lt;/p&gt;
-&lt;h2 id=&#34;rust-with-graphql&#34;&gt;Rust with GraphQL&lt;/h2&gt;
-&lt;p&gt;The library for GraphQL on the other hand was surprisingly nice to use. I loved how it used macros and simple Rust structs to generate its necessary objects. It was easy to create the schemas, much nicer than I remembered from the crazy 2018 article. I remember being amazed that I could easily recommend this, even though I&amp;rsquo;m not a programming veteran, and I am writing this in Rust, supposedly one of the fastest and most powerful languages out there.&lt;/p&gt;
-&lt;h2 id=&#34;final-thoughts&#34;&gt;Final thoughts&lt;/h2&gt;
-&lt;p&gt;So, I was very happy when this was running. Later I changed the module tree and I implemented logging. Both simply for experience and making the project feel a little more complete, even though this was basically more like a proof of concept. A challenge for myself.&lt;/p&gt;
-&lt;h2 id=&#34;would-i-change-it&#34;&gt;Would I change it?&lt;/h2&gt;
-&lt;p&gt;I imagine that in the past 7 months since then, both libraries got only better. I didn&amp;rsquo;t look at them since then. Also, I had a hard time to choose the web server library. I tried several till I stuck with Iron. Were I to do it over, at this time of writing, I would probably use Actix-web instead. But the library landscape of Rust is evolving quickly and it&amp;rsquo;s no surprise that there are many changes. I will not touch this project again. It serves as the memory of my experience from that time. My first personal github project.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Circle CI/CD</title>
-      <link>/ja/project/circle/</link>
-      <pubDate>Mon, 20 Jul 2020 00:00:00 +0000</pubDate>
-      <guid>/ja/project/circle/</guid>
-      <description>&lt;p&gt;In my company, we are using AKS (Azure Kubernetes Service). With every git commit to the master branch, a new docker image is build and pushed to the repository with CircleCI. It is automatically deployed to the dev cluster. At a controlled release moment, we are then able to release all necessary docker images with their particular versions in one go to the production cluster using helm.&lt;/p&gt;
-&lt;p&gt;The project is quite big and all connected parts are quite complicated in their setup. That&amp;rsquo;s why I wanted to create my own small project and learn how to set up a similar CI/CD (circular integration / circular deployment).&lt;/p&gt;
-&lt;p&gt;I did so June 2020. Link to the project above. Journey description below.&lt;/p&gt;
-&lt;h2 id=&#34;what-to-push&#34;&gt;What to push&lt;/h2&gt;
-&lt;p&gt;First decision was &lt;strong&gt;what&lt;/strong&gt; to build and push. I made a simple website with the static site generator 
-&lt;a href=&#34;https://gohugo.io/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Hugo&lt;/a&gt;. It was the first time I made a web with hugo, so this was in itself a very good learning experience. I stuck literary to the &amp;ldquo;quick start&amp;rdquo; guide to not lose too much time with this step, since the page itself is obviously not the goal of this project. But in general, I can only recommend Hugo.&lt;/p&gt;
-&lt;h2 id=&#34;script-before-circle&#34;&gt;Script before circle&lt;/h2&gt;
-&lt;p&gt;Obviously I wanted to use the same technologies that we are using on the company project. I was eager to get into CircleCI, but I quickly realized that is not the right approach. It turns out that the best approach for me was to leave the CI as the absolute last step. First make a long list of all the cli commands that you find useful. I put most of them in the readme.md of the project. This is not &amp;ldquo;best practice&amp;rdquo; for a readme, but I well, it was meant to be just my personal learning project and I wanted to have the commands visible. Only after you can do everything with your cli commands from beginning to end, then it makes sense to put it in a CI config.&lt;/p&gt;
-&lt;h2 id=&#34;docker&#34;&gt;Docker&lt;/h2&gt;
-&lt;p&gt;So first thing, I made my first successful docker image build. After running it with a port-forward and seeing that the Dockerfile took the correct content and I saw the page loaded in the browser, I have to say it feels good.&lt;/p&gt;
-&lt;p&gt;build image:&lt;br&gt;
-&lt;code&gt;docker build -t radimj/repo1 .&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;run and forward port to localhost:&lt;br&gt;
-&lt;code&gt;docker run -d -p 80:80 radimj/repo1&lt;/code&gt;&lt;/p&gt;
-&lt;h2 id=&#34;docker-repository&#34;&gt;Docker repository&lt;/h2&gt;
-&lt;p&gt;Next step, where to push the image? Unfortunately, you can&amp;rsquo;t treat docker images like ISOs or packages as the word &amp;ldquo;image&amp;rdquo; would suggest. There are command like &amp;ldquo;save&amp;rdquo; and &amp;ldquo;export&amp;rdquo;, you can look up the details yourself, but the main takeaway is that docker images are not meant to be sent around as packaged files. You have to use a repository. I saw guides for creating local repositories, but again, this is not the main purpose dockers exist. You simply should use a remote repository. You can store them on Azure too, but I didn&amp;rsquo;t have a free account there, so I just went with the simplest solution, I made a private 
-&lt;a href=&#34;https://hub.docker.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;DockerHub&lt;/a&gt; account.&lt;/p&gt;
-&lt;p&gt;Another a little unexpected process is that you don&amp;rsquo;t add the repository through some &amp;ldquo;add repo&amp;rdquo; or something, you have to &lt;code&gt;docker login&lt;/code&gt;. This will hash the login details in ~/.docker/config.json. As far as I know, that is the only place you can find out what repository your docker is using. After that, you have to make sure your image name (tag) that corresponds to your account and repository name, else it wouldn&amp;rsquo;t know where in your repository to add the image. After that, a simple push should work.&lt;/p&gt;
-&lt;p&gt;push to docker hub:&lt;br&gt;
-&lt;code&gt;docker push radimj/repo1&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;I&amp;rsquo;m noticing I&amp;rsquo;m being unnecessarily detailed and this project had so many small issues that this would end up being a little book. I will be more concise bellow.&lt;/p&gt;
-&lt;h2 id=&#34;circleci&#34;&gt;CircleCI&lt;/h2&gt;
-&lt;p&gt;Since I didn&amp;rsquo;t have a remote kubernetes cluster to push to, I was satisfied if my CI would just build the image and push it to the repository. The details of the CI config are in the &lt;code&gt;/.circleci/config.yml&lt;/code&gt; you can find it in the project. I kept it as simple as possible. A few notable points:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Base image&lt;br&gt;
-It takes a moment to choose a fitting base docker image, that is used for the whole CI process.&lt;/li&gt;
-&lt;li&gt;Docker&lt;br&gt;
-Use docker with &amp;ldquo;- setup_remote_docker&amp;rdquo;. This creates a special environment that the CI uses to work with docker.&lt;/li&gt;
-&lt;li&gt;CLI tool&lt;br&gt;
-Circle CI has a cli tool that lets you run the build locally. This is good to speed up the creation of the config, but don&amp;rsquo;t rely on it too much. For example the &amp;ldquo;setup_remote_docker&amp;rdquo; command didn&amp;rsquo;t work for me with it and I had to use &amp;ldquo;sudo&amp;rdquo; for the docker commands when running the cli localy.&lt;/li&gt;
-&lt;li&gt;SSH into the build&lt;br&gt;
-When something breaks only remotely and you don&amp;rsquo;t know why, a last resort is SSH into the CI build. This was an interesting experience. It took a moment to set up, but if you just follow the guide in the docs you should be fine. I managed to get into the docker image that was sitting broken in the remote CI build where I found what was missing.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Being able to set up CircleCI was an empowering experience. CI really gives you the feeling like &amp;ldquo;set up once, never touch again&amp;rdquo;. When you first write it, the &amp;ldquo;never touch again&amp;rdquo; feels very good. But after some time, when you forget why you added this or that line&amp;hellip; &amp;ldquo;never touch again&amp;rdquo; can become scary 😂&lt;/p&gt;
-&lt;h2 id=&#34;kubernetes&#34;&gt;Kubernetes&lt;/h2&gt;
-&lt;p&gt;Kubernetes can be easily tested with Minikube, or similar tools that run a single node cluster on your local drive. Setting up a production ready Kubernetes on a private server is much harder than I expected. It is not like installing nginx or a machine and expecting it to work. I read there are ways how to do it, but for now that is beyond me. Production ready Kubernetes clusters are best chosen from established providers online. After realizing this, being able to use something like Minikube (or others) is a really amazing thing, since it behaves like a real cluster and is perfect for learning and basic testing.&lt;/p&gt;
-&lt;p&gt;In Kubernetes, everything is about deployment setups within .yaml files. You can write them by hand, or export them from a running deployment / service / pod with &amp;ndash;output yaml. The Kubernetes documentation is quite good, and every single of my steps here is better explained there. So I will not be rewriting the docs here. Rather, I will show you the process how I put brick on brick with small commands to get to a better understanding of the result.&lt;/p&gt;
-&lt;p&gt;First, you need to set up a secret in kubernetes that will be used for authorization when pulling docker images from repos. I did it from the docker login file:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;kubectl create secret generic regcred \
-    --from-file=.dockerconfigjson=&amp;lt;path/to/.docker/config.json&amp;gt; \
-    --type=kubernetes.io/dockerconfigjson
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;That can be tested by running once pod with the secret:&lt;br&gt;
-&lt;code&gt;kubectl run repo1 --overrides=&#39;{ &amp;quot;spec&amp;quot;: { &amp;quot;imagePullSecrets&amp;quot;: [{&amp;quot;name&amp;quot;: &amp;quot;regcred&amp;quot;}] } }&#39; --image=radimj/repo1 --port=80&lt;/code&gt;
-The &amp;ldquo;overrides&amp;rdquo; functionality makes more sense when already knowing how a standard yaml config would look like. It is basically just editing a default one.&lt;/p&gt;
-&lt;p&gt;The following commands give a way how to look into your pod. In my pod there is nginx exposing my website on port 80.&lt;/p&gt;
-&lt;p&gt;forward or expose pod:&lt;br&gt;
-&lt;code&gt;kubectl port-forward repo1 8080:80&lt;/code&gt;&lt;br&gt;
-&lt;code&gt;kubectl expose pod repo1 --type=&amp;quot;NodePort&amp;quot;&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Deployments and services. I will not give examples how to create them or explain in detail what they are. Consult the official docs for details. But in essence, deployments are a bundle of pods, and services are configs how these resources are exposed on ports. They are created in a similar way like pods. All ideally with yaml files. Once you have them running, you can observe them with these commands.&lt;/p&gt;
-&lt;p&gt;expose deployment:&lt;br&gt;
-&lt;code&gt;kubectl expose deployment circle-deployment --type=LoadBalancer&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;nodeport in:&lt;br&gt;
-&lt;code&gt;kubectl get svc&lt;/code&gt;
-&lt;code&gt;kubectl describe service repo1&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;exposed on:&lt;br&gt;
-&lt;code&gt;(minikube ip):&amp;amp;nodePort&lt;/code&gt;&lt;/p&gt;
-&lt;h2 id=&#34;kubernetes-yaml-management&#34;&gt;Kubernetes Yaml management:&lt;/h2&gt;
-&lt;p&gt;create new yaml file from:&lt;br&gt;
-&lt;code&gt;kubectl get (deploy / svc / pod ) -o yaml&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;run pod / deployment from yaml:&lt;br&gt;
-&lt;code&gt;kubectl apply --filename private_deploy.yaml&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;revert (delete) from yaml:&lt;br&gt;
-&lt;code&gt;kubectl delete -f private_deploy.yaml&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;This is the roundabout way how to get to your yaml file. But a good learning experience.&lt;/p&gt;
-&lt;h2 id=&#34;json-parsing&#34;&gt;JSON parsing&lt;/h2&gt;
-&lt;p&gt;One of the most surprising discoveries on this project was 
-&lt;a href=&#34;https://stedolan.github.io/jq/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;JQ&lt;/a&gt;. When you work with Kubernetes or Azure, you get quickly used to large JSON outputs in your terminal. Both tools have inbuilt ways how to make this more manageable. In Kubernetes, you can query most outputs with &lt;code&gt;--output jsonpath=&amp;quot;&amp;quot;&lt;/code&gt; this is one of the query languages for parsing json. Azure uses &amp;ldquo;JMESPath&amp;rdquo; which is not the same. Azure also uses &lt;code&gt;--output table&lt;/code&gt; heavily, to make things more readable. If you make scripts and you are working only with one tool, then it is probably recommendable to use the inbuilt query parsing tool.&lt;/p&gt;
-&lt;p&gt;But let me tell you, to learn just one way that sits forever in your system, that you can use for any JSON string that enters your command line is a great thing! With JQ I was able to do things like:&lt;/p&gt;
-&lt;p&gt;display docker login secret from kubectl:\&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;kubectl get secret regcred \
-    --output jsonpath=&amp;quot;{.data.\.dockerconfigjson}&amp;quot; | \
-    base64 --decode | \
-    jq &amp;quot;.auths | map(.auth)[0]&amp;quot; -r | \
-    base64 --decode
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;You can see the use of both &amp;ldquo;jsonpath&amp;rdquo; and &amp;ldquo;jq&amp;rdquo; here for comparison. The output tells you exactly what login your kubectl is using. Also, good to understand how the secrets are stored in kubernetes.&lt;/p&gt;
-&lt;h2 id=&#34;helm&#34;&gt;Helm&lt;/h2&gt;
-&lt;p&gt;Again, I won&amp;rsquo;t go into details, this post is long enough. But simply put, helm is a bundle of kubernetes yaml config files, also called &amp;ldquo;manifests&amp;rdquo;. With helm, you can create files that hold variable names and you can distribute these variable through your manifests. This creates a setup where you can have a hundred manifests with thousands of lines, but if they all run together in a setup, you can just put variable names into all of them and then adjust the variable in just one place. Making releases of big projects manageable. This bundle of manifests is called a &amp;ldquo;chart&amp;rdquo; in helm. You can also have full repositories of charts, but I will not be getting into that here.&lt;/p&gt;
-&lt;p&gt;lint chart:&lt;br&gt;
-&lt;code&gt;helm lint circle-chart/&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;In the bellow example, I am packaging the chart folder into a package. This is useful for distribution, but not necessary if you are running it from just one place. You can simply call the commands on the chart folder as well.&lt;/p&gt;
-&lt;p&gt;build package:&lt;br&gt;
-&lt;code&gt;helm package circle-chart/&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;install: (name should be same as package name)&lt;br&gt;
-&lt;code&gt;helm install circle circle-0.2.0.tgz&lt;/code&gt;
-&lt;code&gt;helm install circle circle-chart/&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;check release:&lt;br&gt;
-&lt;code&gt;helm ls&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;uninstall totally:&lt;br&gt;
-&lt;code&gt;helm uninstall circle&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&#34;rolling-update&#34;&gt;rolling update:&lt;/h3&gt;
-&lt;p&gt;The following command changes only necessary pods, it does not update to &amp;ldquo;latest&amp;rdquo;
-&lt;code&gt;helm upgrade --install circle circle-chart/&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;if you want to change &amp;ldquo;latest&amp;rdquo; tags, old way was:
-&lt;code&gt;helm upgrade --install --recreate-pods circle circle-chart/&lt;/code&gt;
-new way is to add a random annotation in metadata:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;      annotations:
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Code | Radim</title><link>/ja/tag/code/</link><atom:link href="/ja/tag/code/index.xml" rel="self" type="application/rss+xml"/><description>Code</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>ja</language><lastBuildDate>Sun, 07 Mar 2021 00:00:00 +0000</lastBuildDate><image><url>/images/icon_hub89e7b28a6abff2b4ec084e6c0608a00_13774_512x512_fill_lanczos_center_2.png</url><title>Code</title><link>/ja/tag/code/</link></image><item><title>Agent based simulation modeling</title><link>/ja/project/agent_tag/</link><pubDate>Sun, 07 Mar 2021 00:00:00 +0000</pubDate><guid>/ja/project/agent_tag/</guid><description>&lt;h2 id="motivation-and-lessons-learned">Motivation and lessons learned&lt;/h2>
+&lt;p>My first attempt of an agent based simulation model. The agents themselves are purely random in their behavior, which can make this project look incomplete. But the purpose of this exercise was to see if I can even manage to set it up and get it working.&lt;/p>
+&lt;p>I did this over the weekend and got allot of new experience thanks to it. I got to try out
+&lt;a href="https://crates.io/crates/structopt" target="_blank" rel="noopener">structopt&lt;/a> a cli input tool which I absolutely love and can&amp;rsquo;t recommend enough. I also tried out
+&lt;a href="https://crates.io/crates/rayon" target="_blank" rel="noopener">Rayon&lt;/a> for the first time. It was a good experience to fixing structs so that they become &amp;ldquo;send&amp;rdquo;. But in the end, rayon didn&amp;rsquo;t improve the performance of my particular code. It would require further deeper analysis to find out why exactly, but my very simple &amp;ldquo;benchmark&amp;rdquo; is bellow. Again, it was rather about the experience than about making the fastest possible multithreaded implementation possible.&lt;/p>
+&lt;p>The probably biggest experience I got out of this exercise was the use of Rc, RefCell and weak links.&lt;/p>
+&lt;p>When one agent needs to mutate another (tag) another. How can one object in a Vec change the one next to it. It has been a while since I was using RCs. But you can&amp;rsquo;t give a normal mutable ref to them, so I just tried it with RCs and thought it should be ok. I encountered a huge block and was totally lost when that didn&amp;rsquo;t work and I didn&amp;rsquo;t understand why.
+After a while, I found an example using weak links. I never used those before, but I gave it a try. I realized why I&amp;rsquo;m getting the error about the RC being already borrowed. Through the first RC I get to the Agent itself, and then I&amp;rsquo;m trying again to use the same RC from inside the Agent - that was the issue. This got solved by cloning the agent with its owned link. Thereby dropping the initially established connection. Now I can use the link from inside the cloned Agent. This works, but somehow it it doesn&amp;rsquo;t feel right. I still remember writing this code and I felt dirty. But the next challenge was right around the corner. When you try to print out sch an agent, it will try to resolve its link to the parent, finding again the same child, resolving it&amp;rsquo;s link to the parent and so on. With that I got possibly my first stack overflow in Rust. You can imagine my frustration at this point, I was still lost. But fortunately getting back to those weak links and the
+&lt;a href="https://doc.rust-lang.org/book/ch15-06-reference-cycles.html?highlight=weak#adding-a-reference-from-a-child-to-its-parent" target="_blank" rel="noopener">example in the Book&lt;/a> solved this issue. A weak link doesn&amp;rsquo;t resolve immediately, causing this loop, but needs to be called explicitly. And it should be possible to call it, since it&amp;rsquo;s called from a clone, who&amp;rsquo;s link is not used anymore at that moment. This way, any time the link is used, a clone is being made. I still don&amp;rsquo;t know about a better solution. After this started working, I felt like getting away with murder and somehow still not happy, but at least with hope that I could finish this exercise.&lt;/p>
+&lt;p>Later when I changed the Rc for Arc, this loop issue solved with weak links became not necessary anymore. Since you have to lock Mutex also explicitly. But well, was still a good experience.&lt;/p>
+&lt;h2 id="simulation-rules">Simulation rules&lt;/h2>
+&lt;h3 id="movement">Movement&lt;/h3>
+&lt;p>All agents move on every tic one space in one of their neighboring directions (up, down, left right) on random. If they cross a wall, they pop out on the other side.&lt;/p>
+&lt;h3 id="tagging">Tagging&lt;/h3>
+&lt;p>At the start, one agent is chosen as &amp;ldquo;it&amp;rdquo; on random. If and another agent come next to each other (on one of the four directions) the tag is exchanged. The previously tagged agent becomes impossible to tag again, until another tag is exchanged.&lt;/p>
+&lt;h2 id="build">Build&lt;/h2>
+&lt;pre>&lt;code class="language-shell">cargo build --release
+&lt;/code>&lt;/pre>
+&lt;h2 id="run">Run&lt;/h2>
+&lt;p>The most interesting use of this piece of code at this moment, is to see how the amount of exchanged tags can change when changing the options of the world. With the flags bellow, it is very easy to adjust the size of the world, the number of agents and how many moves they make.&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>Either the build result from the previous step.&lt;/p>
+&lt;pre>&lt;code class="language-shell">cd target/release/
+./agent-tag
+&lt;/code>&lt;/pre>
+&lt;/li>
+&lt;li>
+&lt;p>Or through cargo&lt;/p>
+&lt;pre>&lt;code class="language-shell">cargo run
+&lt;/code>&lt;/pre>
+&lt;ul>
+&lt;li>
+&lt;p>add flags to the cargo format after &lt;code>--&lt;/code>&lt;/p>
+&lt;pre>&lt;code class="language-shell">cargo run -- -h
+&lt;/code>&lt;/pre>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="options">Options&lt;/h2>
+&lt;p>Please see the flags and options bellow. All of them have sensible defaults, so just running the program without any should give you still a reasonable result.&lt;/p>
+&lt;h3 id="help-text">Help text&lt;/h3>
+&lt;pre>&lt;code class="language-shell">agent-tag --help
+&lt;/code>&lt;/pre>
+&lt;pre>&lt;code class="language-output">agent-tag 0.1.0
+A tag game simulator with stupid agents
+USAGE:
+agent-tag [FLAGS] [OPTIONS]
+FLAGS:
+-d, --disable-grid Adding this flag disables the output of the field (grid). For benchmarking, when printing
+the grid on the cli is not required
+-h, --help Prints help information
+-p, --print-announce During a run, announce that in the next visible frame, a tag will occur. Otherwise it is
+easy to miss it
+-V, --version Prints version information
+OPTIONS:
+-a, --agents &amp;lt;agents&amp;gt; Number of agents [default: 40]
+-m, --moves &amp;lt;moves&amp;gt; Number of moves (tics) before the program finishes. Important for benchmarking, otherwise a
+simple kill ^C works too [default: 10]
+-s, --size &amp;lt;size&amp;gt; Size of field (grid) [default: 25]
+-t, --time &amp;lt;time&amp;gt; Number of ms between tics [default: 1000]
+&lt;/code>&lt;/pre>
+&lt;h3 id="very-simple-benchmark">Very simple benchmark&lt;/h3>
+&lt;p>Just running &lt;code>time&lt;/code> (the common linux tool). This example runs with 10.000 moves. When -t0 is set, there is no thread sleep called between the moves. Toggling the -d flag shows how much time is spent on the graphical aspect of the program.&lt;/p>
+&lt;pre>&lt;code class="language-shell">time target/release/agent-tag -t0 -m10000 -d
+&lt;/code>&lt;/pre>
+&lt;p>Without Rayon:&lt;/p>
+&lt;pre>&lt;code class="language-output">________________________________________________________
+Executed in 19,63 millis fish external
+usr time 19,61 millis 528,00 micros 19,08 millis
+sys time 0,21 millis 215,00 micros 0,00 millis
+&lt;/code>&lt;/pre>
+&lt;p>with Rayon:&lt;/p>
+&lt;pre>&lt;code class="language-output">________________________________________________________
+Executed in 155,57 millis fish external
+usr time 1208,72 millis 748,00 micros 1207,97 millis
+sys time 541,37 millis 0,00 micros 541,37 millis
+&lt;/code>&lt;/pre>
+&lt;p>The results are surprising. The refactor from Rc to Arc (and giving each agent it&amp;rsquo;s own RNG) didn&amp;rsquo;t slow down the run much. But when then used with Rayon, to use more threads for the many agents, the release binary actually ran 4x slower. Even when raising the number of agents from 40 to 400, the binary without Rayon (single threaded) was 4x faster.
+Sometimes the results can vary allot based on use case and that&amp;rsquo;s why these tests can be so useful when implementing parallelism. I left the two tested functions commented in the code with &amp;ldquo;# Raion&amp;rdquo;&lt;/p>
+&lt;p>Running just &lt;code>time&lt;/code> is not a perfect benchmarking tool, especially for results under a second. But good enough for rough comparisons between different setups I guess.&lt;/p></description></item><item><title>Yewban</title><link>/ja/project/yewban/</link><pubDate>Sat, 23 Jan 2021 00:00:00 +0000</pubDate><guid>/ja/project/yewban/</guid><description>&lt;h2 id="motivation">Motivation&lt;/h2>
+&lt;h4 id="searching-for-a-frontend-experience">Searching for a frontend experience&lt;/h4>
+&lt;p>During my day job I work with APIs, databases and general backend code. Last time I did anything frontend related were tutorials and small projects with react around 2018. So I decided to do something frontend UI related and interesting. My tendency was to use rust and my first idea was to make a regular desktop app with gtk3. I thought that making a board game grid would be a good and simple enough idea. I was fiddling around with GTK3 in Glade, which is a great tool, and was learning about basic graphical setups with Cairo. But it was all still too new to me and I gave up on making a board with Cairo. But regular desktop apps with GTK3 are a great choice for Rust too it seams. I might do something with that in the future.&lt;/p>
+&lt;p>A few days later I stumbled upon a nice new
+&lt;a href="http://www.sheshbabu.com/posts/rust-wasm-yew-single-page-application/" target="_blank" rel="noopener">blog post&lt;/a> about a full featured frontend web framework with rust and WebAssembly using
+&lt;a href="https://yew.rs/" target="_blank" rel="noopener">Yew&lt;/a>. I heard about Yew before so it caught my attention. I started thinking about how I would make a game grid using css.&lt;/p>
+&lt;h2 id="development-process">Development process&lt;/h2>
+&lt;h3 id="css">CSS&lt;/h3>
+&lt;p>So I did the grid with css. This part is always tedious, especially when not doing it often, but it worked. I decided that I would simply make the grid lines not visible, put the goban picture as a scalable background, and the stones as images inside the grid fields. In the end, all the pictures I used are png. It would be better with svg, but as a proof of concept this is good enough.&lt;/p>
+&lt;h3 id="yew">Yew&lt;/h3>
+&lt;p>I read through the short docs on
+&lt;a href="https://yew.rs/" target="_blank" rel="noopener">Yew&lt;/a>. It took me a while to realize that the recommended examples on their github are described in their &amp;ldquo;next&amp;rdquo; version of the docs, where they recommend
+&lt;a href="https://crates.io/crates/trunk" target="_blank" rel="noopener">trunk&lt;/a> for building the wasm/js bindings. Even the few months old blog post is using a different process. One can really feel that this is still an evolving technology. At the same time, one clearly sees how much better and easier the building process got, from the older tools mentioned in the yew docs all the way to the quite new trunk crate. I can say that using trunk was a breeze. Bellow I write down the common commands and it should be obvious how intuitive and strait forward it is. This was definitely a pleasant and appreciated surprise, since I remember reading some months ago that the rust wasm packaging for javascript was quite tedious.&lt;/p>
+&lt;p>Yew as a framework itself was also a pleasant surprise.&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>It is very similar to react, so the concepts were very easy to pick up.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>There were almost zero issues regarding fighting with the compiler.&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;p>I write TypeScript every day at work and since it&amp;rsquo;s just a superset of JavaScript, it&amp;rsquo;s a syntax that lets you get away with allot. So you tend to write the code fast, but later you have to search for bugs if they arise. This is a feature not a bug. Websites are not rocket engines. Employers don&amp;rsquo;t want to spend 5x the amount of money/time to put the same buttons on the screen, just because there could be less time needed for bug fixing. I totally understand this and that is why nobody expected rust to be a viable frontend language. I am not an expert on this topic to present some definite answer. But what I am trying to say, is that I expected much more pain and surprisingly there was none. Not even a little, really none. Well actually, there was 1 compiler error. I wrote down the short 80 lines of code that create the logic of putting stones into the grids and the one and only compiler error I had was that I didn&amp;rsquo;t use the &amp;ldquo;move&amp;rdquo; command before the closure. It took a moment to realize why it is necessary, but even without the realization, the compiler itself suggested to solve it that way. Prior to writing the 80 lines, I also took some inspiration from the
+&lt;a href="https://github.com/yewstack/yew/tree/master/examples/game_of_life" target="_blank" rel="noopener">game_of_life&lt;/a> example. That also helped.&lt;/p>
+&lt;h3 id="gimp">Gimp&lt;/h3>
+&lt;p>Now I had a clickable board, placing a dummy image into a grid. Proof of concept achieved! Felt good, but this doesn&amp;rsquo;t look like a goban at all. The time came to get rid of the cell borders and somehow fit bellow them a goban grid, where the stones have to sit on the intersections, not in the fields. In the total beginning, I tried to make that somehow work with lines drawn with CSS, but I didn&amp;rsquo;t find a way how to make that work. I think having one grid virtual and using it for stone pictures and the other grid as a background picture is still a good solution.&lt;/p>
+&lt;p>As a big linux and libre-software enthusiast, I spent a few weeks last year learning some gimp basics. That came incredibly in handy at this moment. There are surprisingly many great free sources of gimp tutorials. Among other there is for example the excellent
+&lt;a href="https://www.daviesmediadesign.com/" target="_blank" rel="noopener">daviesmediadesign&lt;/a>.&lt;/p>
+&lt;p>I need only two things on two layers. A good wood (ideally pine) pattern, and a grid.
+Finding the wood pattern was surprisingly a bigger challenge than I expected. Writing this article is already much more time than I wanted to spend on pattern acquisition. I couldn&amp;rsquo;t find a free external gimp pattern and I also couldn&amp;rsquo;t find an appropriate good and free pine wood picture. This is just a concept. I wanna get something slightly better than making the background plain yellow. In the end I used a gimp preinstalled pattern. There are 13 wood patterns and they all look horrible, with the exception of one, my savior called just &amp;ldquo;pine&amp;rdquo;. I put it on a 1920x1920 canvas and the result was surprisingly good.&lt;/p>
+&lt;p>Than View &amp;gt; Show guides, Image &amp;gt; Guides &amp;gt; New by percent. One horizontal, one vertical, and you have the grid middle. A simple google search for drawing grids in gimp told me that there is a tool for it under Filters &amp;gt; Render &amp;gt; Pattern &amp;gt; Grid. It also has a &amp;ldquo;offset&amp;rdquo; property, that allowed me to shift the grid perfectly into the center of the guides, while making appropriate space on the border.&lt;/p>
+&lt;p>The overflowing grid lines on the border were cut with a layer mask. The dots were painted individually by hand with the pencil tool.&lt;/p>
+&lt;p>And thats it. Export as png. Than just a few google searches for some large go stone pictures. I found surprisingly good ones. And thats it. Add everything into the CSS and I was blown away how great the result looked, compared to how little time and prior experience it took.&lt;/p>
+&lt;p>The center of both grids were aligned nicely, but as expected, there were some misalignment issues on the edges. That was nicely solved by having in the css &lt;code>box-sizing: border-box;&lt;/code> where a dynamic &lt;code>padding: calc(var(--size) / 90);&lt;/code> shrinks the invisible grid inwards, perfectly fitting the png under it. Holding with any scale of the window. Wonderful!&lt;/p>
+&lt;h3 id="external-goban-library">External Goban library&lt;/h3>
+&lt;p>Now I had a perfectly looking 5-in-a-row game. Almost go. Still I thought lets push just a little more. I want to at least capture the stones. That is no trivial matter. I could try writing this logic by myself, but previously I found
+&lt;a href="https://crates.io/crates/goban" target="_blank" rel="noopener">this&lt;/a> great library that was just under development with only days after the last commit.&lt;/p>
+&lt;p>I spent some time reading through it, trying to understand it and thinking how to fit it onto my existing code. In the end, I found that he stores the stone values also simply in a vector. Just how I did previously. Than simply mapping them as DIVs into the grid container. I got that out with his &amp;ldquo;.raw()&amp;rdquo; method. Mapped that on the board and suddenly I was able to capture my stones! It was like magic. The magic of open source, haha. I found a tiny bug, reported it to him, and he even fixed it in a few short hours. I feel the love for go and code connecting us, haha.&lt;/p>
+&lt;p>I added the right panel that shows captured stones and I could add much more still. And maybe I will in the future, but for now I feel like the project&amp;rsquo;s purpose was achieved.&lt;/p>
+&lt;p>A frontend written purely in rust, under 80 lines of code in &lt;code>main.rs&lt;/code>. Compiled to WebAssembly. Sitting relaxed on my website. It was a great experience and I had many pleasant surprises.&lt;/p>
+&lt;p>Please feel free to click on the link on the top of this page and place a stone or two.&lt;/p>
+&lt;hr>
+&lt;h2 id="install">Install&lt;/h2>
+&lt;h4 id="install-the-build-tools">install the build tools&lt;/h4>
+&lt;pre>&lt;code>cargo install trunk wasm-bindgen-cli
+&lt;/code>&lt;/pre>
+&lt;ul>
+&lt;li>Trunk is really amazing. At the time of writing it is recommended only in the non-stable version of the yew documentation. Trunk mentions that in the future, the &lt;code>wasm-bindgen-cli&lt;/code> package will be installed as part of trunk.&lt;/li>
+&lt;/ul>
+&lt;h4 id="install-the-rust-wasm-toolchain">install the rust wasm toolchain&lt;/h4>
+&lt;pre>&lt;code>rustup target add wasm32-unknown-unknown
+&lt;/code>&lt;/pre>
+&lt;ul>
+&lt;li>Otherwise &lt;code>trunk build&lt;/code> won&amp;rsquo;t go through.&lt;/li>
+&lt;/ul>
+&lt;h2 id="development">Development&lt;/h2>
+&lt;h4 id="build">Build&lt;/h4>
+&lt;pre>&lt;code>trunk build
+&lt;/code>&lt;/pre>
+&lt;ul>
+&lt;li>This creates the &lt;code>/dist&lt;/code> folder. Under the hood it also runs &lt;code>cargo build&lt;/code> that creates the &lt;code>/target&lt;/code> folder. So you can still normally use cargo&amp;rsquo;s check, build or clippy for checking code.&lt;/li>
+&lt;li>
+&lt;h4 id="static-files">Static files:&lt;/h4>
+The folder &lt;code>/static&lt;/code> and its contents are copied via trunk automatically to &lt;code>/dist&lt;/code> thanks to this line in &lt;code>index.html&lt;/code>:&lt;br>
+&amp;ldquo;&lt;code>&amp;lt;link data-trunk rel=&amp;quot;copy-dir&amp;quot; href=&amp;quot;static&amp;quot;/&amp;gt;&lt;/code>&amp;rdquo;&lt;/li>
+&lt;/ul>
+&lt;h4 id="build-view-and-rebuild-code-on-the-fly">Build, view and rebuild code on the fly&lt;/h4>
+&lt;pre>&lt;code>trunk serve
+&lt;/code>&lt;/pre>
+&lt;h2 id="sharing-the-result">Sharing the result&lt;/h2>
+&lt;ul>
+&lt;li>
+&lt;p>To cut the total size, get a clean output folder (if previous builds were made). This deletes the &lt;code>./dist&lt;/code> folder.&lt;/p>
+&lt;pre>&lt;code>trunk clean
+&lt;/code>&lt;/pre>
+&lt;/li>
+&lt;li>
+&lt;p>Make a new optimized build.&lt;/p>
+&lt;pre>&lt;code>trunk build --release
+&lt;/code>&lt;/pre>
+&lt;/li>
+&lt;/ul>
+&lt;p>If you want to run the html directly, for example on a different system, just launching &lt;code>index.html&lt;/code> from &lt;code>./dist/&lt;/code> won&amp;rsquo;t work! If you need to use the &lt;code>index.html&lt;/code> directly (for example in a link on your web), you have to change the 3 addresses for the .css, .js and .wasm inside. That is what I did on this web. Otherwise by default it is searching for them in root.&lt;/p>
+&lt;p>But locally the simplest way is to serve the folder:&lt;/p>
+&lt;ul>
+&lt;li>take the content of &lt;code>./dist/&lt;/code> and serve it with any of these:
+&lt;ul>
+&lt;li>
+&lt;p>rust tool:&lt;/p>
+&lt;pre>&lt;code>miniserve ./dist --index index.html
+&lt;/code>&lt;/pre>
+&lt;/li>
+&lt;li>
+&lt;p>npm (nodejs) tool:&lt;/p>
+&lt;pre>&lt;code>http-server ./dist
+&lt;/code>&lt;/pre>
+&lt;/li>
+&lt;li>
+&lt;p>usually present by default on linux (run from inside the folder):&lt;/p>
+&lt;pre>&lt;code>python3 -m http.server
+&lt;/code>&lt;/pre>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul></description></item><item><title>Exercism.io</title><link>/ja/project/exercism/</link><pubDate>Mon, 10 Aug 2020 00:00:00 +0000</pubDate><guid>/ja/project/exercism/</guid><description>&lt;h2 id="a-new-language">A new language&lt;/h2>
+&lt;p>When I started learning Rust in the second half of 2019, I first read &amp;ldquo;
+&lt;a href="https://doc.rust-lang.org/book/" target="_blank" rel="noopener">The Book&lt;/a>&amp;rdquo; from the official website. I can highly recommend it. It takes a little longer to get going and many people prefer to go right into writing code, but my first step into this very new territory was intentionally cautious and thorough. I spent my fair share of time on the book.&lt;/p>
+&lt;h2 id="after-the-basics">After the basics&lt;/h2>
+&lt;p>There is also &amp;ldquo;Rust by example&amp;rdquo; which is more hands on. I went through it after reading the book relatively quickly, it is also very well made. At this stage jumping on some exercises is the perfect time. Experimenting with different approaches to new problems and fighting the typical hurdles of a new programming language is ideal. Rust especially has a slightly higher learning curve than other languages that try to be more similar to each other. On the other hand, I only spent a lot of time on JavaScript before Rust, so I went into it with a still rather flexible mind. I&amp;rsquo;m sure that helped allot.&lt;/p>
+&lt;h2 id="where-to-exercise">Where to exercise&lt;/h2>
+&lt;p>When learning JavaScript, I also used to do some exercises on pages like
+&lt;a href="https://codecademy.com" target="_blank" rel="noopener">codecademy.com&lt;/a>,
+&lt;a href="https://codingame.com" target="_blank" rel="noopener">codingame.com&lt;/a> and
+&lt;a href="https://codewars.com" target="_blank" rel="noopener">codewars.com&lt;/a>. All of them are wonderful and totally free options for beginners. Especially codewars seamed to provide close to unlimited content and a great way how to compare solutions with others. It&amp;rsquo;s really amazing how many good and free options there are to learn and improve at coding.&lt;/p>
+&lt;h2 id="exercism">Exercism&lt;/h2>
+&lt;p>In the Rust community, I heard recommendations about
+&lt;a href="https://exercism.io" target="_blank" rel="noopener">exercism.io&lt;/a>. That&amp;rsquo;s where I first found the page. I can&amp;rsquo;t praise this website enough. I spent a few months around the end of 2019, doing exercises in Rust several times a week. At that time, I was able to get real reviews by mentors on the page, guiding me through the solutions. Later when the language became more popular, there were not enough mentors to give direct reviews. It was still possible to progress through an &amp;ldquo;unguided&amp;rdquo; track though and compare your solutions to those from other users.&lt;/p>
+&lt;h2 id="final-thoughts">Final thoughts&lt;/h2>
+&lt;p>By the time of writing, I don&amp;rsquo;t spend much time on Rust anymore. I have two other goals that I want to reach by the end of the year. But If I get the itch to play around with some Rust again, I still left some untouched exercises on the page and I&amp;rsquo;m sure I would have some good fun with it, while also learning some new practices and ways to think about coding.&lt;/p>
+&lt;h3 id="ps">PS&lt;/h3>
+&lt;p>At the beginning on this website, the picture slider, the second picture that is saying &amp;ldquo;Developer&amp;rdquo;. That background was my own screenshot, a little edited in gimp, from one of my last exercises on exercism.&lt;/p>
+&lt;figure >
+&lt;a data-fancybox="" href="/media/slider/code.png" >
+&lt;img src="/media/slider/code.png" alt="" >
+&lt;/a>
+&lt;/figure></description></item><item><title>API in Rust</title><link>/ja/project/graphql_rust/</link><pubDate>Thu, 30 Jul 2020 00:00:00 +0000</pubDate><guid>/ja/project/graphql_rust/</guid><description>&lt;h2 id="db-experience">DB experience&lt;/h2>
+&lt;p>During my 2 years of self study between 2017-2019, I spent a few months studying MongoDB. At that time, it was recommended as a good technology for the web. I knew some basic SQL, and I spent some time with SQLite in a Python project tutorial during my study, but MongoDB was a database that I really put in some effort and finished the free certificates that they have on their official website. I have to say that I like MongoDB, and I was lucky to find my current company starting 2019, where MongoDB is used exclusively.&lt;/p>
+&lt;h2 id="day-job">Day job&lt;/h2>
+&lt;p>Most of my work is focused on the backend of a big portal website for users and admins. Specifically, the creation and maintenance of APIs. Written in TypeScrip, stored in MongoDB and served with GraphQL. GraphQL was new to me when I started in the company, but once I got used to it, serving data via REST feels like some totally antiquated. Of course, we also use REST for necessary things, but the type safety of GraphQL and the schemas is something amazing.&lt;/p>
+&lt;h2 id="rust">Rust&lt;/h2>
+&lt;p>During 2019, I wanted to learn a new programming language. Most of my time 2017-2019 I spent learning JavaScript. I spent a some time on C and Python too. I like python, but I already did a small project with it, some intermediate tutorials, and although I definitely could learn much more in Python, It didn&amp;rsquo;t really feel challenging enough and I wanted something that would push my knowledge as a developer. C was interesting, but way too hard for me to spend too much time on it. I wanted something practical and modern. The purpose was to learn to be a better programmer, but I felt like I would spend too much time on suffering while trying to build something in C. A colleague at work started to learn GOlang a little. I felt tempted to read up on it a little and stumbled upon this wave of new programming languages growing in 2019 like go, rust or julia. Julia felt too esoteric to me and GO somehow too popular to be cool. But when I was reading about Rust and their attempt to make memory management like in C accessible and safe for even beginner programmers, I was very intrigued. I don&amp;rsquo;t regret my choice in Rust a bit. It was exactly what I was looking for. Something more challenging on a technical level, but also holding your hand in the process, making for a great learning experience.&lt;/p>
+&lt;p>First I read &amp;ldquo;The book&amp;rdquo; from the official website. The book took a while, but it is very good. I prefer taking my time while studying anything and go step by step a bit every day. So I didn&amp;rsquo;t mind the length of the book. After maybe a few months, I started with tutorials on Exercism. It is an amazing website and I might make an article about it exclusively in the future.&lt;/p>
+&lt;h2 id="project">Project&lt;/h2>
+&lt;p>After a few weeks / months of tutorials, I felt the need to try something personal. It doesn&amp;rsquo;t need to be something production-ready, I just wanted to try to put together something new. I soon began thinking if my favorite MongoDB + GraphQL could work with Rust. I found an article from 2018 that looked a little scary, but when reading the docs of the GraphQL library for Rust, I realized 2018 might be already old information.&lt;/p>
+&lt;p>I made the simple web API by the end of 2019. I will not be talking about the technical specifics of the project and its libraries. Under the link above, in the project&amp;rsquo;s readme.md, you can find the technical details. I also left plenty of comments in the code itself for me or anybody else if you are interested. But below are some memories that I have of the experience writing it.&lt;/p>
+&lt;h2 id="rust-with-mongodb">Rust with MongoDB&lt;/h2>
+&lt;p>The library for MongoDB could have been better. I remember thinking that using MongoDB in TypeScript with Mongoose is honestly a much better experience. In rust, the objects have to be translated through a parsing library like Serde. But I guess this is not an issue exclusive to Rust, more like a benefit when using JavaScript with JSON. It was not trivial, but possible!&lt;/p>
+&lt;h2 id="rust-with-graphql">Rust with GraphQL&lt;/h2>
+&lt;p>The library for GraphQL on the other hand was surprisingly nice to use. I loved how it used macros and simple Rust structs to generate its necessary objects. It was easy to create the schemas, much nicer than I remembered from the crazy 2018 article. I remember being amazed that I could easily recommend this, even though I&amp;rsquo;m not a programming veteran, and I am writing this in Rust, supposedly one of the fastest and most powerful languages out there.&lt;/p>
+&lt;h2 id="final-thoughts">Final thoughts&lt;/h2>
+&lt;p>So, I was very happy when this was running. Later I changed the module tree and I implemented logging. Both simply for experience and making the project feel a little more complete, even though this was basically more like a proof of concept. A challenge for myself.&lt;/p>
+&lt;h2 id="would-i-change-it">Would I change it?&lt;/h2>
+&lt;p>I imagine that in the past 7 months since then, both libraries got only better. I didn&amp;rsquo;t look at them since then. Also, I had a hard time to choose the web server library. I tried several till I stuck with Iron. Were I to do it over, at this time of writing, I would probably use Actix-web instead. But the library landscape of Rust is evolving quickly and it&amp;rsquo;s no surprise that there are many changes. I will not touch this project again. It serves as the memory of my experience from that time. My first personal github project.&lt;/p></description></item><item><title>Circle CI/CD</title><link>/ja/project/circle/</link><pubDate>Mon, 20 Jul 2020 00:00:00 +0000</pubDate><guid>/ja/project/circle/</guid><description>&lt;p>In my company, we are using AKS (Azure Kubernetes Service). With every git commit to the master branch, a new docker image is build and pushed to the repository with CircleCI. It is automatically deployed to the dev cluster. At a controlled release moment, we are then able to release all necessary docker images with their particular versions in one go to the production cluster using helm.&lt;/p>
+&lt;p>The project is quite big and all connected parts are quite complicated in their setup. That&amp;rsquo;s why I wanted to create my own small project and learn how to set up a similar CI/CD (circular integration / circular deployment).&lt;/p>
+&lt;p>I did so June 2020. Link to the project above. Journey description below.&lt;/p>
+&lt;h2 id="what-to-push">What to push&lt;/h2>
+&lt;p>First decision was &lt;strong>what&lt;/strong> to build and push. I made a simple website with the static site generator
+&lt;a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo&lt;/a>. It was the first time I made a web with hugo, so this was in itself a very good learning experience. I stuck literary to the &amp;ldquo;quick start&amp;rdquo; guide to not lose too much time with this step, since the page itself is obviously not the goal of this project. But in general, I can only recommend Hugo.&lt;/p>
+&lt;h2 id="script-before-circle">Script before circle&lt;/h2>
+&lt;p>Obviously I wanted to use the same technologies that we are using on the company project. I was eager to get into CircleCI, but I quickly realized that is not the right approach. It turns out that the best approach for me was to leave the CI as the absolute last step. First make a long list of all the cli commands that you find useful. I put most of them in the readme.md of the project. This is not &amp;ldquo;best practice&amp;rdquo; for a readme, but I well, it was meant to be just my personal learning project and I wanted to have the commands visible. Only after you can do everything with your cli commands from beginning to end, then it makes sense to put it in a CI config.&lt;/p>
+&lt;h2 id="docker">Docker&lt;/h2>
+&lt;p>So first thing, I made my first successful docker image build. After running it with a port-forward and seeing that the Dockerfile took the correct content and I saw the page loaded in the browser, I have to say it feels good.&lt;/p>
+&lt;p>build image:&lt;br>
+&lt;code>docker build -t radimj/repo1 .&lt;/code>&lt;/p>
+&lt;p>run and forward port to localhost:&lt;br>
+&lt;code>docker run -d -p 80:80 radimj/repo1&lt;/code>&lt;/p>
+&lt;h2 id="docker-repository">Docker repository&lt;/h2>
+&lt;p>Next step, where to push the image? Unfortunately, you can&amp;rsquo;t treat docker images like ISOs or packages as the word &amp;ldquo;image&amp;rdquo; would suggest. There are command like &amp;ldquo;save&amp;rdquo; and &amp;ldquo;export&amp;rdquo;, you can look up the details yourself, but the main takeaway is that docker images are not meant to be sent around as packaged files. You have to use a repository. I saw guides for creating local repositories, but again, this is not the main purpose dockers exist. You simply should use a remote repository. You can store them on Azure too, but I didn&amp;rsquo;t have a free account there, so I just went with the simplest solution, I made a private
+&lt;a href="https://hub.docker.com/" target="_blank" rel="noopener">DockerHub&lt;/a> account.&lt;/p>
+&lt;p>Another a little unexpected process is that you don&amp;rsquo;t add the repository through some &amp;ldquo;add repo&amp;rdquo; or something, you have to &lt;code>docker login&lt;/code>. This will hash the login details in ~/.docker/config.json. As far as I know, that is the only place you can find out what repository your docker is using. After that, you have to make sure your image name (tag) that corresponds to your account and repository name, else it wouldn&amp;rsquo;t know where in your repository to add the image. After that, a simple push should work.&lt;/p>
+&lt;p>push to docker hub:&lt;br>
+&lt;code>docker push radimj/repo1&lt;/code>&lt;/p>
+&lt;p>I&amp;rsquo;m noticing I&amp;rsquo;m being unnecessarily detailed and this project had so many small issues that this would end up being a little book. I will be more concise bellow.&lt;/p>
+&lt;h2 id="circleci">CircleCI&lt;/h2>
+&lt;p>Since I didn&amp;rsquo;t have a remote kubernetes cluster to push to, I was satisfied if my CI would just build the image and push it to the repository. The details of the CI config are in the &lt;code>/.circleci/config.yml&lt;/code> you can find it in the project. I kept it as simple as possible. A few notable points:&lt;/p>
+&lt;ul>
+&lt;li>Base image&lt;br>
+It takes a moment to choose a fitting base docker image, that is used for the whole CI process.&lt;/li>
+&lt;li>Docker&lt;br>
+Use docker with &amp;ldquo;- setup_remote_docker&amp;rdquo;. This creates a special environment that the CI uses to work with docker.&lt;/li>
+&lt;li>CLI tool&lt;br>
+Circle CI has a cli tool that lets you run the build locally. This is good to speed up the creation of the config, but don&amp;rsquo;t rely on it too much. For example the &amp;ldquo;setup_remote_docker&amp;rdquo; command didn&amp;rsquo;t work for me with it and I had to use &amp;ldquo;sudo&amp;rdquo; for the docker commands when running the cli localy.&lt;/li>
+&lt;li>SSH into the build&lt;br>
+When something breaks only remotely and you don&amp;rsquo;t know why, a last resort is SSH into the CI build. This was an interesting experience. It took a moment to set up, but if you just follow the guide in the docs you should be fine. I managed to get into the docker image that was sitting broken in the remote CI build where I found what was missing.&lt;/li>
+&lt;/ul>
+&lt;p>Being able to set up CircleCI was an empowering experience. CI really gives you the feeling like &amp;ldquo;set up once, never touch again&amp;rdquo;. When you first write it, the &amp;ldquo;never touch again&amp;rdquo; feels very good. But after some time, when you forget why you added this or that line&amp;hellip; &amp;ldquo;never touch again&amp;rdquo; can become scary 😂&lt;/p>
+&lt;h2 id="kubernetes">Kubernetes&lt;/h2>
+&lt;p>Kubernetes can be easily tested with Minikube, or similar tools that run a single node cluster on your local drive. Setting up a production ready Kubernetes on a private server is much harder than I expected. It is not like installing nginx or a machine and expecting it to work. I read there are ways how to do it, but for now that is beyond me. Production ready Kubernetes clusters are best chosen from established providers online. After realizing this, being able to use something like Minikube (or others) is a really amazing thing, since it behaves like a real cluster and is perfect for learning and basic testing.&lt;/p>
+&lt;p>In Kubernetes, everything is about deployment setups within .yaml files. You can write them by hand, or export them from a running deployment / service / pod with &amp;ndash;output yaml. The Kubernetes documentation is quite good, and every single of my steps here is better explained there. So I will not be rewriting the docs here. Rather, I will show you the process how I put brick on brick with small commands to get to a better understanding of the result.&lt;/p>
+&lt;p>First, you need to set up a secret in kubernetes that will be used for authorization when pulling docker images from repos. I did it from the docker login file:&lt;/p>
+&lt;pre>&lt;code>kubectl create secret generic regcred \
+--from-file=.dockerconfigjson=&amp;lt;path/to/.docker/config.json&amp;gt; \
+--type=kubernetes.io/dockerconfigjson
+&lt;/code>&lt;/pre>
+&lt;p>That can be tested by running once pod with the secret:&lt;br>
+&lt;code>kubectl run repo1 --overrides='{ &amp;quot;spec&amp;quot;: { &amp;quot;imagePullSecrets&amp;quot;: [{&amp;quot;name&amp;quot;: &amp;quot;regcred&amp;quot;}] } }' --image=radimj/repo1 --port=80&lt;/code>
+The &amp;ldquo;overrides&amp;rdquo; functionality makes more sense when already knowing how a standard yaml config would look like. It is basically just editing a default one.&lt;/p>
+&lt;p>The following commands give a way how to look into your pod. In my pod there is nginx exposing my website on port 80.&lt;/p>
+&lt;p>forward or expose pod:&lt;br>
+&lt;code>kubectl port-forward repo1 8080:80&lt;/code>&lt;br>
+&lt;code>kubectl expose pod repo1 --type=&amp;quot;NodePort&amp;quot;&lt;/code>&lt;/p>
+&lt;p>Deployments and services. I will not give examples how to create them or explain in detail what they are. Consult the official docs for details. But in essence, deployments are a bundle of pods, and services are configs how these resources are exposed on ports. They are created in a similar way like pods. All ideally with yaml files. Once you have them running, you can observe them with these commands.&lt;/p>
+&lt;p>expose deployment:&lt;br>
+&lt;code>kubectl expose deployment circle-deployment --type=LoadBalancer&lt;/code>&lt;/p>
+&lt;p>nodeport in:&lt;br>
+&lt;code>kubectl get svc&lt;/code>
+&lt;code>kubectl describe service repo1&lt;/code>&lt;/p>
+&lt;p>exposed on:&lt;br>
+&lt;code>(minikube ip):&amp;amp;nodePort&lt;/code>&lt;/p>
+&lt;h2 id="kubernetes-yaml-management">Kubernetes Yaml management:&lt;/h2>
+&lt;p>create new yaml file from:&lt;br>
+&lt;code>kubectl get (deploy / svc / pod ) -o yaml&lt;/code>&lt;/p>
+&lt;p>run pod / deployment from yaml:&lt;br>
+&lt;code>kubectl apply --filename private_deploy.yaml&lt;/code>&lt;/p>
+&lt;p>revert (delete) from yaml:&lt;br>
+&lt;code>kubectl delete -f private_deploy.yaml&lt;/code>&lt;/p>
+&lt;p>This is the roundabout way how to get to your yaml file. But a good learning experience.&lt;/p>
+&lt;h2 id="json-parsing">JSON parsing&lt;/h2>
+&lt;p>One of the most surprising discoveries on this project was
+&lt;a href="https://stedolan.github.io/jq/" target="_blank" rel="noopener">JQ&lt;/a>. When you work with Kubernetes or Azure, you get quickly used to large JSON outputs in your terminal. Both tools have inbuilt ways how to make this more manageable. In Kubernetes, you can query most outputs with &lt;code>--output jsonpath=&amp;quot;&amp;quot;&lt;/code> this is one of the query languages for parsing json. Azure uses &amp;ldquo;JMESPath&amp;rdquo; which is not the same. Azure also uses &lt;code>--output table&lt;/code> heavily, to make things more readable. If you make scripts and you are working only with one tool, then it is probably recommendable to use the inbuilt query parsing tool.&lt;/p>
+&lt;p>But let me tell you, to learn just one way that sits forever in your system, that you can use for any JSON string that enters your command line is a great thing! With JQ I was able to do things like:&lt;/p>
+&lt;p>display docker login secret from kubectl:\&lt;/p>
+&lt;pre>&lt;code>kubectl get secret regcred \
+--output jsonpath=&amp;quot;{.data.\.dockerconfigjson}&amp;quot; | \
+base64 --decode | \
+jq &amp;quot;.auths | map(.auth)[0]&amp;quot; -r | \
+base64 --decode
+&lt;/code>&lt;/pre>
+&lt;p>You can see the use of both &amp;ldquo;jsonpath&amp;rdquo; and &amp;ldquo;jq&amp;rdquo; here for comparison. The output tells you exactly what login your kubectl is using. Also, good to understand how the secrets are stored in kubernetes.&lt;/p>
+&lt;h2 id="helm">Helm&lt;/h2>
+&lt;p>Again, I won&amp;rsquo;t go into details, this post is long enough. But simply put, helm is a bundle of kubernetes yaml config files, also called &amp;ldquo;manifests&amp;rdquo;. With helm, you can create files that hold variable names and you can distribute these variable through your manifests. This creates a setup where you can have a hundred manifests with thousands of lines, but if they all run together in a setup, you can just put variable names into all of them and then adjust the variable in just one place. Making releases of big projects manageable. This bundle of manifests is called a &amp;ldquo;chart&amp;rdquo; in helm. You can also have full repositories of charts, but I will not be getting into that here.&lt;/p>
+&lt;p>lint chart:&lt;br>
+&lt;code>helm lint circle-chart/&lt;/code>&lt;/p>
+&lt;p>In the bellow example, I am packaging the chart folder into a package. This is useful for distribution, but not necessary if you are running it from just one place. You can simply call the commands on the chart folder as well.&lt;/p>
+&lt;p>build package:&lt;br>
+&lt;code>helm package circle-chart/&lt;/code>&lt;/p>
+&lt;p>install: (name should be same as package name)&lt;br>
+&lt;code>helm install circle circle-0.2.0.tgz&lt;/code>
+&lt;code>helm install circle circle-chart/&lt;/code>&lt;/p>
+&lt;p>check release:&lt;br>
+&lt;code>helm ls&lt;/code>&lt;/p>
+&lt;p>uninstall totally:&lt;br>
+&lt;code>helm uninstall circle&lt;/code>&lt;/p>
+&lt;h3 id="rolling-update">rolling update:&lt;/h3>
+&lt;p>The following command changes only necessary pods, it does not update to &amp;ldquo;latest&amp;rdquo;
+&lt;code>helm upgrade --install circle circle-chart/&lt;/code>&lt;/p>
+&lt;p>if you want to change &amp;ldquo;latest&amp;rdquo; tags, old way was:
+&lt;code>helm upgrade --install --recreate-pods circle circle-chart/&lt;/code>
+new way is to add a random annotation in metadata:&lt;/p>
+&lt;pre>&lt;code> annotations:
 # creates a random 5-letter word, causing the pods to be recreated
-        rollme: {{ randAlphaNum 5 | quote }}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
-&lt;p&gt;Setting up a CI/CD flow is not a new thing. Jenkins was released 2011, that&amp;rsquo;s like a millennium in the tech world. The concept of container images is not new either, but it is undeniable that Docker containers are on a big wave right now and related solutions like Kubernetes and Helm are pulled along. In this project, I&amp;rsquo;m showing that anything, when taken piece by piece, can be learned. And why not learn the basics of the biggest wave in the current tech ocean?&lt;/p&gt;
-</description>
-    </item>
-    
-  </channel>
-</rss>
+rollme: {{ randAlphaNum 5 | quote }}
+&lt;/code>&lt;/pre>
+&lt;h2 id="conclusion">Conclusion&lt;/h2>
+&lt;p>Setting up a CI/CD flow is not a new thing. Jenkins was released 2011, that&amp;rsquo;s like a millennium in the tech world. The concept of container images is not new either, but it is undeniable that Docker containers are on a big wave right now and related solutions like Kubernetes and Helm are pulled along. In this project, I&amp;rsquo;m showing that anything, when taken piece by piece, can be learned. And why not learn the basics of the biggest wave in the current tech ocean?&lt;/p></description></item></channel></rss>
