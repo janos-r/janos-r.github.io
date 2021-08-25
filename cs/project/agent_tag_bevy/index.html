@@ -33,7 +33,7 @@ pub fn tag(&amp;self, my_index: usize) {
 .agents
 .iter()
 .position(|agent| {...})
-</code></pre><p><a href=https://doc.rust-lang.org/stable/std/iter/trait.Iterator.html#method.position target=_blank rel=noopener><code>.position()</code></a> is Rusts' own tool to give you a <code>Options&lt;usize></code> with the index where it maybe found something. In bevy, if I didn&rsquo;t miss something, if I want to check the first matching entity and continue to use it for other tings, I had to do this with:</p><pre><code class=language-rust>let mut origin: Option&lt;Entity&gt; = None;
+</code></pre><p><a href=https://doc.rust-lang.org/stable/std/iter/trait.Iterator.html#method.position target=_blank rel=noopener><code>.position()</code></a> is Rusts' own tool to give you a <code>Option&lt;usize></code> with the index where it maybe found something. In bevy, if I didn&rsquo;t miss something, if I want to check the first matching entity and continue to use it for other tings, I had to do this with:</p><pre><code class=language-rust>let mut origin: Option&lt;Entity&gt; = None;
 for (status, entity) in query.iter_mut() {
     if *status == Status::Tagged {
         origin = Some(entity);

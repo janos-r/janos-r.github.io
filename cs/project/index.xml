@@ -53,7 +53,7 @@ She continues to talk about this being an inherent problem of OOP ways of thinki
 .position(|agent| {...})
 &lt;/code>&lt;/pre>
 &lt;p>
-&lt;a href="https://doc.rust-lang.org/stable/std/iter/trait.Iterator.html#method.position" target="_blank" rel="noopener">&lt;code>.position()&lt;/code>&lt;/a> is Rusts' own tool to give you a &lt;code>Options&amp;lt;usize&amp;gt;&lt;/code> with the index where it maybe found something. In bevy, if I didn&amp;rsquo;t miss something, if I want to check the first matching entity and continue to use it for other tings, I had to do this with:&lt;/p>
+&lt;a href="https://doc.rust-lang.org/stable/std/iter/trait.Iterator.html#method.position" target="_blank" rel="noopener">&lt;code>.position()&lt;/code>&lt;/a> is Rusts' own tool to give you a &lt;code>Option&amp;lt;usize&amp;gt;&lt;/code> with the index where it maybe found something. In bevy, if I didn&amp;rsquo;t miss something, if I want to check the first matching entity and continue to use it for other tings, I had to do this with:&lt;/p>
 &lt;pre>&lt;code class="language-rust">let mut origin: Option&amp;lt;Entity&amp;gt; = None;
 for (status, entity) in query.iter_mut() {
 if *status == Status::Tagged {
