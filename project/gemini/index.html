@@ -1,27 +1,285 @@
-<!doctype html><html lang=en-us><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=generator content="Source Themes Academic 4.8.0"><meta name=author content="Radim Janoš"><meta name=description content="How to make a simple gemini page."><link rel=alternate hreflang=cs href=/cs/project/gemini/><link rel=alternate hreflang=ja href=/ja/project/gemini/><link rel=alternate hreflang=en-us href=/project/gemini/><meta name=theme-color content="#2962ff"><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin=anonymous><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin=anonymous><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin=anonymous><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/github.min.css crossorigin=anonymous title=hl-light><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/dracula.min.css crossorigin=anonymous title=hl-dark disabled><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin=anonymous><script src=https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin=anonymous async></script><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap"><link rel=stylesheet href=/css/academic.css><link rel=manifest href=/index.webmanifest><link rel=icon type=image/png href=/images/icon_hub89e7b28a6abff2b4ec084e6c0608a00_13774_32x32_fill_lanczos_center_2.png><link rel=apple-touch-icon type=image/png href=/images/icon_hub89e7b28a6abff2b4ec084e6c0608a00_13774_192x192_fill_lanczos_center_2.png><link rel=canonical href=/project/gemini/><meta property="twitter:card" content="summary_large_image"><meta property="og:site_name" content="Radim"><meta property="og:url" content="/project/gemini/"><meta property="og:title" content="Gemini | Radim"><meta property="og:description" content="How to make a simple gemini page."><meta property="og:image" content="/project/gemini/featured.png"><meta property="twitter:image" content="/project/gemini/featured.png"><meta property="og:locale" content="en-us"><meta property="article:published_time" content="2021-03-07T00:00:00+00:00"><meta property="article:modified_time" content="2021-03-07T00:00:00+00:00"><script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"/project/gemini/"},"headline":"Gemini","image":["/project/gemini/featured.png"],"datePublished":"2021-03-07T00:00:00Z","dateModified":"2021-03-07T00:00:00Z","author":{"@type":"Person","name":"Radim Janoš"},"publisher":{"@type":"Organization","name":"Radim","logo":{"@type":"ImageObject","url":"/images/icon_hub89e7b28a6abff2b4ec084e6c0608a00_13774_192x192_fill_lanczos_center_2.png"}},"description":"How to make a simple gemini page."}</script><title>Gemini | Radim</title></head><body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents><aside class=search-results id=search><div class=container><section class=search-header><div class="row no-gutters justify-content-between mb-3"><div class=col-6><h1>Search</h1></div><div class="col-6 col-search-close"><a class=js-search href=#><i class="fas fa-times-circle text-muted" aria-hidden=true></i></a></div></div><div id=search-box><input name=q id=search-query placeholder=Search... autocapitalize=off autocomplete=off autocorrect=off spellcheck=false type=search class=form-control></div></section><section class=section-search-results><div id=search-hits></div></section></div></aside><nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id=navbar-main><div class=container><div class="d-none d-lg-inline-flex"><a class=navbar-brand href=/>Radim</a></div><button type=button class=navbar-toggler data-toggle=collapse data-target=#navbar-content aria-controls=navbar aria-expanded=false aria-label="Toggle navigation">
-<span><i class="fas fa-bars"></i></span></button><div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none"><a class=navbar-brand href=/>Radim</a></div><div class="navbar-collapse main-menu-item collapse justify-content-end" id=navbar-content><ul class="navbar-nav d-md-inline-flex"><li class=nav-item><a class=nav-link href=/#about><span>About</span></a></li><li class=nav-item><a class=nav-link href=/#skills_lang><span>Skills</span></a></li><li class=nav-item><a class=nav-link href=/#experience><span>Experience</span></a></li><li class=nav-item><a class=nav-link href=/#projects><span>Projects</span></a></li><li class=nav-item><a class=nav-link href=/#contact><span>Contact</span></a></li></ul></div><ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2"><li class=nav-item><a class="nav-link js-search" href=# aria-label=Search><i class="fas fa-search" aria-hidden=true></i></a></li><li class="nav-item dropdown theme-dropdown"><a href=# class="nav-link js-theme-selector" data-toggle=dropdown aria-haspopup=true><i class="fas fa-palette" aria-hidden=true></i></a><div class=dropdown-menu><a href=# class="dropdown-item js-set-theme-light"><span>Light</span></a>
-<a href=# class="dropdown-item js-set-theme-dark"><span>Dark</span></a>
-<a href=# class="dropdown-item js-set-theme-auto"><span>Automatic</span></a></div></li><li class="nav-item dropdown i18n-dropdown"><a href=# class=nav-link data-toggle=dropdown aria-haspopup=true><i class="fas fa-globe mr-1" aria-hidden=true></i></a><div class=dropdown-menu><div class="dropdown-item dropdown-item-active"><span>English</span></div><a class=dropdown-item href=/cs/project/gemini/><span>Česky</span></a>
-<a class=dropdown-item href=/ja/project/gemini/><span>日本語</span></a></div></li></ul></div></nav><article class="article article-project"><div class="article-container pt-3"><h1>Gemini</h1><p class=page-subtitle>How to make a simple gemini page.</p><div class=article-metadata><span class=article-date>7 March 2021</span></div><div class="btn-links mb-3"><a class="btn btn-outline-primary my-1 mr-1" href=gemini://gem.radim.xyz><i class="fas fa-external-link-alt mr-1"></i>Gemini page</a></div></div><div class="article-header article-container featured-image-wrapper mt-4 mb-4" style=max-width:720px;max-height:477px><div style=position:relative><img src=/project/gemini/featured_hu3508e20dcf73a11d0b0cec7c3881e311_75498_720x0_resize_lanczos_2.png alt class=featured-image></div></div><div class=article-container><div class=article-style><p>So, this will not be a deep dive, but just a simple introduction and a very simple and quick way how to make your own gemini page.</p><p>In case you are wondering why anybody finds gemini interesting, when it is obviously less feature rich than the regular web, than just have a short listen to this great
-<a href="https://www.youtube.com/watch?v=cvDyQUpaFf4" target=_blank rel=noopener>summary</a> (video) of what is wrong with the current web. Gemini is not a solution to that, it is just an idea of what could exist alongside the normal web.</p><p>I know about gemini for maybe a few weeks already. My love for rust led me to try the cli client Asuka, but I don&rsquo;t recommend it. There are better cli clients if that is what you want. But a few days ago, I had again a look at the official
+<!doctype html><html lang=en-us>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=generator content="Source Themes Academic 4.8.0">
+<meta name=author content="Radim Janoš">
+<meta name=description content="How to make a simple gemini page.">
+<link rel=alternate hreflang=cs href=/cs/project/gemini/>
+<link rel=alternate hreflang=ja href=/ja/project/gemini/>
+<link rel=alternate hreflang=en-us href=/project/gemini/>
+<meta name=theme-color content="#2962ff">
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin=anonymous>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin=anonymous>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin=anonymous>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/github.min.css crossorigin=anonymous title=hl-light>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/dracula.min.css crossorigin=anonymous title=hl-dark disabled>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin=anonymous>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin=anonymous async></script>
+<link rel=stylesheet href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+<link rel=stylesheet href=/css/academic.css>
+<link rel=manifest href=/index.webmanifest>
+<link rel=icon type=image/png href=/images/icon_hub89e7b28a6abff2b4ec084e6c0608a00_13774_32x32_fill_lanczos_center_3.png>
+<link rel=apple-touch-icon type=image/png href=/images/icon_hub89e7b28a6abff2b4ec084e6c0608a00_13774_192x192_fill_lanczos_center_3.png>
+<link rel=canonical href=/project/gemini/>
+<meta property="twitter:card" content="summary_large_image">
+<meta property="og:site_name" content="Radim">
+<meta property="og:url" content="/project/gemini/">
+<meta property="og:title" content="Gemini | Radim">
+<meta property="og:description" content="How to make a simple gemini page."><meta property="og:image" content="/project/gemini/featured.png">
+<meta property="twitter:image" content="/project/gemini/featured.png"><meta property="og:locale" content="en-us">
+<meta property="article:published_time" content="2021-03-07T00:00:00+00:00">
+<meta property="article:modified_time" content="2021-03-07T00:00:00+00:00">
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"/project/gemini/"},"headline":"Gemini","image":["/project/gemini/featured.png"],"datePublished":"2021-03-07T00:00:00Z","dateModified":"2021-03-07T00:00:00Z","author":{"@type":"Person","name":"Radim Janoš"},"publisher":{"@type":"Organization","name":"Radim","logo":{"@type":"ImageObject","url":"/images/icon_hub89e7b28a6abff2b4ec084e6c0608a00_13774_192x192_fill_lanczos_center_3.png"}},"description":"How to make a simple gemini page."}</script>
+<title>Gemini | Radim</title>
+</head>
+<body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents>
+<aside class=search-results id=search>
+<div class=container>
+<section class=search-header>
+<div class="row no-gutters justify-content-between mb-3">
+<div class=col-6>
+<h1>Search</h1>
+</div>
+<div class="col-6 col-search-close">
+<a class=js-search href=#><i class="fas fa-times-circle text-muted" aria-hidden=true></i></a>
+</div>
+</div>
+<div id=search-box>
+<input name=q id=search-query placeholder=Search... autocapitalize=off autocomplete=off autocorrect=off spellcheck=false type=search class=form-control>
+</div>
+</section>
+<section class=section-search-results>
+<div id=search-hits>
+</div>
+</section>
+</div>
+</aside>
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id=navbar-main>
+<div class=container>
+<div class="d-none d-lg-inline-flex">
+<a class=navbar-brand href=/>Radim</a>
+</div>
+<button type=button class=navbar-toggler data-toggle=collapse data-target=#navbar-content aria-controls=navbar aria-expanded=false aria-label="Toggle navigation">
+<span><i class="fas fa-bars"></i></span>
+</button>
+<div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+<a class=navbar-brand href=/>Radim</a>
+</div>
+<div class="navbar-collapse main-menu-item collapse justify-content-end" id=navbar-content>
+<ul class="navbar-nav d-md-inline-flex">
+<li class=nav-item>
+<a class=nav-link href=/#about><span>About</span></a>
+</li>
+<li class=nav-item>
+<a class=nav-link href=/#skills_lang><span>Skills</span></a>
+</li>
+<li class=nav-item>
+<a class=nav-link href=/#experience><span>Experience</span></a>
+</li>
+<li class=nav-item>
+<a class=nav-link href=/#projects><span>Projects</span></a>
+</li>
+<li class=nav-item>
+<a class=nav-link href=/#contact><span>Contact</span></a>
+</li>
+</ul>
+</div>
+<ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+<li class=nav-item>
+<a class="nav-link js-search" href=# aria-label=Search><i class="fas fa-search" aria-hidden=true></i></a>
+</li>
+<li class="nav-item dropdown theme-dropdown">
+<a href=# class="nav-link js-theme-selector" data-toggle=dropdown aria-haspopup=true>
+<i class="fas fa-palette" aria-hidden=true></i>
+</a>
+<div class=dropdown-menu>
+<a href=# class="dropdown-item js-set-theme-light">
+<span>Light</span>
+</a>
+<a href=# class="dropdown-item js-set-theme-dark">
+<span>Dark</span>
+</a>
+<a href=# class="dropdown-item js-set-theme-auto">
+<span>Automatic</span>
+</a>
+</div>
+</li>
+<li class="nav-item dropdown i18n-dropdown">
+<a href=# class=nav-link data-toggle=dropdown aria-haspopup=true>
+<i class="fas fa-globe mr-1" aria-hidden=true></i></a>
+<div class=dropdown-menu>
+<div class="dropdown-item dropdown-item-active">
+<span>English</span>
+</div>
+<a class=dropdown-item href=/cs/project/gemini/>
+<span>Česky</span>
+</a>
+<a class=dropdown-item href=/ja/project/gemini/>
+<span>日本語</span>
+</a>
+</div>
+</li>
+</ul>
+</div>
+</nav>
+<article class="article article-project">
+<div class="article-container pt-3">
+<h1>Gemini</h1>
+<p class=page-subtitle>How to make a simple gemini page.</p>
+<div class=article-metadata>
+<span class=article-date>
+7 March 2021
+</span>
+</div>
+<div class="btn-links mb-3">
+<a class="btn btn-outline-primary my-1 mr-1" href=gemini://gem.radim.xyz>
+<i class="fas fa-external-link-alt mr-1"></i>
+Gemini page
+</a>
+</div>
+</div>
+<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style=max-width:720px;max-height:477px>
+<div style=position:relative>
+<img src=/project/gemini/featured_hu3508e20dcf73a11d0b0cec7c3881e311_75498_720x0_resize_lanczos_3.png alt class=featured-image>
+</div>
+</div>
+<div class=article-container>
+<div class=article-style>
+<p>So, this will not be a deep dive, but just a simple introduction and a very simple and quick way how to make your own gemini page.</p>
+<p>In case you are wondering why anybody finds gemini interesting, when it is obviously less feature rich than the regular web, than just have a short listen to this great
+<a href="https://www.youtube.com/watch?v=cvDyQUpaFf4" target=_blank rel=noopener>summary</a> (video) of what is wrong with the current web. Gemini is not a solution to that, it is just an idea of what could exist alongside the normal web.</p>
+<p>I know about gemini for maybe a few weeks already. My love for rust led me to try the cli client Asuka, but I don&rsquo;t recommend it. There are better cli clients if that is what you want. But a few days ago, I had again a look at the official
 <a href=https://gemini.circumlunar.space target=_blank rel=noopener>site</a> of the protocol and saw that it got quite a bit bigger and got a large number of clients in just a very short time. I looked at Castor (also written in rust), this time a GUI and it was not bad. I continued to be intrigued by gemini and suddenly I stumbled upon this gem of a GUI client
-<a href=https://git.skyjake.fi/skyjake/lagrange target=_blank rel=noopener>Lagrange</a>. It is written in C and it looks amazing. At least compared to anything else I saw so far. It is very similar to a traditional web browser and already has a plethora of functionality. Detailed preferences, side-panes, themes, adjustable shortcuts and much more. I can hardly believe just one guy made this. It feels like this is how the internet should have been, lol. I am sure that other amazing clients and technology will continue to pop up around gemini, but it is time to make a short &ldquo;how to&rdquo; for any friends or average users who would like to try this out.</p><p>So go on! Try it &lt;3</p><h1 id=how-to>How to</h1><p>This how to will get old very quickly, I am just recommending what I did yesterday. Very likely, there will be even better clients and even better hosting options in the future. But for now, I was quite amazed by what is already available right now. This is the quick and simple way:</p><h2 id=get-a-client-have-a-look>Get a client, have a look</h2><p><a href=https://git.skyjake.fi/skyjake/lagrange/releases target=_blank rel=noopener>Lagrange release page</a></p><ul><li><p>Windows: From the link above, get the latest setup.exe (time of writing: &ldquo;lagrange_v1.2.2_windows-x64_setup.exe&rdquo;)</p></li><li><p>Linux: You can get the AppImage from the link above if you want just a quick test. But I recommend to get the
-<a href=https://flathub.org/apps/details/fi.skyjake.Lagrange target=_blank rel=noopener>flatpak</a>. On my LinuxMint, I install it directly from the software manager, just search for &ldquo;Lagrange&rdquo;.</p></li></ul><h2 id=make-your-own-page>Make your own page</h2><p>We will publish our page on a free sourceHut account.
-<a href=gemini://srht.site/quickstart.gmi>Source</a> guide.</p><h3 id=create-a-sourcehut-account>Create a sourcehut account</h3><ul><li>Register an email
-<a href=https://meta.sr.ht/register target=_blank rel=noopener>here</a>. Your username will be part of the page &lt;username>.srht.site</li><li>Click the confirmation you get via email</li></ul><h3 id=create-a-sourcehut-token>Create a sourcehut token</h3><ul><li>Generage token
-<a href=https://meta.sr.ht/oauth2/personal-token target=_blank rel=noopener>here</a> - don&rsquo;t close the page!</li><li>Copy the generated token and save it to a text file for later use!</li></ul><h3 id=make-a-indexgmi-text-file-with>Make a <code>index.gmi</code> text file with:</h3><pre><code class=language-md># My sourcehut capsule
+<a href=https://git.skyjake.fi/skyjake/lagrange target=_blank rel=noopener>Lagrange</a>. It is written in C and it looks amazing. At least compared to anything else I saw so far. It is very similar to a traditional web browser and already has a plethora of functionality. Detailed preferences, side-panes, themes, adjustable shortcuts and much more. I can hardly believe just one guy made this. It feels like this is how the internet should have been, lol. I am sure that other amazing clients and technology will continue to pop up around gemini, but it is time to make a short &ldquo;how to&rdquo; for any friends or average users who would like to try this out.</p>
+<p>So go on! Try it &lt;3</p>
+<h1 id=how-to>How to</h1>
+<p>This how to will get old very quickly, I am just recommending what I did yesterday. Very likely, there will be even better clients and even better hosting options in the future. But for now, I was quite amazed by what is already available right now. This is the quick and simple way:</p>
+<h2 id=get-a-client-have-a-look>Get a client, have a look</h2>
+<p>
+<a href=https://git.skyjake.fi/skyjake/lagrange/releases target=_blank rel=noopener>Lagrange release page</a></p>
+<ul>
+<li>
+<p>Windows: From the link above, get the latest setup.exe (time of writing: &ldquo;lagrange_v1.2.2_windows-x64_setup.exe&rdquo;)</p>
+</li>
+<li>
+<p>Linux: You can get the AppImage from the link above if you want just a quick test. But I recommend to get the
+<a href=https://flathub.org/apps/details/fi.skyjake.Lagrange target=_blank rel=noopener>flatpak</a>. On my LinuxMint, I install it directly from the software manager, just search for &ldquo;Lagrange&rdquo;.</p>
+</li>
+</ul>
+<h2 id=make-your-own-page>Make your own page</h2>
+<p>We will publish our page on a free sourceHut account.
+<a href=gemini://srht.site/quickstart.gmi>Source</a> guide.</p>
+<h3 id=create-a-sourcehut-account>Create a sourcehut account</h3>
+<ul>
+<li>Register an email
+<a href=https://meta.sr.ht/register target=_blank rel=noopener>here</a>. Your username will be part of the page &lt;username>.srht.site</li>
+<li>Click the confirmation you get via email</li>
+</ul>
+<h3 id=create-a-sourcehut-token>Create a sourcehut token</h3>
+<ul>
+<li>Generage token
+<a href=https://meta.sr.ht/oauth2/personal-token target=_blank rel=noopener>here</a> - don&rsquo;t close the page!</li>
+<li>Copy the generated token and save it to a text file for later use!</li>
+</ul>
+<h3 id=make-a-indexgmi-text-file-with>Make a <code>index.gmi</code> text file with:</h3>
+<pre><code class=language-md># My sourcehut capsule
 Welcome to my cool sourcehut capsule!
-</code></pre><h3 id=make-a-tarball>Make a &ldquo;tarball&rdquo;</h3><p>I guess you can run this command in windows too. If not, find out how to make a &ldquo;tarball&rdquo; a .tar.gz on your system.</p><p>Just a single file for your first test:</p><pre><code class=language-sh>tar -cvz index.gmi &gt; site.tar.gz
-</code></pre><p>Or a whole directory <code>public</code>, where the files can link to each other. You could add a line to your <code>index.gmi</code> that just says &ldquo;=> /page.gmi Link to another page?&rdquo; (the file name is separated by just a space from the link text) and make a <code>page.gmi</code> file next to it. Than package the whole directory with:</p><pre><code class=language-sh>tar -C public -cvz . &gt; site.tar.gz
-</code></pre><h3 id=upload-the-package>Upload the package</h3><p>Substitute your access token and username.</p><pre><code class=language-sh>curl --oauth2-bearer &quot;access token&quot; \
+</code></pre>
+<h3 id=make-a-tarball>Make a &ldquo;tarball&rdquo;</h3>
+<p>I guess you can run this command in windows too. If not, find out how to make a &ldquo;tarball&rdquo; a .tar.gz on your system.</p>
+<p>Just a single file for your first test:</p>
+<pre><code class=language-sh>tar -cvz index.gmi &gt; site.tar.gz
+</code></pre>
+<p>Or a whole directory <code>public</code>, where the files can link to each other. You could add a line to your <code>index.gmi</code> that just says &ldquo;=> /page.gmi Link to another page?&rdquo; (the file name is separated by just a space from the link text) and make a <code>page.gmi</code> file next to it. Than package the whole directory with:</p>
+<pre><code class=language-sh>tar -C public -cvz . &gt; site.tar.gz
+</code></pre>
+<h3 id=upload-the-package>Upload the package</h3>
+<p>Substitute your access token and username.</p>
+<pre><code class=language-sh>curl --oauth2-bearer &quot;access token&quot; \
     -Fcontent=@site.tar.gz \
     -Fprotocol=GEMINI \
     https://pages.sr.ht/publish/username.srht.site
-</code></pre><p>Done! After this you should be able to visit your page on username.srht.site from the Lagrange client.</p><h2 id=link-to-it-optional>Link to it (optional)</h2><p>If you already have a hosted website like I have here radim.xyz. You can just:</p><ul><li>Go to your domain registrar</li><li>Go to DNS records</li><li>Subdomains (CNAME)</li><li>Add &ldquo;gem&rdquo;, &ldquo;gmi&rdquo;, or any subdomain you find appropriate. Im not aware of any standards for that yet.</li><li>Point it to <code>pages.sr.ht.</code> This is not a typo (including the dot at the end). If you put there pages.sr.ht. or username.srht.site, they both resolve via dns to the same IP. After your client connects to that IP, it asks sr.ht for the specific address of your &ldquo;capsule&rdquo; and that is known via the last line in your publishing step in the curl command.</li><li>So after this, you still have to re-publish with the curl command, but change the &ldquo;username.srht.site&rdquo; to your final desired page. After this step, both addresses should still resolve in the client. Your previous usernam.srht.site (because that is generated by the account) and the now new linked address from you CNAME.</li></ul><p>Pretty cool right?</p><h2 id=terminal-troubleshooting-tools>Terminal troubleshooting tools</h2><h3 id=test-request>Test request</h3><p>If you want to call a request for the page from the terminal, like you would with a `curl -X GET' - that won&rsquo;t work for gemini. After a bit of searching, the only way so far for gemini I know is:</p><pre><code class=language-sh>echo -e &quot;gemini://gemini.circumlunar.space/docs/\r&quot; | ncat --ssl gemini.circumlunar.space 1965
+</code></pre>
+<p>Done! After this you should be able to visit your page on username.srht.site from the Lagrange client.</p>
+<h2 id=link-to-it-optional>Link to it (optional)</h2>
+<p>If you already have a hosted website like I have here radim.xyz. You can just:</p>
+<ul>
+<li>Go to your domain registrar</li>
+<li>Go to DNS records</li>
+<li>Subdomains (CNAME)</li>
+<li>Add &ldquo;gem&rdquo;, &ldquo;gmi&rdquo;, or any subdomain you find appropriate. Im not aware of any standards for that yet.</li>
+<li>Point it to <code>pages.sr.ht.</code> This is not a typo (including the dot at the end). If you put there pages.sr.ht. or username.srht.site, they both resolve via dns to the same IP. After your client connects to that IP, it asks sr.ht for the specific address of your &ldquo;capsule&rdquo; and that is known via the last line in your publishing step in the curl command.</li>
+<li>So after this, you still have to re-publish with the curl command, but change the &ldquo;username.srht.site&rdquo; to your final desired page. After this step, both addresses should still resolve in the client. Your previous usernam.srht.site (because that is generated by the account) and the now new linked address from you CNAME.</li>
+</ul>
+<p>Pretty cool right?</p>
+<h2 id=terminal-troubleshooting-tools>Terminal troubleshooting tools</h2>
+<h3 id=test-request>Test request</h3>
+<p>If you want to call a request for the page from the terminal, like you would with a `curl -X GET' - that won&rsquo;t work for gemini. After a bit of searching, the only way so far for gemini I know is:</p>
+<pre><code class=language-sh>echo -e &quot;gemini://gemini.circumlunar.space/docs/\r&quot; | ncat --ssl gemini.circumlunar.space 1965
 
-</code></pre><p>This will return the text as is on the page.</p><h3 id=test-dns>Test DNS</h3><p>If you wanna check the dns resolution in terminal, I always use <code>nslookup</code>. It is not specific for gemini. For any srht.site it should return <code>173.195.146.139</code> at time of writing.</p><pre><code class=language-sh>nslookup srht.site
+</code></pre>
+<p>This will return the text as is on the page.</p>
+<h3 id=test-dns>Test DNS</h3>
+<p>If you wanna check the dns resolution in terminal, I always use <code>nslookup</code>. It is not specific for gemini. For any srht.site it should return <code>173.195.146.139</code> at time of writing.</p>
+<pre><code class=language-sh>nslookup srht.site
 
-</code></pre></div><div class=article-tags><a class="badge badge-light" href=/tag/code/>Code</a></div><div class="media author-card content-widget-hr"><img class="avatar mr-3 avatar-circle" src=/author/radim-janos/avatar_hu64d921ec107bff3d62a3fb75542fa15a_49188_270x270_fill_q90_lanczos_center.jpg alt="Radim Janoš"><div class=media-body><h5 class=card-title><a href=/>Radim Janoš</a></h5><h6 class=card-subtitle>Developer</h6><ul class=network-icon aria-hidden=true><li><a href=/#contact><i class="fas fa-envelope"></i></a></li><li><a href=https://github.com/janos-r target=_blank rel=noopener><i class="fab fa-github"></i></a></li><li><a href=/files/CV_Radim_Janos-%28en%29.pdf><i class="ai ai-cv"></i></a></li></ul></div></div><div class="article-widget content-widget-hr"><h3>Related</h3><ul><li><a href=/project/agent_tag_bevy/>Game engine</a></li><li><a href=/project/agent_tag/>Agent based simulation modeling</a></li><li><a href=/project/yewban/>Yewban</a></li><li><a href=/project/exercism/>Exercism.io</a></li><li><a href=/project/graphql_rust/>API in Rust</a></li></ul></div><div class="project-related-pages content-widget-hr"></div></div></article><script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js integrity="sha512-7t8APmYpzEsZP7CYoA7RfMPV9Bb+PJHa9x2WiUnDXZx3XHveuyWUtvNOexhkierl5flZ3tr92dP1mMS+SGlD+A==" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/r.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin=anonymous></script><script>const code_highlighting=true;</script><script>const isSiteThemeDark=false;</script><script>const search_config={"indexURI":"/index.json","minLength":1,"threshold":0.3};const i18n={"no_results":"No results found","placeholder":"Search...","results":"results found"};const content_type={'post':"Posts",'project':"Projects",'publication':"Publications",'talk':"Talks",'slides':"Slides"};</script><script id=search-hit-fuse-template type=text/x-template>
+</code></pre>
+</div>
+<div class=article-tags>
+<a class="badge badge-light" href=/tag/code/>Code</a>
+</div>
+<div class="media author-card content-widget-hr">
+<img class="avatar mr-3 avatar-circle" src=/author/radim-janos/avatar_hu64d921ec107bff3d62a3fb75542fa15a_49188_270x270_fill_q90_lanczos_center.jpg alt="Radim Janoš">
+<div class=media-body>
+<h5 class=card-title><a href=/>Radim Janoš</a></h5>
+<h6 class=card-subtitle>Developer</h6>
+<ul class=network-icon aria-hidden=true>
+<li>
+<a href=/#contact>
+<i class="fas fa-envelope"></i>
+</a>
+</li>
+<li>
+<a href=https://github.com/janos-r target=_blank rel=noopener>
+<i class="fab fa-github"></i>
+</a>
+</li>
+<li>
+<a href=/files/CV_Radim_Janos-%28en%29.pdf>
+<i class="ai ai-cv"></i>
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="article-widget content-widget-hr">
+<h3>Related</h3>
+<ul>
+<li><a href=/project/rusty_woods/>Rusty Woods</a></li>
+<li><a href=/project/agent_tag_bevy/>Game engine</a></li>
+<li><a href=/project/agent_tag/>Agent based simulation modeling</a></li>
+<li><a href=/project/yewban/>Yewban</a></li>
+<li><a href=/project/exercism/>Exercism.io</a></li>
+</ul>
+</div>
+<div class="project-related-pages content-widget-hr">
+</div>
+</div>
+</article>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js integrity="sha512-7t8APmYpzEsZP7CYoA7RfMPV9Bb+PJHa9x2WiUnDXZx3XHveuyWUtvNOexhkierl5flZ3tr92dP1mMS+SGlD+A==" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/r.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin=anonymous></script>
+<script>const code_highlighting=!0</script>
+<script>const isSiteThemeDark=!1</script>
+<script>const search_config={indexURI:"/index.json",minLength:1,threshold:.3},i18n={no_results:"No results found",placeholder:"Search...",results:"results found"},content_type={post:"Posts",project:"Projects",publication:"Publications",talk:"Talks",slides:"Slides"}</script>
+<script id=search-hit-fuse-template type=text/x-template>
       <div class="search-hit" id="summary-{{key}}">
       <div class="search-hit-content">
         <div class="search-hit-name">
@@ -31,6 +289,46 @@ Welcome to my cool sourcehut capsule!
         </div>
       </div>
       </div>
-    </script><script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin=anonymous></script><script src=/js/academic.min.3b2b658c61ebd725bd5fc606c89fe44c.js></script><div class=container><footer class=site-footer><p class=powered-by><span class=float-right aria-hidden=true><a href=# class=back-to-top><span class=button_icon><i class="fas fa-chevron-up fa-2x"></i></span></a></span></p></footer></div><div id=modal class="modal fade" role=dialog><div class=modal-dialog><div class=modal-content><div class=modal-header><h5 class=modal-title>Cite</h5><button type=button class=close data-dismiss=modal aria-label=Close>
-<span aria-hidden=true>&#215;</span></button></div><div class=modal-body><pre><code class="tex hljs"></code></pre></div><div class=modal-footer><a class="btn btn-outline-primary my-1 js-copy-cite" href=# target=_blank><i class="fas fa-copy"></i>Copy</a>
-<a class="btn btn-outline-primary my-1 js-download-cite" href=# target=_blank><i class="fas fa-download"></i>Download</a><div id=modal-error></div></div></div></div></div></body></html>
+    </script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin=anonymous></script>
+<script src=/js/academic.min.f6ecf7692215f2bc4850b72c8176bfa2.js></script>
+<div class=container>
+<footer class=site-footer>
+<p class=powered-by>
+<span class=float-right aria-hidden=true>
+<a href=# class=back-to-top>
+<span class=button_icon>
+<i class="fas fa-chevron-up fa-2x"></i>
+</span>
+</a>
+</span>
+</p>
+</footer>
+</div>
+<div id=modal class="modal fade" role=dialog>
+<div class=modal-dialog>
+<div class=modal-content>
+<div class=modal-header>
+<h5 class=modal-title>Cite</h5>
+<button type=button class=close data-dismiss=modal aria-label=Close>
+<span aria-hidden=true>&#215;</span>
+</button>
+</div>
+<div class=modal-body>
+<pre><code class="tex hljs"></code></pre>
+</div>
+<div class=modal-footer>
+<a class="btn btn-outline-primary my-1 js-copy-cite" href=# target=_blank>
+<i class="fas fa-copy"></i> Copy
+</a>
+<a class="btn btn-outline-primary my-1 js-download-cite" href=# target=_blank>
+<i class="fas fa-download"></i> Download
+</a>
+<div id=modal-error></div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

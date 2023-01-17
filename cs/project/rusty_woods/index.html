@@ -1,0 +1,286 @@
+<!doctype html><html lang=cs>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=generator content="Source Themes Academic 4.8.0">
+<meta name=author content="Radim Janoš">
+<meta name=description content="2D rpg groundwork with Bevy and LDtk">
+<link rel=alternate hreflang=en href=/project/rusty_woods/>
+<link rel=alternate hreflang=ja href=/ja/project/rusty_woods/>
+<link rel=alternate hreflang=cs href=/cs/project/rusty_woods/>
+<meta name=theme-color content="#2962ff">
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin=anonymous>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin=anonymous>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin=anonymous>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/github.min.css crossorigin=anonymous title=hl-light>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/dracula.min.css crossorigin=anonymous title=hl-dark disabled>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin=anonymous async></script>
+<link rel=stylesheet href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+<link rel=stylesheet href=/css/academic.css>
+<link rel=manifest href=/cs/index.webmanifest>
+<link rel=icon type=image/png href=/images/icon_hub89e7b28a6abff2b4ec084e6c0608a00_13774_32x32_fill_lanczos_center_3.png>
+<link rel=apple-touch-icon type=image/png href=/images/icon_hub89e7b28a6abff2b4ec084e6c0608a00_13774_192x192_fill_lanczos_center_3.png>
+<link rel=canonical href=/cs/project/rusty_woods/>
+<meta property="twitter:card" content="summary_large_image">
+<meta property="og:site_name" content="Radim">
+<meta property="og:url" content="/cs/project/rusty_woods/">
+<meta property="og:title" content="Rusty Woods | Radim">
+<meta property="og:description" content="2D rpg groundwork with Bevy and LDtk"><meta property="og:image" content="/cs/project/rusty_woods/featured.png">
+<meta property="twitter:image" content="/cs/project/rusty_woods/featured.png"><meta property="og:locale" content="cs">
+<meta property="article:published_time" content="2023-01-15T00:00:00+00:00">
+<meta property="article:modified_time" content="2023-01-15T00:00:00+00:00">
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"/cs/project/rusty_woods/"},"headline":"Rusty Woods","image":["/cs/project/rusty_woods/featured.png"],"datePublished":"2023-01-15T00:00:00Z","dateModified":"2023-01-15T00:00:00Z","author":{"@type":"Person","name":"Radim Janoš"},"publisher":{"@type":"Organization","name":"Radim","logo":{"@type":"ImageObject","url":"/images/icon_hub89e7b28a6abff2b4ec084e6c0608a00_13774_192x192_fill_lanczos_center_3.png"}},"description":"2D rpg groundwork with Bevy and LDtk"}</script>
+<title>Rusty Woods | Radim</title>
+</head>
+<body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents>
+<aside class=search-results id=search>
+<div class=container>
+<section class=search-header>
+<div class="row no-gutters justify-content-between mb-3">
+<div class=col-6>
+<h1>Hledání</h1>
+</div>
+<div class="col-6 col-search-close">
+<a class=js-search href=#><i class="fas fa-times-circle text-muted" aria-hidden=true></i></a>
+</div>
+</div>
+<div id=search-box>
+<input name=q id=search-query placeholder=Hledání... autocapitalize=off autocomplete=off autocorrect=off spellcheck=false type=search class=form-control>
+</div>
+</section>
+<section class=section-search-results>
+<div id=search-hits>
+</div>
+</section>
+</div>
+</aside>
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id=navbar-main>
+<div class=container>
+<div class="d-none d-lg-inline-flex">
+<a class=navbar-brand href=/cs>Radim</a>
+</div>
+<button type=button class=navbar-toggler data-toggle=collapse data-target=#navbar-content aria-controls=navbar aria-expanded=false aria-label="Přepnout navigaci">
+<span><i class="fas fa-bars"></i></span>
+</button>
+<div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+<a class=navbar-brand href=/cs>Radim</a>
+</div>
+<div class="navbar-collapse main-menu-item collapse justify-content-end" id=navbar-content>
+<ul class="navbar-nav d-md-inline-flex">
+<li class=nav-item>
+<a class=nav-link href=/cs/#about><span>Profil</span></a>
+</li>
+<li class=nav-item>
+<a class=nav-link href=/cs/#skills_lang><span>Znalosti</span></a>
+</li>
+<li class=nav-item>
+<a class=nav-link href=/cs/#experience><span>Zkušenosti</span></a>
+</li>
+<li class=nav-item>
+<a class=nav-link href=/cs/#projects><span>Projekty</span></a>
+</li>
+<li class=nav-item>
+<a class=nav-link href=/cs/#contact><span>Kontakt</span></a>
+</li>
+</ul>
+</div>
+<ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+<li class=nav-item>
+<a class="nav-link js-search" href=# aria-label=Hledání><i class="fas fa-search" aria-hidden=true></i></a>
+</li>
+<li class="nav-item dropdown theme-dropdown">
+<a href=# class="nav-link js-theme-selector" data-toggle=dropdown aria-haspopup=true>
+<i class="fas fa-palette" aria-hidden=true></i>
+</a>
+<div class=dropdown-menu>
+<a href=# class="dropdown-item js-set-theme-light">
+<span>Light</span>
+</a>
+<a href=# class="dropdown-item js-set-theme-dark">
+<span>Dark</span>
+</a>
+<a href=# class="dropdown-item js-set-theme-auto">
+<span>Automatic</span>
+</a>
+</div>
+</li>
+<li class="nav-item dropdown i18n-dropdown">
+<a href=# class=nav-link data-toggle=dropdown aria-haspopup=true>
+<i class="fas fa-globe mr-1" aria-hidden=true></i></a>
+<div class=dropdown-menu>
+<div class="dropdown-item dropdown-item-active">
+<span>Česky</span>
+</div>
+<a class=dropdown-item href=/project/rusty_woods/>
+<span>English</span>
+</a>
+<a class=dropdown-item href=/ja/project/rusty_woods/>
+<span>日本語</span>
+</a>
+</div>
+</li>
+</ul>
+</div>
+</nav>
+<article class="article article-project">
+<div class="article-container pt-3">
+<h1>Rusty Woods</h1>
+<div class=article-metadata>
+<span class=article-date>
+15 January 2023
+</span>
+</div>
+<div class="btn-links mb-3">
+<a class="btn btn-outline-primary my-1 mr-1" href=/rusty_woods>
+<i class="fas fa-external-link-alt mr-1"></i>
+Running example 🚀️
+</a>
+<a class="btn btn-outline-primary my-1 mr-1" href=https://github.com/janos-r/rusty-woods/ target=_blank rel=noopener>
+<i class="fab fa-github mr-1"></i>
+Project on GitHub
+</a>
+</div>
+</div>
+<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style=max-width:720px;max-height:409px>
+<div style=position:relative>
+<img src=/cs/project/rusty_woods/featured_hu7f9b229957afbecf0cddf755c6520f86_116028_720x0_resize_lanczos_3.png alt class=featured-image>
+</div>
+</div>
+<div class=article-container>
+<div class=article-style>
+<p>A 2D RPG-like groundwork with Bevy and LDtk.</p>
+<h2 id=motivation>Motivation</h2>
+<h3 id=curiosity>Curiosity</h3>
+<p>A year and a half ago I saw a simple google promotion rpg-like game. I was surprised by the curiosity a simple game like that can create. Not only did I enjoy walking around in that small world, thinking how well some of the sprites turned out, but also how much time it had to take, even though it was released just as a weekly free easter-egg almost.</p>
+<p>I started thinking if I could make something like that, if that would be even possible. I never used any other game engine. I knew practically nothing about Unreal, Unity or Godot. But one month before that I made this
+<a href=/cs/project/agent_tag_bevy/>article</a> where I experienced working with Bevy, which is mostly intended as a game engine, though in that article I used is just as an ECS system.</p>
+<p>If my goal was to make just a game, I would probably use Typescript and some recommended library. But this was not really my goal. One of the reasons I like rust, is that it promises strong utility through performance, while being more accessible to newcomers than C++. I enjoy using rust, Bevy was interesting and I became curious how a real game would be even started, so I started looking into it.</p>
+<h2 id=development-process>Development process</h2>
+<h3 id=early-days>Early days</h3>
+<p>I set my goals low, I just wanted to get something going. Under some Bevy
+<a href=https://bevyengine.org/assets/ target=_blank rel=noopener>links</a> I found &ldquo;bevy_retrograde&rdquo;. It looked at that time absolutely perfect to what I wanted to achieve. Basically a starting point to just get going with a simple rpg-like game. I went through the code in the examples of both Bevy and Bevy_retrograde and after many tries and errors, I ended up with with a moving and animating Gabe, the name of the default character provided as part of a few Bevy assets. He even collided with some shapes I created. Bevy retrograde provided some tool for creating these collisions out of shapes. It took less than 100 lines of code, but I was very proud of myself anyway, since the process wasn&rsquo;t easy. I never knew exactly which examples to take guidelines from.</p>
+<p>And there start the problems. This bevy_retrograde was not really the big help as I was hoping. The only extra thing it really provided was this collision tool, but you also don&rsquo;t always want to collide with every single pixel you or your surroundings are made of. Also I had no idea how to create the graphics for levels with just this. I realized if I wanted to continue, it would make little sense to continue building on this retrograde tool. This made me put it on the side for another year.</p>
+<h3 id=new-spirit>New spirit</h3>
+<p>Almost exactly one year later, I noticed Bevy gaining slowly but steadily more and more traction. Before there was Amethyst and some other competitors, but by this time Bevy seamed the clear leader among Game engines in Rust. New versions were coming out and I was tempted to try to port my old code to the new version and have another look at it. That was the second commit.</p>
+<h3 id=a-slow-process>A slow process</h3>
+<p>I could write a small article about every single commit after that. This was by far my biggest Rust project so far. It currently has around 1.000 lines but it feels like much much more, lol. I will mention that planning was and is a big part of such a process. After every single commit, I rewrote my priorities of the features that should be made next and a vision of the tools that could achieve that. I knew that I will eventually have to implement another solution for colliders and some tool to help with graphics. Luckily both
+<a href=https://rapier.rs/ target=_blank rel=noopener>Rapier</a> and
+<a href=https://ldtk.io/ target=_blank rel=noopener>LDtk</a> fit those roles well.</p>
+<h3 id=hurdles>Hurdles</h3>
+<p>Rapier is such a polished tool, I was most worried about colliders, but in th end, his was the least buggy part of my tools. I wrote down the 4 major issues I stumbled upon in my my dev process at the bottom of the <code>README.md</code> they have links to the connected issue trackers and descriptions. I managed to workaround all of them, but the first was probably the most obscure one. Shortly the UI and text elements that you can spawn through Bevy are not perfect yet. This will be hopefully addressed in the future or be superseded by some other solution. The text box for displaying text to the user is probably one of the most lacking parts of my code. But its implementation is already so complicated, I dread touching it again. Thankfully there are new libraries dedicated to gui in bevy coming out like bevy_egui. I wonder what would be a good solution for better text boxes or speech/alert bubbles next to entities.</p>
+<p>The other three issues were connected to
+<a href=https://github.com/Trouv/bevy_ecs_ldtk target=_blank rel=noopener>bevy_ecs_ldtk</a> which is the library that connects the LDtk editor to Bevy. Among the other libraries, this is probably the weakest link, but when using LDtk with Bevy, this library seams like the by far best option. It is maintained by one dedicated and awesome guy, but it&rsquo;s just one guy. I submitted a few PRs and Issues, but LDtk is made by a professional
+<a href=https://deepnight.net/ target=_blank rel=noopener>company</a> or at least appears that way. And Bevy is also a huge project by now. I hope the love for <code>bevy_ecs_ldtk</code> grows and receives more help from the community. Since both Bevy and LDtk are amazing and we also need an amazing bridge.</p>
+<h3 id=why-it-is-amazing>Why it is amazing</h3>
+<p>Bevy and LDtk are amazing, because they share one thing, and that is simplicity for the purpose of empowering future development. Imagine if you had to do the same thing with C++ and Tiled. Of course it can be done and the libraries are I&rsquo;m sure more mature, but it is maybe unnecessarily difficult to pick up. Yes, you could say the same about JavaScript/Python, but unlike those, tools build on Rust have a serious potential to break through to a professionally acknowledged realm. Usability and accessibility, that is the magic combo that lies at the end of this tunnel.</p>
+<h2 id=conclusion>Conclusion</h2>
+<p>I am happy to have brought this to something like a proof of concept level and that it can be smoothly run in wasm on my site. Please feel free to click
+<a href=/cs/project/rusty_woods/>here</a> or the link on top of the page. After it loads, just click once into the middle of the canvas so it focuses, and after you can move the player with wasd or arrows. There is no other input currently.</p>
+<p>I hope this can motivate anybody to try out some of these tools, or even build upon my own repo. It is free to use! I hope it helps somebody to build something awesome.</p>
+</div>
+<div class=article-tags>
+<a class="badge badge-light" href=/cs/tag/code/>Code</a>
+<a class="badge badge-light" href=/cs/tag/rust/>Rust</a>
+</div>
+<div class="media author-card content-widget-hr">
+<img class="avatar mr-3 avatar-circle" src=/cs/author/radim-janos/avatar_hu64d921ec107bff3d62a3fb75542fa15a_49188_270x270_fill_q90_lanczos_center.jpg alt="Radim Janoš">
+<div class=media-body>
+<h5 class=card-title><a href=/>Radim Janoš</a></h5>
+<h6 class=card-subtitle>Programátor</h6>
+<ul class=network-icon aria-hidden=true>
+<li>
+<a href=/cs/#contact>
+<i class="fas fa-envelope"></i>
+</a>
+</li>
+<li>
+<a href=https://github.com/janos-r target=_blank rel=noopener>
+<i class="fab fa-github"></i>
+</a>
+</li>
+<li>
+<a href=/files/CV_Radim_Janos-%28en%29.pdf>
+<i class="ai ai-cv"></i>
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="article-widget content-widget-hr">
+<h3>Související</h3>
+<ul>
+<li><a href=/cs/project/agent_tag_bevy/>Game engine</a></li>
+<li><a href=/cs/project/agent_tag/>Agent based simulation modeling</a></li>
+<li><a href=/cs/project/yewban/>Yewban</a></li>
+<li><a href=/cs/project/exercism/>Exercism.io</a></li>
+<li><a href=/cs/project/graphql_rust/>API in Rust</a></li>
+</ul>
+</div>
+<div class="project-related-pages content-widget-hr">
+</div>
+</div>
+</article>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js integrity="sha512-7t8APmYpzEsZP7CYoA7RfMPV9Bb+PJHa9x2WiUnDXZx3XHveuyWUtvNOexhkierl5flZ3tr92dP1mMS+SGlD+A==" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/r.min.js></script>
+<script>const code_highlighting=!0</script>
+<script>const isSiteThemeDark=!1</script>
+<script>const search_config={indexURI:"/cs/index.json",minLength:1,threshold:.3},i18n={no_results:"Nic nelalezeno",placeholder:"Hledání...",results:"nalezených výsledků"},content_type={post:"Aktuality",project:"Projekty",publication:"Publikace",talk:"Přednášky",slides:"Slides"}</script>
+<script id=search-hit-fuse-template type=text/x-template>
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin=anonymous></script>
+<script src=/js/academic.min.f6ecf7692215f2bc4850b72c8176bfa2.js></script>
+<div class=container>
+<footer class=site-footer>
+<p class=powered-by>
+<span class=float-right aria-hidden=true>
+<a href=# class=back-to-top>
+<span class=button_icon>
+<i class="fas fa-chevron-up fa-2x"></i>
+</span>
+</a>
+</span>
+</p>
+</footer>
+</div>
+<div id=modal class="modal fade" role=dialog>
+<div class=modal-dialog>
+<div class=modal-content>
+<div class=modal-header>
+<h5 class=modal-title>Citace</h5>
+<button type=button class=close data-dismiss=modal aria-label=Close>
+<span aria-hidden=true>&#215;</span>
+</button>
+</div>
+<div class=modal-body>
+<pre><code class="tex hljs"></code></pre>
+</div>
+<div class=modal-footer>
+<a class="btn btn-outline-primary my-1 js-copy-cite" href=# target=_blank>
+<i class="fas fa-copy"></i> Kopírovat
+</a>
+<a class="btn btn-outline-primary my-1 js-download-cite" href=# target=_blank>
+<i class="fas fa-download"></i> Stáhnout
+</a>
+<div id=modal-error></div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

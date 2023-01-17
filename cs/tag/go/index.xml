@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Go | Radim</title><link>/cs/tag/go/</link><atom:link href="/cs/tag/go/index.xml" rel="self" type="application/rss+xml"/><description>Go</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>cs</language><lastBuildDate>Sat, 23 Jan 2021 00:00:00 +0000</lastBuildDate><image><url>/images/icon_hub89e7b28a6abff2b4ec084e6c0608a00_13774_512x512_fill_lanczos_center_2.png</url><title>Go</title><link>/cs/tag/go/</link></image><item><title>Yewban</title><link>/cs/project/yewban/</link><pubDate>Sat, 23 Jan 2021 00:00:00 +0000</pubDate><guid>/cs/project/yewban/</guid><description>&lt;h2 id="motivation">Motivation&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Go | Radim</title><link>/cs/tag/go/</link><atom:link href="/cs/tag/go/index.xml" rel="self" type="application/rss+xml"/><description>Go</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>cs</language><lastBuildDate>Sat, 23 Jan 2021 00:00:00 +0000</lastBuildDate><image><url>/images/icon_hub89e7b28a6abff2b4ec084e6c0608a00_13774_512x512_fill_lanczos_center_3.png</url><title>Go</title><link>/cs/tag/go/</link></image><item><title>Yewban</title><link>/cs/project/yewban/</link><pubDate>Sat, 23 Jan 2021 00:00:00 +0000</pubDate><guid>/cs/project/yewban/</guid><description>&lt;h2 id="motivation">Motivation&lt;/h2>
 &lt;h4 id="searching-for-a-frontend-experience">Searching for a frontend experience&lt;/h4>
 &lt;p>During my day job I work with APIs, databases and general backend code. Last time I did anything frontend related were tutorials and small projects with react around 2018. So I decided to do something frontend UI related and interesting. My tendency was to use rust and my first idea was to make a regular desktop app with gtk3. I thought that making a board game grid would be a good and simple enough idea. I was fiddling around with GTK3 in Glade, which is a great tool, and was learning about basic graphical setups with Cairo. But it was all still too new to me and I gave up on making a board with Cairo. But regular desktop apps with GTK3 are a great choice for Rust too it seams. I might do something with that in the future.&lt;/p>
 &lt;p>A few days later I stumbled upon a nice new
@@ -78,12 +78,13 @@ The folder &lt;code>/static&lt;/code> and its contents are copied via trunk auto
 &lt;p>Make a new optimized build.&lt;/p>
 &lt;pre>&lt;code>trunk build --release
 &lt;/code>&lt;/pre>
+&lt;p>If you want to run the html directly, for example on a different system, just launching &lt;code>index.html&lt;/code> from &lt;code>./dist/&lt;/code> won&amp;rsquo;t work! If you need to use the &lt;code>index.html&lt;/code> directly (for example in a link on your web), you have to change the 3 addresses for the .css, .js and .wasm inside. That is what I did on this web. Otherwise by default it is searching for them in root.&lt;/p>
 &lt;/li>
 &lt;/ul>
-&lt;p>If you want to run the html directly, for example on a different system, just launching &lt;code>index.html&lt;/code> from &lt;code>./dist/&lt;/code> won&amp;rsquo;t work! If you need to use the &lt;code>index.html&lt;/code> directly (for example in a link on your web), you have to change the 3 addresses for the .css, .js and .wasm inside. That is what I did on this web. Otherwise by default it is searching for them in root.&lt;/p>
 &lt;p>But locally the simplest way is to serve the folder:&lt;/p>
 &lt;ul>
-&lt;li>take the content of &lt;code>./dist/&lt;/code> and serve it with any of these:
+&lt;li>
+&lt;p>take the content of &lt;code>./dist/&lt;/code> and serve it with any of these:&lt;/p>
 &lt;ul>
 &lt;li>
 &lt;p>rust tool:&lt;/p>

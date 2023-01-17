@@ -1,12 +1,163 @@
-<!doctype html><html lang=ja><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=generator content="Source Themes Academic 4.8.0"><meta name=author content="ラディム　ヤノシュ Radim Janoš"><meta name=description content="This is a refactor of my previous challenge into the ECS system of Bevy."><link rel=alternate hreflang=cs href=/cs/project/agent_tag_bevy/><link rel=alternate hreflang=en href=/project/agent_tag_bevy/><link rel=alternate hreflang=ja href=/ja/project/agent_tag_bevy/><meta name=theme-color content="#2962ff"><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin=anonymous><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin=anonymous><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin=anonymous><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/github.min.css crossorigin=anonymous title=hl-light><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/dracula.min.css crossorigin=anonymous title=hl-dark disabled><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin=anonymous><script src=https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin=anonymous async></script><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap"><link rel=stylesheet href=/css/academic.css><link rel=manifest href=/ja/index.webmanifest><link rel=icon type=image/png href=/images/icon_hub89e7b28a6abff2b4ec084e6c0608a00_13774_32x32_fill_lanczos_center_2.png><link rel=apple-touch-icon type=image/png href=/images/icon_hub89e7b28a6abff2b4ec084e6c0608a00_13774_192x192_fill_lanczos_center_2.png><link rel=canonical href=/ja/project/agent_tag_bevy/><meta property="twitter:card" content="summary_large_image"><meta property="og:site_name" content="Radim"><meta property="og:url" content="/ja/project/agent_tag_bevy/"><meta property="og:title" content="Game engine | Radim"><meta property="og:description" content="This is a refactor of my previous challenge into the ECS system of Bevy."><meta property="og:image" content="/ja/project/agent_tag_bevy/featured.png"><meta property="twitter:image" content="/ja/project/agent_tag_bevy/featured.png"><meta property="og:locale" content="ja"><meta property="article:published_time" content="2021-08-24T00:00:00+00:00"><meta property="article:modified_time" content="2021-08-24T00:00:00+00:00"><script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"/ja/project/agent_tag_bevy/"},"headline":"Game engine","image":["/ja/project/agent_tag_bevy/featured.png"],"datePublished":"2021-08-24T00:00:00Z","dateModified":"2021-08-24T00:00:00Z","author":{"@type":"Person","name":"ラディム　ヤノシュ Radim Janoš"},"publisher":{"@type":"Organization","name":"Radim","logo":{"@type":"ImageObject","url":"/images/icon_hub89e7b28a6abff2b4ec084e6c0608a00_13774_192x192_fill_lanczos_center_2.png"}},"description":"This is a refactor of my previous challenge into the ECS system of Bevy."}</script><title>Game engine | Radim</title></head><body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents><aside class=search-results id=search><div class=container><section class=search-header><div class="row no-gutters justify-content-between mb-3"><div class=col-6><h1>Search</h1></div><div class="col-6 col-search-close"><a class=js-search href=#><i class="fas fa-times-circle text-muted" aria-hidden=true></i></a></div></div><div id=search-box><input name=q id=search-query placeholder=検索... autocapitalize=off autocomplete=off autocorrect=off spellcheck=false type=search class=form-control></div></section><section class=section-search-results><div id=search-hits></div></section></div></aside><nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id=navbar-main><div class=container><div class="d-none d-lg-inline-flex"><a class=navbar-brand href=/ja>Radim</a></div><button type=button class=navbar-toggler data-toggle=collapse data-target=#navbar-content aria-controls=navbar aria-expanded=false aria-label=ナビゲーションの切り替え>
-<span><i class="fas fa-bars"></i></span></button><div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none"><a class=navbar-brand href=/ja>Radim</a></div><div class="navbar-collapse main-menu-item collapse justify-content-end" id=navbar-content><ul class="navbar-nav d-md-inline-flex"><li class=nav-item><a class=nav-link href=/ja/#about><span>私自身</span></a></li><li class=nav-item><a class=nav-link href=/ja/#skills_lang><span>技術</span></a></li><li class=nav-item><a class=nav-link href=/ja/#experience><span>経験</span></a></li><li class=nav-item><a class=nav-link href=/ja/#projects><span>計画</span></a></li><li class=nav-item><a class=nav-link href=/ja/#contact><span>連絡先</span></a></li></ul></div><ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2"><li class=nav-item><a class="nav-link js-search" href=# aria-label=Search><i class="fas fa-search" aria-hidden=true></i></a></li><li class="nav-item dropdown theme-dropdown"><a href=# class="nav-link js-theme-selector" data-toggle=dropdown aria-haspopup=true><i class="fas fa-palette" aria-hidden=true></i></a><div class=dropdown-menu><a href=# class="dropdown-item js-set-theme-light"><span>Light</span></a>
-<a href=# class="dropdown-item js-set-theme-dark"><span>Dark</span></a>
-<a href=# class="dropdown-item js-set-theme-auto"><span>Automatic</span></a></div></li><li class="nav-item dropdown i18n-dropdown"><a href=# class=nav-link data-toggle=dropdown aria-haspopup=true><i class="fas fa-globe mr-1" aria-hidden=true></i></a><div class=dropdown-menu><div class="dropdown-item dropdown-item-active"><span>日本語</span></div><a class=dropdown-item href=/cs/project/agent_tag_bevy/><span>Česky</span></a>
-<a class=dropdown-item href=/project/agent_tag_bevy/><span>English</span></a></div></li></ul></div></nav><article class="article article-project"><div class="article-container pt-3"><h1>Game engine</h1><div class=article-metadata><span class=article-date>24 August 2021</span></div><div class="btn-links mb-3"><a class="btn btn-outline-primary my-1 mr-1" href=https://github.com/janos-r/agent-tag-bevy target=_blank rel=noopener><i class="fab fa-github mr-1"></i>Project on GitHub</a></div></div><div class="article-header article-container featured-image-wrapper mt-4 mb-4" style=max-width:507px;max-height:279px><div style=position:relative><img src=/ja/project/agent_tag_bevy/featured.png alt class=featured-image></div></div><div class=article-container><div class=article-style><h1 id=bevy-experiment>Bevy experiment</h1><p>This is a refactor of my previous challenge
+<!doctype html><html lang=ja>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=generator content="Source Themes Academic 4.8.0">
+<meta name=author content="ラディム　ヤノシュ Radim Janoš">
+<meta name=description content="This is a refactor of my previous challenge into the ECS system of Bevy.">
+<link rel=alternate hreflang=cs href=/cs/project/agent_tag_bevy/>
+<link rel=alternate hreflang=en href=/project/agent_tag_bevy/>
+<link rel=alternate hreflang=ja href=/ja/project/agent_tag_bevy/>
+<meta name=theme-color content="#2962ff">
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin=anonymous>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin=anonymous>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin=anonymous>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/github.min.css crossorigin=anonymous title=hl-light>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/dracula.min.css crossorigin=anonymous title=hl-dark disabled>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin=anonymous>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin=anonymous async></script>
+<link rel=stylesheet href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+<link rel=stylesheet href=/css/academic.css>
+<link rel=manifest href=/ja/index.webmanifest>
+<link rel=icon type=image/png href=/images/icon_hub89e7b28a6abff2b4ec084e6c0608a00_13774_32x32_fill_lanczos_center_3.png>
+<link rel=apple-touch-icon type=image/png href=/images/icon_hub89e7b28a6abff2b4ec084e6c0608a00_13774_192x192_fill_lanczos_center_3.png>
+<link rel=canonical href=/ja/project/agent_tag_bevy/>
+<meta property="twitter:card" content="summary_large_image">
+<meta property="og:site_name" content="Radim">
+<meta property="og:url" content="/ja/project/agent_tag_bevy/">
+<meta property="og:title" content="Game engine | Radim">
+<meta property="og:description" content="This is a refactor of my previous challenge into the ECS system of Bevy."><meta property="og:image" content="/ja/project/agent_tag_bevy/featured.png">
+<meta property="twitter:image" content="/ja/project/agent_tag_bevy/featured.png"><meta property="og:locale" content="ja">
+<meta property="article:published_time" content="2021-08-24T00:00:00+00:00">
+<meta property="article:modified_time" content="2021-08-24T00:00:00+00:00">
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"/ja/project/agent_tag_bevy/"},"headline":"Game engine","image":["/ja/project/agent_tag_bevy/featured.png"],"datePublished":"2021-08-24T00:00:00Z","dateModified":"2021-08-24T00:00:00Z","author":{"@type":"Person","name":"ラディム　ヤノシュ Radim Janoš"},"publisher":{"@type":"Organization","name":"Radim","logo":{"@type":"ImageObject","url":"/images/icon_hub89e7b28a6abff2b4ec084e6c0608a00_13774_192x192_fill_lanczos_center_3.png"}},"description":"This is a refactor of my previous challenge into the ECS system of Bevy."}</script>
+<title>Game engine | Radim</title>
+</head>
+<body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents>
+<aside class=search-results id=search>
+<div class=container>
+<section class=search-header>
+<div class="row no-gutters justify-content-between mb-3">
+<div class=col-6>
+<h1>Search</h1>
+</div>
+<div class="col-6 col-search-close">
+<a class=js-search href=#><i class="fas fa-times-circle text-muted" aria-hidden=true></i></a>
+</div>
+</div>
+<div id=search-box>
+<input name=q id=search-query placeholder=検索... autocapitalize=off autocomplete=off autocorrect=off spellcheck=false type=search class=form-control>
+</div>
+</section>
+<section class=section-search-results>
+<div id=search-hits>
+</div>
+</section>
+</div>
+</aside>
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id=navbar-main>
+<div class=container>
+<div class="d-none d-lg-inline-flex">
+<a class=navbar-brand href=/ja>Radim</a>
+</div>
+<button type=button class=navbar-toggler data-toggle=collapse data-target=#navbar-content aria-controls=navbar aria-expanded=false aria-label=ナビゲーションの切り替え>
+<span><i class="fas fa-bars"></i></span>
+</button>
+<div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+<a class=navbar-brand href=/ja>Radim</a>
+</div>
+<div class="navbar-collapse main-menu-item collapse justify-content-end" id=navbar-content>
+<ul class="navbar-nav d-md-inline-flex">
+<li class=nav-item>
+<a class=nav-link href=/ja/#about><span>私自身</span></a>
+</li>
+<li class=nav-item>
+<a class=nav-link href=/ja/#skills_lang><span>技術</span></a>
+</li>
+<li class=nav-item>
+<a class=nav-link href=/ja/#experience><span>経験</span></a>
+</li>
+<li class=nav-item>
+<a class=nav-link href=/ja/#projects><span>計画</span></a>
+</li>
+<li class=nav-item>
+<a class=nav-link href=/ja/#contact><span>連絡先</span></a>
+</li>
+</ul>
+</div>
+<ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+<li class=nav-item>
+<a class="nav-link js-search" href=# aria-label=Search><i class="fas fa-search" aria-hidden=true></i></a>
+</li>
+<li class="nav-item dropdown theme-dropdown">
+<a href=# class="nav-link js-theme-selector" data-toggle=dropdown aria-haspopup=true>
+<i class="fas fa-palette" aria-hidden=true></i>
+</a>
+<div class=dropdown-menu>
+<a href=# class="dropdown-item js-set-theme-light">
+<span>Light</span>
+</a>
+<a href=# class="dropdown-item js-set-theme-dark">
+<span>Dark</span>
+</a>
+<a href=# class="dropdown-item js-set-theme-auto">
+<span>Automatic</span>
+</a>
+</div>
+</li>
+<li class="nav-item dropdown i18n-dropdown">
+<a href=# class=nav-link data-toggle=dropdown aria-haspopup=true>
+<i class="fas fa-globe mr-1" aria-hidden=true></i></a>
+<div class=dropdown-menu>
+<div class="dropdown-item dropdown-item-active">
+<span>日本語</span>
+</div>
+<a class=dropdown-item href=/cs/project/agent_tag_bevy/>
+<span>Česky</span>
+</a>
+<a class=dropdown-item href=/project/agent_tag_bevy/>
+<span>English</span>
+</a>
+</div>
+</li>
+</ul>
+</div>
+</nav>
+<article class="article article-project">
+<div class="article-container pt-3">
+<h1>Game engine</h1>
+<div class=article-metadata>
+<span class=article-date>
+24 August 2021
+</span>
+</div>
+<div class="btn-links mb-3">
+<a class="btn btn-outline-primary my-1 mr-1" href=https://github.com/janos-r/agent-tag-bevy target=_blank rel=noopener>
+<i class="fab fa-github mr-1"></i>
+Project on GitHub
+</a>
+</div>
+</div>
+<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style=max-width:507px;max-height:279px>
+<div style=position:relative>
+<img src=/ja/project/agent_tag_bevy/featured.png alt class=featured-image>
+</div>
+</div>
+<div class=article-container>
+<div class=article-style>
+<h1 id=bevy-experiment>Bevy experiment</h1>
+<p>This is a refactor of my previous challenge
 <a href=/ja/project/agent_tag/>agent-tag</a> into the ECS system of
-<a href=https://bevyengine.org/ target=_blank rel=noopener>Bevy</a>.</p><h2 id=backstory>Backstory</h2><p>6 months ago, I accepted a challenge to make a independent agent system in Rust. This sounded very interesting to me and you can read more about it on it&rsquo;s own project page
-<a href=/ja/project/agent_tag/>agent-tag</a>. I got it working, which was nice, but there was still this lingering thought that left me unsatisfied.</p><h2 id=the-issue>The issue</h2><p>I had issues with very basic principles while using pointers. I have a <code>Vec&lt;Agents></code>, but every single <code>Agent</code> wats to have a link to the parent <code>Vec</code> also. I made it work with weak links. Luckily I found this excellent page in the
-<a href=https://doc.rust-lang.org/stable/book/ch15-06-reference-cycles.html#adding-a-reference-from-a-child-to-its-parent target=_blank rel=noopener>Rust Book</a> that perfectly describes this issue. You get a stack overflow, a reference cycle, if a child references it&rsquo;s own parent with just a Rc. Thanks to the Weak link, that is blind until it&rsquo;s upgraded, you get the structure working. But if you than want to use it for mutation, you still can&rsquo;t use a already used reference, so you have to hack around it like I did with cloning the whole state and using only its links that way. This can be seen in the example from my old code bellow with my original comments that I left there for future me.</p><p>This later version was made with <code>Arc&lt;Mutex&lt;World>></code> for the parent and you can just clone it to the Agents. But the proper single-thread code was with <code>Rc&lt;RefCell&lt;World>></code> for the parent and through <code>Rc::downgrade(world)</code> you store it in the agents as <code>Weak&lt;RefCell&lt;World>></code>. That&rsquo;s why in this example, you access the links with just <code>.lock()</code>. In the single-thread case you have to use <code>.borrow()</code> and <code>.borrow_mut()</code> when working from the parent (World). And prepend it with <code>.upgrade()</code> when working from inside the child (Agent). It&rsquo;s ironic that the single-thread syntax is a little more complicated, but it is good to know both ways.</p><pre><code class=language-rust>// regret: this still feels like a hack to me
+<a href=https://bevyengine.org/ target=_blank rel=noopener>Bevy</a>.</p>
+<h2 id=backstory>Backstory</h2>
+<p>6 months ago, I accepted a challenge to make a independent agent system in Rust. This sounded very interesting to me and you can read more about it on it&rsquo;s own project page
+<a href=/ja/project/agent_tag/>agent-tag</a>. I got it working, which was nice, but there was still this lingering thought that left me unsatisfied.</p>
+<h2 id=the-issue>The issue</h2>
+<p>I had issues with very basic principles while using pointers. I have a <code>Vec&lt;Agents></code>, but every single <code>Agent</code> wats to have a link to the parent <code>Vec</code> also. I made it work with weak links. Luckily I found this excellent page in the
+<a href=https://doc.rust-lang.org/stable/book/ch15-06-reference-cycles.html#adding-a-reference-from-a-child-to-its-parent target=_blank rel=noopener>Rust Book</a> that perfectly describes this issue. You get a stack overflow, a reference cycle, if a child references it&rsquo;s own parent with just a Rc. Thanks to the Weak link, that is blind until it&rsquo;s upgraded, you get the structure working. But if you than want to use it for mutation, you still can&rsquo;t use a already used reference, so you have to hack around it like I did with cloning the whole state and using only its links that way. This can be seen in the example from my old code bellow with my original comments that I left there for future me.</p>
+<p>This later version was made with <code>Arc&lt;Mutex&lt;World>></code> for the parent and you can just clone it to the Agents. But the proper single-thread code was with <code>Rc&lt;RefCell&lt;World>></code> for the parent and through <code>Rc::downgrade(world)</code> you store it in the agents as <code>Weak&lt;RefCell&lt;World>></code>. That&rsquo;s why in this example, you access the links with just <code>.lock()</code>. In the single-thread case you have to use <code>.borrow()</code> and <code>.borrow_mut()</code> when working from the parent (World). And prepend it with <code>.upgrade()</code> when working from inside the child (Agent). It&rsquo;s ironic that the single-thread syntax is a little more complicated, but it is good to know both ways.</p>
+<pre><code class=language-rust>// regret: this still feels like a hack to me
 // tag agents
 let agents = world.lock().unwrap().agents.clone();
 agents
@@ -28,37 +179,201 @@ pub fn tag(&amp;self, my_index: usize) {
         }
     };
 }
-</code></pre><p>So in the end the code works. I even attempted to make this multi-threaded version with Rayon, but without managing to get a performance improvement. Multi-thread is still difficult to do right.</p><h2 id=a-ray-of-light>A ray of light</h2><p>Half a year passed and I was watching just another Rust YouTube video, not even a new one. But suddenly the lady started talking about exactly my issue above. Suddenly I felt like not a crazy person, but that this is possibly a common issue for many people. Here is the exact timestamp where she seams to talk about exactly this ->
-<a href="https://youtu.be/aKLntZcp27M?t=1205" target=_blank rel=noopener>video</a>.</p><p>Or this embedded should also open at timestamp:</p><div style=position:relative;padding-bottom:56.25%;height:0;overflow:hidden><iframe src="https://www.youtube.com/embed/aKLntZcp27M?start=1205" style=position:absolute;top:0;left:0;width:100%;height:100%;border:0 allowfullscreen title="YouTube Video"></iframe></div><p> <br>She continues to talk about this being an inherent problem of OOP ways of thinking about code. How generational indexes are addressing this issue and how they are used especially in ECS systems and game development. Things finally started making sense after all those months.</p><h2 id=bevy>Bevy</h2><p>This prompted me to look up Bevy. I saw it shortly once before when I was looking for ways to create a go-board for my &ldquo;yewban&rdquo; project (css was enough for that lol). It was time for a second look at Bevy. It is only a year old, but already looks incredibly promising. I also love some of its core ideas. Obviously it&rsquo;s free software, but also that they don&rsquo;t use any fancy macros, so that using it doesn&rsquo;t feel like black magic. And also that it seams very easy and modular to use &ldquo;plugins&rdquo;, making it probably easy for other developers to extend the core library.</p><h2 id=observations-during-the-refactor>Observations during the refactor</h2><p>This is my first time using Bevy, so all my negative comments are probably just lack of knowledge, but the purpose of of this article is to convey my experience and feelings with it.</p><ul><li>One of the drawbacks of using an ECS system is the lack of indexing your own <code>Vec</code> of entities. In my old code, I could write:</li></ul><pre><code class=language-rust>...
+</code></pre>
+<p>So in the end the code works. I even attempted to make this multi-threaded version with Rayon, but without managing to get a performance improvement. Multi-thread is still difficult to do right.</p>
+<h2 id=a-ray-of-light>A ray of light</h2>
+<p>Half a year passed and I was watching just another Rust YouTube video, not even a new one. But suddenly the lady started talking about exactly my issue above. Suddenly I felt like not a crazy person, but that this is possibly a common issue for many people. Here is the exact timestamp where she seams to talk about exactly this ->
+<a href="https://youtu.be/aKLntZcp27M?t=1205" target=_blank rel=noopener>video</a>.</p>
+<p>Or this embedded should also open at timestamp:</p>
+<div style=position:relative;padding-bottom:56.25%;height:0;overflow:hidden>
+<iframe src="https://www.youtube.com/embed/aKLntZcp27M?start=1205" style=position:absolute;top:0;left:0;width:100%;height:100%;border:0 allowfullscreen title="YouTube Video"></iframe>
+</div>
+<p> <br>
+She continues to talk about this being an inherent problem of OOP ways of thinking about code. How generational indexes are addressing this issue and how they are used especially in ECS systems and game development. Things finally started making sense after all those months.</p>
+<h2 id=bevy>Bevy</h2>
+<p>This prompted me to look up Bevy. I saw it shortly once before when I was looking for ways to create a go-board for my &ldquo;yewban&rdquo; project (css was enough for that lol). It was time for a second look at Bevy. It is only a year old, but already looks incredibly promising. I also love some of its core ideas. Obviously it&rsquo;s free software, but also that they don&rsquo;t use any fancy macros, so that using it doesn&rsquo;t feel like black magic. And also that it seams very easy and modular to use &ldquo;plugins&rdquo;, making it probably easy for other developers to extend the core library.</p>
+<h2 id=observations-during-the-refactor>Observations during the refactor</h2>
+<p>This is my first time using Bevy, so all my negative comments are probably just lack of knowledge, but the purpose of of this article is to convey my experience and feelings with it.</p>
+<ul>
+<li>One of the drawbacks of using an ECS system is the lack of indexing your own <code>Vec</code> of entities. In my old code, I could write:</li>
+</ul>
+<pre><code class=language-rust>...
 .agents
 .iter()
 .position(|agent| {...})
-</code></pre><p><a href=https://doc.rust-lang.org/stable/std/iter/trait.Iterator.html#method.position target=_blank rel=noopener><code>.position()</code></a> is Rusts' own tool to give you a <code>Option&lt;usize></code> with the index where it maybe found something. In bevy, if I didn&rsquo;t miss something, if I want to check the first matching entity and continue to use it for other tings, I had to do this with:</p><pre><code class=language-rust>let mut origin: Option&lt;Entity&gt; = None;
+</code></pre>
+<p>
+<a href=https://doc.rust-lang.org/stable/std/iter/trait.Iterator.html#method.position target=_blank rel=noopener><code>.position()</code></a> is Rusts' own tool to give you a <code>Option&lt;usize></code> with the index where it maybe found something. In bevy, if I didn&rsquo;t miss something, if I want to check the first matching entity and continue to use it for other tings, I had to do this with:</p>
+<pre><code class=language-rust>let mut origin: Option&lt;Entity&gt; = None;
 for (status, entity) in query.iter_mut() {
     if *status == Status::Tagged {
         origin = Some(entity);
         break;
     };
 }
-</code></pre><p>It&rsquo;s not too bothersome, but it doesn&rsquo;t feel elegant.</p><p>Also connected to this is a small disappointment.
-<a href=https://bevyengine.org/news/bevy-0-5/#uber-fast-for-each-query-iterators target=_blank rel=noopener>Recently</a> they claimed that the new <code>.for_each()</code> should be preferred to .iter(). Unfortunately if you are searching for the first occurrence of something, you want to break soon to be more efficient. But you also can&rsquo;t use the more efficient <code>.for_each()</code> with break. Not horrible, but a little unfortunate.</p><ul><li>I know that Bevy and game engines in general are made for multi-threaded work. Unfortunately my exercise had very strict turns and so I had to write something like:</li></ul><pre><code class=language-rust>.add_system(update_grid.system().label(UPDATE_GRID))
+</code></pre>
+<p>It&rsquo;s not too bothersome, but it doesn&rsquo;t feel elegant.</p>
+<p>Also connected to this is a small disappointment.
+<a href=https://bevyengine.org/news/bevy-0-5/#uber-fast-for-each-query-iterators target=_blank rel=noopener>Recently</a> they claimed that the new <code>.for_each()</code> should be preferred to .iter(). Unfortunately if you are searching for the first occurrence of something, you want to break soon to be more efficient. But you also can&rsquo;t use the more efficient <code>.for_each()</code> with break. Not horrible, but a little unfortunate.</p>
+<ul>
+<li>I know that Bevy and game engines in general are made for multi-threaded work. Unfortunately my exercise had very strict turns and so I had to write something like:</li>
+</ul>
+<pre><code class=language-rust>.add_system(update_grid.system().label(UPDATE_GRID))
 .add_system(print_grid.system().label(PRINT_GRID).after(UPDATE_GRID))
 .add_system(move_agents.system().label(MOVE_AGENTS).after(PRINT_GRID))
 .add_system(tag.system().label(TAG).after(MOVE_AGENTS))
 .add_system(sleep2s.system().label(SLEEP).after(TAG))
 .add_system(exit.system().label(EXIT).after(SLEEP))
-</code></pre><p>Any time you want to switch around some step, think about all the editing. Again, it&rsquo;s not a dealbreaker, but something doesn&rsquo;t feel right. I tried using a single-threaded custom stage, but that also doesn&rsquo;t guarantee execution order. You have to be specific with the order by using labels, also opening you up to contradictions if messed up.</p><ul><li>The query syntax works really well. Although you have to get used to the weird feeling that all the arguments used in the <code>.system()</code> functions are written without <code>&</code>. So you take a:</li></ul><pre><code class=language-rust>fn tag(
+</code></pre>
+<p>Any time you want to switch around some step, think about all the editing. Again, it&rsquo;s not a dealbreaker, but something doesn&rsquo;t feel right. I tried using a single-threaded custom stage, but that also doesn&rsquo;t guarantee execution order. You have to be specific with the order by using labels, also opening you up to contradictions if messed up.</p>
+<ul>
+<li>The query syntax works really well. Although you have to get used to the weird feeling that all the arguments used in the <code>.system()</code> functions are written without <code>&</code>. So you take a:</li>
+</ul>
+<pre><code class=language-rust>fn tag(
     mut agents: Query&lt;(&amp;mut Status, &amp;Position, Entity), With&lt;Agent&gt;&gt;,
     mut tag_count: ResMut&lt;TagCount&gt;,
     grid_size: Res&lt;InputSize&gt;,
     announce_tag: Res&lt;InputAnnounceTag&gt;,
 ) {...
-</code></pre><p>But you are not really taking ownership of anything. Because you are not explicitly returning any of them at the end of the function. In a normal function this would be resource acquisition and drop at the end of the function scope. Also changing the tag_count works just like you would expect from a borrowed mut. I don&rsquo;t mind it, but it is something I did squint at for a little bit, doubting if I remember the ownership rules correctly. I am still not exactly sure how or why this works, but I hope I&rsquo;m not writing nonsense here, lol.</p><h2 id=conclusion>Conclusion</h2><p>I didn&rsquo;t have any borrow-checker or syntax fighting issues with bevy. I found it very intuitive and it is amazing that you can relatively easily read its source code. It is not using strictly just a component entity-map with generational-indexes, but something called Archetypes. I got a little lost in the internal logic there, but suffice it to say that it just works.</p><p>You simply write systems with queries that have everything you need and if you don&rsquo;t have to be tick/frame-exact, you can just throw it into the app builder and you get a perfectly working multithreaded system that takes care of everything.</p><h2 id=benchmark>Benchmark</h2><p>Unfortunately my use-case was just a very simple single-threaded one. So when I compared the performance to my old suboptimal code without any shell printing.</p><p>10k ticks, default 40 entities on a 25x25 grid:</p><pre><code class=language-sh>time cargo run --release -- -t0 -m10000 -d
-</code></pre><table><thead><tr><th>Bevy</th><th>Old code</th></tr></thead><tbody><tr><td>~700 ms</td><td>&lt; 100 ms</td></tr></tbody></table><p>The old suboptimal code is still almost 10x quicker. Even with the Arc instead of Rc, while cloning the whole state every time. So that was a little underwhelming. On the other hand, Bevy is a full-fledged ECS system with many components that make it possible to raise a real large scale project. My tiny example with just 40 entities on a small grid&mldr; maybe it should not be surprising it is 10x faster on a small code base and a small sample.</p><hr><p>I tried again with a slightly bigger numbers. Still 10k ticks, but 500 entities and 50x50 grid:</p><pre><code class=language-sh>time cargo run --release -- -s50 -a500 -t0 -m10000 -d
-</code></pre><table><thead><tr><th>Bevy</th><th>Old code</th></tr></thead><tbody><tr><td>~880 ms</td><td>~240 ms</td></tr></tbody></table><p>So while the suboptimal code more than doubled, Bevy increased only about +25%.</p><hr><p>10x again&mldr; size 200 and 5k entities.</p><pre><code class=language-sh>time cargo run --release -- -s200 -a5000 -t0 -m10000 -d
-</code></pre><table><thead><tr><th>Bevy</th><th>Old code</th></tr></thead><tbody><tr><td>2.15 s</td><td>1.62 s</td></tr></tbody></table><p>Repeating this command gives in both crates surprisingly consistent results. Even when changing the number of ticks, the suboptimal code is around 75% that of Bevy. So as the world grows, the times get closer. That is not surprising.</p><hr><p>With 20k entities, Bevy is finally faster.</p><pre><code class=language-sh>time cargo run --release -- -s200 -a20000 -t0 -m10000 -d
-</code></pre><table><thead><tr><th>Bevy</th><th>Old code</th></tr></thead><tbody><tr><td>5.85 s</td><td>6.12 s</td></tr></tbody></table><p>But this is all just for fun! This is obviously not indicative of any real-game use-case. Firstly this is all single-threaded. And secondly my old code is just a pice of an experiment and not suited for any other use. Also there are probably many optimizations I could have used in Bevy that I missed. As I said, first try.</p><h2 id=ps>PS</h2><p>Bevy is amazing and inspiring! Especially considering it is only one year old. I might try to learn some of the graphics plugins it provides and try to learn some more in the future.</p></div><div class=article-tags><a class="badge badge-light" href=/ja/tag/code/>Code</a>
-<a class="badge badge-light" href=/ja/tag/rust/>Rust</a></div><div class="media author-card content-widget-hr"><img class="avatar mr-3 avatar-circle" src=/ja/author/%E3%83%A9%E3%83%86%E3%82%A3%E3%83%A0-%E3%83%A4%E3%83%8E%E3%82%B7%E3%83%A5-radim-janos/avatar_hu64d921ec107bff3d62a3fb75542fa15a_49188_270x270_fill_q90_lanczos_center.jpg alt="ラディム　ヤノシュ Radim Janoš"><div class=media-body><h5 class=card-title><a href=/>ラディム　ヤノシュ Radim Janoš</a></h5><h6 class=card-subtitle>デベロッパー</h6><ul class=network-icon aria-hidden=true><li><a href=/ja/#contact><i class="fas fa-envelope"></i></a></li><li><a href=https://github.com/janos-r target=_blank rel=noopener><i class="fab fa-github"></i></a></li><li><a href=/files/CV_Radim_Janos-%28en-jp%29.pdf><i class="ai ai-cv"></i></a></li></ul></div></div><div class="article-widget content-widget-hr"><h3>関連項目</h3><ul><li><a href=/ja/project/agent_tag/>Agent based simulation modeling</a></li><li><a href=/ja/project/yewban/>Yewban</a></li><li><a href=/ja/project/exercism/>Exercism.io</a></li><li><a href=/ja/project/graphql_rust/>API in Rust</a></li><li><a href=/ja/project/gemini/>Gemini</a></li></ul></div><div class="project-related-pages content-widget-hr"></div></div></article><script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js integrity="sha512-7t8APmYpzEsZP7CYoA7RfMPV9Bb+PJHa9x2WiUnDXZx3XHveuyWUtvNOexhkierl5flZ3tr92dP1mMS+SGlD+A==" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/r.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin=anonymous></script><script>const code_highlighting=true;</script><script>const isSiteThemeDark=false;</script><script>const search_config={"indexURI":"/ja/index.json","minLength":1,"threshold":0.3};const i18n={"no_results":"結果が見つかりませんでした","placeholder":"検索...","results":"results found"};const content_type={'post':"投稿",'project':"プロジェクト",'publication':"発表文献",'talk':"登壇",'slides':"Slides"};</script><script id=search-hit-fuse-template type=text/x-template>
+</code></pre>
+<p>But you are not really taking ownership of anything. Because you are not explicitly returning any of them at the end of the function. In a normal function this would be resource acquisition and drop at the end of the function scope. Also changing the tag_count works just like you would expect from a borrowed mut. I don&rsquo;t mind it, but it is something I did squint at for a little bit, doubting if I remember the ownership rules correctly. I am still not exactly sure how or why this works, but I hope I&rsquo;m not writing nonsense here, lol.</p>
+<h2 id=conclusion>Conclusion</h2>
+<p>I didn&rsquo;t have any borrow-checker or syntax fighting issues with bevy. I found it very intuitive and it is amazing that you can relatively easily read its source code. It is not using strictly just a component entity-map with generational-indexes, but something called Archetypes. I got a little lost in the internal logic there, but suffice it to say that it just works.</p>
+<p>You simply write systems with queries that have everything you need and if you don&rsquo;t have to be tick/frame-exact, you can just throw it into the app builder and you get a perfectly working multithreaded system that takes care of everything.</p>
+<h2 id=benchmark>Benchmark</h2>
+<p>Unfortunately my use-case was just a very simple single-threaded one. So when I compared the performance to my old suboptimal code without any shell printing.</p>
+<p>10k ticks, default 40 entities on a 25x25 grid:</p>
+<pre><code class=language-sh>time cargo run --release -- -t0 -m10000 -d
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Bevy</th>
+<th>Old code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>~700 ms</td>
+<td>&lt; 100 ms</td>
+</tr>
+</tbody>
+</table>
+<p>The old suboptimal code is still almost 10x quicker. Even with the Arc instead of Rc, while cloning the whole state every time. So that was a little underwhelming. On the other hand, Bevy is a full-fledged ECS system with many components that make it possible to raise a real large scale project. My tiny example with just 40 entities on a small grid&mldr; maybe it should not be surprising it is 10x faster on a small code base and a small sample.</p>
+<hr>
+<p>I tried again with a slightly bigger numbers. Still 10k ticks, but 500 entities and 50x50 grid:</p>
+<pre><code class=language-sh>time cargo run --release -- -s50 -a500 -t0 -m10000 -d
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Bevy</th>
+<th>Old code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>~880 ms</td>
+<td>~240 ms</td>
+</tr>
+</tbody>
+</table>
+<p>So while the suboptimal code more than doubled, Bevy increased only about +25%.</p>
+<hr>
+<p>10x again&mldr; size 200 and 5k entities.</p>
+<pre><code class=language-sh>time cargo run --release -- -s200 -a5000 -t0 -m10000 -d
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Bevy</th>
+<th>Old code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2.15 s</td>
+<td>1.62 s</td>
+</tr>
+</tbody>
+</table>
+<p>Repeating this command gives in both crates surprisingly consistent results. Even when changing the number of ticks, the suboptimal code is around 75% that of Bevy. So as the world grows, the times get closer. That is not surprising.</p>
+<hr>
+<p>With 20k entities, Bevy is finally faster.</p>
+<pre><code class=language-sh>time cargo run --release -- -s200 -a20000 -t0 -m10000 -d
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Bevy</th>
+<th>Old code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5.85 s</td>
+<td>6.12 s</td>
+</tr>
+</tbody>
+</table>
+<p>But this is all just for fun! This is obviously not indicative of any real-game use-case. Firstly this is all single-threaded. And secondly my old code is just a pice of an experiment and not suited for any other use. Also there are probably many optimizations I could have used in Bevy that I missed. As I said, first try.</p>
+<h2 id=ps>PS</h2>
+<p>Bevy is amazing and inspiring! Especially considering it is only one year old. I might try to learn some of the graphics plugins it provides and try to learn some more in the future.</p>
+</div>
+<div class=article-tags>
+<a class="badge badge-light" href=/ja/tag/code/>Code</a>
+<a class="badge badge-light" href=/ja/tag/rust/>Rust</a>
+</div>
+<div class="media author-card content-widget-hr">
+<img class="avatar mr-3 avatar-circle" src=/ja/author/%E3%83%A9%E3%83%86%E3%82%A3%E3%83%A0-%E3%83%A4%E3%83%8E%E3%82%B7%E3%83%A5-radim-janos/avatar_hu64d921ec107bff3d62a3fb75542fa15a_49188_270x270_fill_q90_lanczos_center.jpg alt="ラディム　ヤノシュ Radim Janoš">
+<div class=media-body>
+<h5 class=card-title><a href=/>ラディム　ヤノシュ Radim Janoš</a></h5>
+<h6 class=card-subtitle>デベロッパー</h6>
+<ul class=network-icon aria-hidden=true>
+<li>
+<a href=/ja/#contact>
+<i class="fas fa-envelope"></i>
+</a>
+</li>
+<li>
+<a href=https://github.com/janos-r target=_blank rel=noopener>
+<i class="fab fa-github"></i>
+</a>
+</li>
+<li>
+<a href=/files/CV_Radim_Janos-%28en-jp%29.pdf>
+<i class="ai ai-cv"></i>
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="article-widget content-widget-hr">
+<h3>関連項目</h3>
+<ul>
+<li><a href=/ja/project/rusty_woods/>Rusty Woods</a></li>
+<li><a href=/ja/project/agent_tag/>Agent based simulation modeling</a></li>
+<li><a href=/ja/project/yewban/>Yewban</a></li>
+<li><a href=/ja/project/exercism/>Exercism.io</a></li>
+<li><a href=/ja/project/graphql_rust/>API in Rust</a></li>
+</ul>
+</div>
+<div class="project-related-pages content-widget-hr">
+</div>
+</div>
+</article>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js integrity="sha512-7t8APmYpzEsZP7CYoA7RfMPV9Bb+PJHa9x2WiUnDXZx3XHveuyWUtvNOexhkierl5flZ3tr92dP1mMS+SGlD+A==" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/r.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin=anonymous></script>
+<script>const code_highlighting=!0</script>
+<script>const isSiteThemeDark=!1</script>
+<script>const search_config={indexURI:"/ja/index.json",minLength:1,threshold:.3},i18n={no_results:"結果が見つかりませんでした",placeholder:"検索...",results:"results found"},content_type={post:"投稿",project:"プロジェクト",publication:"発表文献",talk:"登壇",slides:"Slides"}</script>
+<script id=search-hit-fuse-template type=text/x-template>
       <div class="search-hit" id="summary-{{key}}">
       <div class="search-hit-content">
         <div class="search-hit-name">
@@ -68,6 +383,46 @@ for (status, entity) in query.iter_mut() {
         </div>
       </div>
       </div>
-    </script><script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin=anonymous></script><script src=/js/academic.min.3b2b658c61ebd725bd5fc606c89fe44c.js></script><div class=container><footer class=site-footer><p class=powered-by><span class=float-right aria-hidden=true><a href=# class=back-to-top><span class=button_icon><i class="fas fa-chevron-up fa-2x"></i></span></a></span></p></footer></div><div id=modal class="modal fade" role=dialog><div class=modal-dialog><div class=modal-content><div class=modal-header><h5 class=modal-title>引用</h5><button type=button class=close data-dismiss=modal aria-label=Close>
-<span aria-hidden=true>&#215;</span></button></div><div class=modal-body><pre><code class="tex hljs"></code></pre></div><div class=modal-footer><a class="btn btn-outline-primary my-1 js-copy-cite" href=# target=_blank><i class="fas fa-copy"></i>コピー</a>
-<a class="btn btn-outline-primary my-1 js-download-cite" href=# target=_blank><i class="fas fa-download"></i>ダウンロード</a><div id=modal-error></div></div></div></div></div></body></html>
+    </script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin=anonymous></script>
+<script src=/js/academic.min.f6ecf7692215f2bc4850b72c8176bfa2.js></script>
+<div class=container>
+<footer class=site-footer>
+<p class=powered-by>
+<span class=float-right aria-hidden=true>
+<a href=# class=back-to-top>
+<span class=button_icon>
+<i class="fas fa-chevron-up fa-2x"></i>
+</span>
+</a>
+</span>
+</p>
+</footer>
+</div>
+<div id=modal class="modal fade" role=dialog>
+<div class=modal-dialog>
+<div class=modal-content>
+<div class=modal-header>
+<h5 class=modal-title>引用</h5>
+<button type=button class=close data-dismiss=modal aria-label=Close>
+<span aria-hidden=true>&#215;</span>
+</button>
+</div>
+<div class=modal-body>
+<pre><code class="tex hljs"></code></pre>
+</div>
+<div class=modal-footer>
+<a class="btn btn-outline-primary my-1 js-copy-cite" href=# target=_blank>
+<i class="fas fa-copy"></i> コピー
+</a>
+<a class="btn btn-outline-primary my-1 js-download-cite" href=# target=_blank>
+<i class="fas fa-download"></i> ダウンロード
+</a>
+<div id=modal-error></div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
