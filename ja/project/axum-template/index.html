@@ -29,9 +29,9 @@
 <meta property="og:title" content="Axum Template | Radim">
 <meta property="og:description" content="Web API with Axum server, Graphql and SurrealDB"><meta property="og:image" content="/ja/project/axum-template/featured.png">
 <meta property="twitter:image" content="/ja/project/axum-template/featured.png"><meta property="og:locale" content="ja">
-<meta property="article:published_time" content="2023-06-14T00:00:00+00:00">
-<meta property="article:modified_time" content="2023-06-14T00:00:00+00:00">
-<script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"/ja/project/axum-template/"},"headline":"Axum Template","image":["/ja/project/axum-template/featured.png"],"datePublished":"2023-06-14T00:00:00Z","dateModified":"2023-06-14T00:00:00Z","author":{"@type":"Person","name":"ラディム　ヤノシュ Radim Janoš"},"publisher":{"@type":"Organization","name":"Radim","logo":{"@type":"ImageObject","url":"/images/icon_hub89e7b28a6abff2b4ec084e6c0608a00_13774_192x192_fill_lanczos_center_3.png"}},"description":"Web API with Axum server, Graphql and SurrealDB"}</script>
+<meta property="article:published_time" content="2023-06-15T00:00:00+00:00">
+<meta property="article:modified_time" content="2023-06-15T00:00:00+00:00">
+<script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"/ja/project/axum-template/"},"headline":"Axum Template","image":["/ja/project/axum-template/featured.png"],"datePublished":"2023-06-15T00:00:00Z","dateModified":"2023-06-15T00:00:00Z","author":{"@type":"Person","name":"ラディム　ヤノシュ Radim Janoš"},"publisher":{"@type":"Organization","name":"Radim","logo":{"@type":"ImageObject","url":"/images/icon_hub89e7b28a6abff2b4ec084e6c0608a00_13774_192x192_fill_lanczos_center_3.png"}},"description":"Web API with Axum server, Graphql and SurrealDB"}</script>
 <title>Axum Template | Radim</title>
 </head>
 <body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents>
@@ -129,7 +129,7 @@
 <h1>Axum Template</h1>
 <div class=article-metadata>
 <span class=article-date>
-14 June 2023
+15 June 2023
 </span>
 </div>
 <div class="btn-links mb-3">
@@ -337,7 +337,8 @@ impl Ticket {
 }
 </code></pre>
 <p>The same struct can be used for creating the model with a random ID, because it is set as Option. It is possible to manually create a random Id, but I like this much better.</p>
-<pre><code class=language-rust>pub async fn create_ticket(&amp;self, ct_input: CreateTicketInput) -&gt; ApiResult&lt;Ticket&gt; {
+<pre><code class=language-rust>...
+pub async fn create_ticket(&amp;self, ct_input: CreateTicketInput) -&gt; ApiResult&lt;Ticket&gt; {
     self.db
         .create(&quot;tickets&quot;)
         .content(Ticket {
@@ -351,7 +352,7 @@ impl Ticket {
 </code></pre>
 <h2 id=surrealdb-ids>SurrealDb Ids</h2>
 <h3 id=undecided-1>Undecided</h3>
-<p>The Id in surreal DB has the format <code>table:id</code>. In the surrealdb library this is called a <code>Thing</code>. This has advantages and disadvantages.
+<p>The Id in surreal DB has the format <code>table:id</code>. In the surrealDb library this is called a <code>Thing</code>. This has advantages and disadvantages.
 I am not sure where I should use the full &ldquo;Thing format&rdquo;, and where just the wrapped <code>id</code>.</p>
 <h3 id=hiding-the-table-name>Hiding the table name</h3>
 <h3 id=pros-2>pros</h3>
@@ -368,6 +369,20 @@ I am not sure where I should use the full &ldquo;Thing format&rdquo;, and where 
 Alternatively a gql scalar type could achieve this, but only for gql. With a new-type pattern <code>WThing(Thing)</code> and a gql macro
 <a href=https://async-graphql.github.io/async-graphql/en/custom_scalars.html target=_blank rel=noopener>#[Scalar]</a> for generating the scalar. Returning just the id in <code>to_value</code> should work, but It would not make sense to than expect the full format in <code>parse</code>. This part of the Trait would have to be left unimplemented, since we don&rsquo;t want the full Id on the input.</p>
 <p>I am not sure what the right decision here should be. But I think that the returned ids should have the same format as the expected input ids once decided.</p>
+<h3 id=currently-where-from-here>Currently, where from here&mldr;</h3>
+<p>I do think that returning and expecting only the inner id is better. But currently SurrealDB, when queried with structs, always returns the full <code>Thing</code>. This was confirmed to me in their discord. I would love if I could query with</p>
+<pre><code class=language-rust>pub struct Ticket {
+    pub id: Option&lt;surrealdb::sql::Id&gt;, // This doesn't work currently!
+    ...
+}
+</code></pre>
+<p>But the only way to get that currently is with <code>SELECT meta::id(table:id), field1, field2 from tickets</code> I was told. But for the sake of gql I want to continue using structs.</p>
+<h3 id=gql-centric-db-access>Gql centric DB access</h3>
+<p>This is what I would probably do if I used this template onward. I would probably not want to use the rest endpoints for querying the DB anyway. And if I for some reason absolutely needed it, the rest route could have a dedicated service that presents the IDs as desired.
+So I would just use it as it currently is. Maybe implementing that WThing scalar if writing the ComplexObject id field for every table would become too annoying for some reason. But it is not so bad I think. It also has the tiny benefit that this way, the schema is presented correctly as always returning the id field, id is not optional on return.
+I find it as one of the nicest parts of this setup, that it needs just one struct to init a whole new api route type.</p>
+<h3 id=rest-centric-db-access>Rest centric DB access</h3>
+<p>If you really need to access the DB IDs from many tables through rest and you need to have them in the inner id format, currently the most correct solution would be probably to use two objects. One <code>DbTicket</code> with the full <code>Thing</code> as received from the DB, and another <code>Ticket</code> that would be used for the gql and rest responses. Impl From and calling into on the db type at the end of the service.</p>
 <h2 id=conclusion>Conclusion</h2>
 <p>In conclusion, Axum is very advanced and does seam ready for serious use. The same can be said about async_graphql, even though Im using it for slightly unorthodox experiments in this project (the error json juggling). I really wanted to try SurrealDb and this is hopefully not the last time Im trying it out. At least the versioning suggests that a v1.0 is right around the corner and hopefully its usage will get more standardized, the docs could be a little expanded and I believe it will get further attention in the future.
 A nice project. I didn&rsquo;t encounter any strong deal-breakers. But un-surprisingly there are open questions regarding best-practices in such a new experimental Axum, Gql, Surreal, Rust Web Stack.</p>

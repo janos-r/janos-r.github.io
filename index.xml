@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Radim</title><link>/</link><atom:link href="/index.xml" rel="self" type="application/rss+xml"/><description>Radim</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 14 Jun 2023 00:00:00 +0000</lastBuildDate><image><url>/images/icon_hub89e7b28a6abff2b4ec084e6c0608a00_13774_512x512_fill_lanczos_center_3.png</url><title>Radim</title><link>/</link></image><item><title>Axum Template</title><link>/project/axum-template/</link><pubDate>Wed, 14 Jun 2023 00:00:00 +0000</pubDate><guid>/project/axum-template/</guid><description>&lt;h1 id="web-api-rust-stack">Web API Rust stack&lt;/h1>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Radim</title><link>/</link><atom:link href="/index.xml" rel="self" type="application/rss+xml"/><description>Radim</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 15 Jun 2023 00:00:00 +0000</lastBuildDate><image><url>/images/icon_hub89e7b28a6abff2b4ec084e6c0608a00_13774_512x512_fill_lanczos_center_3.png</url><title>Radim</title><link>/</link></image><item><title>Axum Template</title><link>/project/axum-template/</link><pubDate>Thu, 15 Jun 2023 00:00:00 +0000</pubDate><guid>/project/axum-template/</guid><description>&lt;h1 id="web-api-rust-stack">Web API Rust stack&lt;/h1>
 &lt;p>This project is heavily inspired by the brilliant
 &lt;a href="https://www.youtube.com/watch?v=XZtlD_m59sM" target="_blank" rel="noopener">video&lt;/a> from Jeremy Chone. Parts of the code are exactly the same. I simply followed the tutorial, adjusted some preferences and later decided to add GraphQL and SurrealDB. Hope this can be helpful to somebody. Also please let me know if you have any suggestions for optimizing the code, especially in the areas where I mention that I am not decided what would be the best implementation, like the surrealDb IDs.&lt;/p>
 &lt;h2 id="project-structure">Project structure&lt;/h2>
@@ -187,7 +187,8 @@ self.id.as_ref().map(|t| &amp;amp;t.id).expect(&amp;quot;id&amp;quot;).to_raw()
 }
 &lt;/code>&lt;/pre>
 &lt;p>The same struct can be used for creating the model with a random ID, because it is set as Option. It is possible to manually create a random Id, but I like this much better.&lt;/p>
-&lt;pre>&lt;code class="language-rust">pub async fn create_ticket(&amp;amp;self, ct_input: CreateTicketInput) -&amp;gt; ApiResult&amp;lt;Ticket&amp;gt; {
+&lt;pre>&lt;code class="language-rust">...
+pub async fn create_ticket(&amp;amp;self, ct_input: CreateTicketInput) -&amp;gt; ApiResult&amp;lt;Ticket&amp;gt; {
 self.db
 .create(&amp;quot;tickets&amp;quot;)
 .content(Ticket {
@@ -201,7 +202,7 @@ title: ct_input.title,
 &lt;/code>&lt;/pre>
 &lt;h2 id="surrealdb-ids">SurrealDb Ids&lt;/h2>
 &lt;h3 id="undecided-1">Undecided&lt;/h3>
-&lt;p>The Id in surreal DB has the format &lt;code>table:id&lt;/code>. In the surrealdb library this is called a &lt;code>Thing&lt;/code>. This has advantages and disadvantages.
+&lt;p>The Id in surreal DB has the format &lt;code>table:id&lt;/code>. In the surrealDb library this is called a &lt;code>Thing&lt;/code>. This has advantages and disadvantages.
 I am not sure where I should use the full &amp;ldquo;Thing format&amp;rdquo;, and where just the wrapped &lt;code>id&lt;/code>.&lt;/p>
 &lt;h3 id="hiding-the-table-name">Hiding the table name&lt;/h3>
 &lt;h3 id="pros-2">pros&lt;/h3>
@@ -218,6 +219,20 @@ I am not sure where I should use the full &amp;ldquo;Thing format&amp;rdquo;, an
 Alternatively a gql scalar type could achieve this, but only for gql. With a new-type pattern &lt;code>WThing(Thing)&lt;/code> and a gql macro
 &lt;a href="https://async-graphql.github.io/async-graphql/en/custom_scalars.html" target="_blank" rel="noopener">#[Scalar]&lt;/a> for generating the scalar. Returning just the id in &lt;code>to_value&lt;/code> should work, but It would not make sense to than expect the full format in &lt;code>parse&lt;/code>. This part of the Trait would have to be left unimplemented, since we don&amp;rsquo;t want the full Id on the input.&lt;/p>
 &lt;p>I am not sure what the right decision here should be. But I think that the returned ids should have the same format as the expected input ids once decided.&lt;/p>
+&lt;h3 id="currently-where-from-here">Currently, where from here&amp;hellip;&lt;/h3>
+&lt;p>I do think that returning and expecting only the inner id is better. But currently SurrealDB, when queried with structs, always returns the full &lt;code>Thing&lt;/code>. This was confirmed to me in their discord. I would love if I could query with&lt;/p>
+&lt;pre>&lt;code class="language-rust">pub struct Ticket {
+pub id: Option&amp;lt;surrealdb::sql::Id&amp;gt;, // This doesn't work currently!
+...
+}
+&lt;/code>&lt;/pre>
+&lt;p>But the only way to get that currently is with &lt;code>SELECT meta::id(table:id), field1, field2 from tickets&lt;/code> I was told. But for the sake of gql I want to continue using structs.&lt;/p>
+&lt;h3 id="gql-centric-db-access">Gql centric DB access&lt;/h3>
+&lt;p>This is what I would probably do if I used this template onward. I would probably not want to use the rest endpoints for querying the DB anyway. And if I for some reason absolutely needed it, the rest route could have a dedicated service that presents the IDs as desired.
+So I would just use it as it currently is. Maybe implementing that WThing scalar if writing the ComplexObject id field for every table would become too annoying for some reason. But it is not so bad I think. It also has the tiny benefit that this way, the schema is presented correctly as always returning the id field, id is not optional on return.
+I find it as one of the nicest parts of this setup, that it needs just one struct to init a whole new api route type.&lt;/p>
+&lt;h3 id="rest-centric-db-access">Rest centric DB access&lt;/h3>
+&lt;p>If you really need to access the DB IDs from many tables through rest and you need to have them in the inner id format, currently the most correct solution would be probably to use two objects. One &lt;code>DbTicket&lt;/code> with the full &lt;code>Thing&lt;/code> as received from the DB, and another &lt;code>Ticket&lt;/code> that would be used for the gql and rest responses. Impl From and calling into on the db type at the end of the service.&lt;/p>
 &lt;h2 id="conclusion">Conclusion&lt;/h2>
 &lt;p>In conclusion, Axum is very advanced and does seam ready for serious use. The same can be said about async_graphql, even though Im using it for slightly unorthodox experiments in this project (the error json juggling). I really wanted to try SurrealDb and this is hopefully not the last time Im trying it out. At least the versioning suggests that a v1.0 is right around the corner and hopefully its usage will get more standardized, the docs could be a little expanded and I believe it will get further attention in the future.
 A nice project. I didn&amp;rsquo;t encounter any strong deal-breakers. But un-surprisingly there are open questions regarding best-practices in such a new experimental Axum, Gql, Surreal, Rust Web Stack.&lt;/p></description></item><item><title>Rusty Woods</title><link>/project/rusty_woods/</link><pubDate>Sun, 15 Jan 2023 00:00:00 +0000</pubDate><guid>/project/rusty_woods/</guid><description>&lt;p>A 2D RPG-like groundwork with Bevy and LDtk.&lt;/p>
