@@ -1,4 +1,64 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Go | Radim</title><link>/tag/go/</link><atom:link href="/tag/go/index.xml" rel="self" type="application/rss+xml"/><description>Go</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sat, 23 Jan 2021 00:00:00 +0000</lastBuildDate><image><url>/images/icon_hub89e7b28a6abff2b4ec084e6c0608a00_13774_512x512_fill_lanczos_center_3.png</url><title>Go</title><link>/tag/go/</link></image><item><title>Yewban</title><link>/project/yewban/</link><pubDate>Sat, 23 Jan 2021 00:00:00 +0000</pubDate><guid>/project/yewban/</guid><description>&lt;h2 id="motivation">Motivation&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Go | Radim</title><link>/tag/go/</link><atom:link href="/tag/go/index.xml" rel="self" type="application/rss+xml"/><description>Go</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 02 Aug 2023 00:00:00 +0000</lastBuildDate><image><url>/images/icon_hub89e7b28a6abff2b4ec084e6c0608a00_13774_512x512_fill_lanczos_center_3.png</url><title>Go</title><link>/tag/go/</link></image><item><title>Website: GoR Calculator</title><link>/project/gor-calculator/</link><pubDate>Wed, 02 Aug 2023 00:00:00 +0000</pubDate><guid>/project/gor-calculator/</guid><description>&lt;h1 id="go-rating-calculator">Go rating calculator&lt;/h1>
+&lt;h2 id="choosing-the-right-tool">Choosing the right tool&lt;/h2>
+&lt;p>So the past few months I was traveling and I am currently staying in Japan,
+Kanagawa. To be able to present myself more as a fullstack developer, I decided
+to take on another frontend project, but this time with a more standard tool. If
+I would make a web ui just for myself, as of today my preferred library to use
+would be in this order:&lt;/p>
+&lt;ul>
+&lt;li>Leptos
+&lt;ul>
+&lt;li>Because I still love rust and having a website in streamed wasm instead of
+javascript sounds amazing&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Solid
+&lt;ul>
+&lt;li>In the JS world, this seams to me the best choice right now. Good technology
+and very simple and react-like at the same time. I almost picked it, but I
+wanted to use something more widely recognized. Also, its materialUi library
+didn&amp;rsquo;t have a fully ready autocomplete component at the moment.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Svelte
+&lt;ul>
+&lt;li>Seams to me the best among the big known libraries.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="nextjs">NextJs&lt;/h2>
+&lt;p>But I used NextJs13. Not only is React and with it NextJs one of the most used
+and know library for FE web today, but the recently released version 13 brought
+some big changes that I wanted to try. Also by writing it in next, it made it
+incredibly easy to deploy with Vercel. On a free tier, you just connect it to
+the GitHub repo and CI/CD is done automatically.&lt;/p>
+&lt;h2 id="goal">Goal&lt;/h2>
+&lt;p>Imagine you fall in love with Go (the board game, not golang!) like so many do.
+You go to your first tournament, you get automatically a 20kyu rating. You play
+some games, meet some people. A tournament usually takes 2 days over the
+weekend. After you are done, you come back home and suddenly you find out that
+your name is now part of the
+&lt;a href="https://europeangodatabase.eu/EGD/" target="_blank" rel="noopener">European Go Database&lt;/a>! You got an official
+rank, rating, history of tournaments and opponents, it&amp;rsquo;s really nice. It&amp;rsquo;s like
+experience points but in real life.&lt;/p>
+&lt;p>When you go to your next tournament, if your current rating (from the last
+tournament) reached the next rank, you can claim this rank during this
+tournament registration and you get assigned stronger opponents accordingly.
+Many players follow their game results closely, to know if they already reached
+the next rank, or lost one. How many points they lost while they played a
+stronger or weaker opponent, and so on. The only way to follow this as far as I
+know was on the official
+&lt;a href="https://europeangodatabase.eu/EGD/gor_calculator.php" target="_blank" rel="noopener">GoR calculator&lt;/a> website.
+It is very detailed and well made, but it is getting older and not as convenient
+on mobile phones as other modern apps these days.&lt;/p>
+&lt;p>I hope my small project can help players to track their progress while on a
+tournament. It locally stores your player and opponents, so that you don&amp;rsquo;t have
+to repeatedly look them up during the course of the two days, and it gives a
+nice animation showing the progress of your current rank.&lt;/p>
+&lt;h2 id="conclusion">Conclusion&lt;/h2>
+&lt;p>It was a good experience to learn with the new NextJs version and at the same
+time hopefully making something useful. I leave the code for the website fully
+open on github and I am sure there can be some improvements in the future.&lt;/p></description></item><item><title>Yewban</title><link>/project/yewban/</link><pubDate>Sat, 23 Jan 2021 00:00:00 +0000</pubDate><guid>/project/yewban/</guid><description>&lt;h2 id="motivation">Motivation&lt;/h2>
 &lt;h4 id="searching-for-a-frontend-experience">Searching for a frontend experience&lt;/h4>
 &lt;p>During my day job I work with APIs, databases and general backend code. Last time I did anything frontend related were tutorials and small projects with react around 2018. So I decided to do something frontend UI related and interesting. My tendency was to use rust and my first idea was to make a regular desktop app with gtk3. I thought that making a board game grid would be a good and simple enough idea. I was fiddling around with GTK3 in Glade, which is a great tool, and was learning about basic graphical setups with Cairo. But it was all still too new to me and I gave up on making a board with Cairo. But regular desktop apps with GTK3 are a great choice for Rust too it seams. I might do something with that in the future.&lt;/p>
 &lt;p>A few days later I stumbled upon a nice new

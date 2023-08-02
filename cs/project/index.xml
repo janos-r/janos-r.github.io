@@ -1,16 +1,81 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Projects | Radim</title><link>/cs/project/</link><atom:link href="/cs/project/index.xml" rel="self" type="application/rss+xml"/><description>Projects</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>cs</language><lastBuildDate>Thu, 15 Jun 2023 00:00:00 +0000</lastBuildDate><image><url>/images/icon_hub89e7b28a6abff2b4ec084e6c0608a00_13774_512x512_fill_lanczos_center_3.png</url><title>Projects</title><link>/cs/project/</link></image><item><title>Axum Template</title><link>/cs/project/axum-template/</link><pubDate>Thu, 15 Jun 2023 00:00:00 +0000</pubDate><guid>/cs/project/axum-template/</guid><description>&lt;h1 id="web-api-rust-stack">Web API Rust stack&lt;/h1>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Projects | Radim</title><link>/cs/project/</link><atom:link href="/cs/project/index.xml" rel="self" type="application/rss+xml"/><description>Projects</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>cs</language><lastBuildDate>Wed, 02 Aug 2023 00:00:00 +0000</lastBuildDate><image><url>/images/icon_hub89e7b28a6abff2b4ec084e6c0608a00_13774_512x512_fill_lanczos_center_3.png</url><title>Projects</title><link>/cs/project/</link></image><item><title>Website: GoR Calculator</title><link>/cs/project/gor-calculator/</link><pubDate>Wed, 02 Aug 2023 00:00:00 +0000</pubDate><guid>/cs/project/gor-calculator/</guid><description>&lt;h1 id="go-rating-calculator">Go rating calculator&lt;/h1>
+&lt;h2 id="choosing-the-right-tool">Choosing the right tool&lt;/h2>
+&lt;p>So the past few months I was traveling and I am currently staying in Japan,
+Kanagawa. To be able to present myself more as a fullstack developer, I decided
+to take on another frontend project, but this time with a more standard tool. If
+I would make a web ui just for myself, as of today my preferred library to use
+would be in this order:&lt;/p>
+&lt;ul>
+&lt;li>Leptos
+&lt;ul>
+&lt;li>Because I still love rust and having a website in streamed wasm instead of
+javascript sounds amazing&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Solid
+&lt;ul>
+&lt;li>In the JS world, this seams to me the best choice right now. Good technology
+and very simple and react-like at the same time. I almost picked it, but I
+wanted to use something more widely recognized. Also, its materialUi library
+didn&amp;rsquo;t have a fully ready autocomplete component at the moment.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Svelte
+&lt;ul>
+&lt;li>Seams to me the best among the big known libraries.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="nextjs">NextJs&lt;/h2>
+&lt;p>But I used NextJs13. Not only is React and with it NextJs one of the most used
+and know library for FE web today, but the recently released version 13 brought
+some big changes that I wanted to try. Also by writing it in next, it made it
+incredibly easy to deploy with Vercel. On a free tier, you just connect it to
+the GitHub repo and CI/CD is done automatically.&lt;/p>
+&lt;h2 id="goal">Goal&lt;/h2>
+&lt;p>Imagine you fall in love with Go (the board game, not golang!) like so many do.
+You go to your first tournament, you get automatically a 20kyu rating. You play
+some games, meet some people. A tournament usually takes 2 days over the
+weekend. After you are done, you come back home and suddenly you find out that
+your name is now part of the
+&lt;a href="https://europeangodatabase.eu/EGD/" target="_blank" rel="noopener">European Go Database&lt;/a>! You got an official
+rank, rating, history of tournaments and opponents, it&amp;rsquo;s really nice. It&amp;rsquo;s like
+experience points but in real life.&lt;/p>
+&lt;p>When you go to your next tournament, if your current rating (from the last
+tournament) reached the next rank, you can claim this rank during this
+tournament registration and you get assigned stronger opponents accordingly.
+Many players follow their game results closely, to know if they already reached
+the next rank, or lost one. How many points they lost while they played a
+stronger or weaker opponent, and so on. The only way to follow this as far as I
+know was on the official
+&lt;a href="https://europeangodatabase.eu/EGD/gor_calculator.php" target="_blank" rel="noopener">GoR calculator&lt;/a> website.
+It is very detailed and well made, but it is getting older and not as convenient
+on mobile phones as other modern apps these days.&lt;/p>
+&lt;p>I hope my small project can help players to track their progress while on a
+tournament. It locally stores your player and opponents, so that you don&amp;rsquo;t have
+to repeatedly look them up during the course of the two days, and it gives a
+nice animation showing the progress of your current rank.&lt;/p>
+&lt;h2 id="conclusion">Conclusion&lt;/h2>
+&lt;p>It was a good experience to learn with the new NextJs version and at the same
+time hopefully making something useful. I leave the code for the website fully
+open on github and I am sure there can be some improvements in the future.&lt;/p></description></item><item><title>Axum Template</title><link>/cs/project/axum-template/</link><pubDate>Thu, 15 Jun 2023 00:00:00 +0000</pubDate><guid>/cs/project/axum-template/</guid><description>&lt;h1 id="web-api-rust-stack">Web API Rust stack&lt;/h1>
 &lt;p>This project is heavily inspired by the brilliant
-&lt;a href="https://www.youtube.com/watch?v=XZtlD_m59sM" target="_blank" rel="noopener">video&lt;/a> from Jeremy Chone. Parts of the code are exactly the same. I simply followed the tutorial, adjusted some preferences and later decided to add GraphQL and SurrealDB. Hope this can be helpful to somebody. Also you can let me know if you have any suggestions to improve the code.&lt;/p>
+&lt;a href="https://www.youtube.com/watch?v=XZtlD_m59sM" target="_blank" rel="noopener">video&lt;/a> from Jeremy Chone. Parts of
+the code are exactly the same. I simply followed the tutorial, adjusted some
+preferences and later decided to add GraphQL and SurrealDB. Hope this can be
+helpful to somebody. Also you can let me know if you have any suggestions to
+improve the code.&lt;/p>
 &lt;h2 id="project-structure">Project structure&lt;/h2>
 &lt;ul>
 &lt;li>rest and gql routes&lt;/li>
 &lt;li>services that can resolve both, because they use the same Result type
 &lt;ul>
-&lt;li>resolution of the ApiResult is handled separately by the impls for rest and gql&lt;/li>
+&lt;li>resolution of the ApiResult is handled separately by the impls for rest and
+gql&lt;/li>
 &lt;/ul>
 &lt;/li>
 &lt;/ul>
-&lt;pre>&lt;code> └─┬ src
+&lt;pre>&lt;code>└─┬ src
 ├─┬ graphql
 │ ├─┬ query_root
 │ │ ├── tickets_query.rs
@@ -40,14 +105,28 @@
 &lt;h1 id="error-handling">Error handling&lt;/h1>
 &lt;h2 id="goals">Goals&lt;/h2>
 &lt;ul>
-&lt;li>Control over the display of errors to the client, and the debug log of errors on the server&lt;/li>
-&lt;li>Presenting errors to the client with the request id, and logging all request ids and occurred errors raw (debug) on the server&lt;/li>
+&lt;li>Control over the display of errors to the client, and the debug log of errors
+on the server&lt;/li>
+&lt;li>Presenting errors to the client with the request id, and logging all request
+ids and occurred errors raw (debug) on the server&lt;/li>
 &lt;/ul>
 &lt;h2 id="why-no-error-crate">Why no error crate?&lt;/h2>
-&lt;p>I don&amp;rsquo;t use Anyhow or Thiserror here. I think it is clearer what is happening in the code and easier to maintain with simply writing the Display and From traits myself. It is possible the same results could be achieved with using Thiserror and having possibly fewer lines of code, but that is not worth the extra crate logic for me.&lt;br>
-I might change my opinion on this in the future. But I see other project using even both of these crates at the same time. I simply think that using rust traits as they are is clearer. Clearer and more maintainable long-term, than adding an ever increasing number of 3rd party crates, locking down the code, with good intentions of simplifying error handling, but possibly (likely?) making it more complicated. Just impl the trait, its not so hard.&lt;/p>
+&lt;p>I don&amp;rsquo;t use Anyhow or Thiserror here. I think it is clearer what is happening in
+the code and easier to maintain with simply writing the Display and From traits
+myself. It is possible the same results could be achieved with using Thiserror
+and having possibly fewer lines of code, but that is not worth the extra crate
+logic for me.&lt;br>
+I might change my opinion on this in the future. But I see other project using
+even both of these crates at the same time. I simply think that using rust
+traits as they are is clearer. Clearer and more maintainable long-term, than
+adding an ever increasing number of 3rd party crates, locking down the code,
+with good intentions of simplifying error handling, but possibly (likely?)
+making it more complicated. Just impl the trait, its not so hard.&lt;/p>
 &lt;h2 id="undecided">Undecided&lt;/h2>
-&lt;p>If all &lt;code>req_id&lt;/code> should always be presented to the client and how. Currently I&amp;rsquo;m leaning to the more conservative approach to present them only with errors. But presenting them always would open the possibility to get rid of the ApiError wrapper.&lt;/p>
+&lt;p>If all &lt;code>req_id&lt;/code> should always be presented to the client and how. Currently I&amp;rsquo;m
+leaning to the more conservative approach to present them only with errors. But
+presenting them always would open the possibility to get rid of the ApiError
+wrapper.&lt;/p>
 &lt;pre>&lt;code class="language-rust">// error.rs
 pub struct ApiError {
 pub error: Error,
@@ -63,15 +142,20 @@ pub type Result&amp;lt;T&amp;gt; = core::result::Result&amp;lt;T, Error&amp;gt;;
 &lt;/code>&lt;/pre>
 &lt;h2 id="apierror">ApiError&lt;/h2>
 &lt;h3 id="original-purpose">Original purpose&lt;/h3>
-&lt;p>If errors should include their &lt;code>req_id&lt;/code>, it should be part of the error body. But if every error variant has to have it, its maybe better to wrap them all with this higher Error that always has it.&lt;/p>
+&lt;p>If errors should include their &lt;code>req_id&lt;/code>, it should be part of the error body.
+But if every error variant has to have it, its maybe better to wrap them all
+with this higher Error that always has it.&lt;/p>
 &lt;h3 id="pros">pros&lt;/h3>
 &lt;ul>
-&lt;li>Type enforced resolution into this type, not just to any that implements Display that satisfies the gql result.&lt;/li>
+&lt;li>Type enforced resolution into this type, not just to any that implements
+Display that satisfies the gql result.&lt;/li>
 &lt;/ul>
 &lt;h3 id="cons">cons&lt;/h3>
 &lt;ul>
 &lt;li>Another abstraction layer, very unfortunate if it would not be necessary&lt;/li>
-&lt;li>Impossible to use a simple into (?) from ocurred errors to ApiError, because it requires additional information from the context (&lt;code>req_id&lt;/code>). Requiring an explicit &lt;code>.map_err&lt;/code> at the end of every service function (not elegant).&lt;/li>
+&lt;li>Impossible to use a simple into (?) from ocurred errors to ApiError, because
+it requires additional information from the context (&lt;code>req_id&lt;/code>). Requiring an
+explicit &lt;code>.map_err&lt;/code> at the end of every service function (not elegant).&lt;/li>
 &lt;/ul>
 &lt;pre>&lt;code class="language-rust">// service/ticket.rs
 pub async fn list_tickets(&amp;amp;self) -&amp;gt; ApiResult&amp;lt;Vec&amp;lt;Ticket&amp;gt;&amp;gt; {
@@ -100,17 +184,46 @@ id,
 &lt;/ul>
 &lt;h3 id="cons-1">cons&lt;/h3>
 &lt;ul>
-&lt;li>Req_id would have to be returned always, in http header and gql body extension. Or another step would have to be introduced that filters responses with Errors, which is probably even more convoluted than the current ApiError solution.&lt;/li>
-&lt;li>From Error for gqlError is implemented automatically in the library, so its not possible to do it manually. The way how the library author intended extending errors (so I can save the raw error for the logger), is to implement &lt;code>ErrorExtensions&lt;/code> for the enum Error. That is still not part of the into, it will still not be used with (?), it has to be still called every time on the error with &lt;code>.extend()&lt;/code> making it very similar to the current &amp;ldquo;non elegant&amp;rdquo; mapping. Difference is that now the mapping is called on the end of the service when ApiError is created, but the &lt;code>.extend()&lt;/code> would be called only at the end of the gql route, when the gql result is created.&lt;/li>
+&lt;li>Req_id would have to be returned always, in http header and gql body
+extension. Or another step would have to be introduced that filters responses
+with Errors, which is probably even more convoluted than the current ApiError
+solution.&lt;/li>
+&lt;li>From Error for gqlError is implemented automatically in the library, so its
+not possible to do it manually. The way how the library author intended
+extending errors (so I can save the raw error for the logger), is to implement
+&lt;code>ErrorExtensions&lt;/code> for the enum Error. That is still not part of the into, it
+will still not be used with (?), it has to be still called every time on the
+error with &lt;code>.extend()&lt;/code> making it very similar to the current &amp;ldquo;non elegant&amp;rdquo;
+mapping. Difference is that now the mapping is called on the end of the
+service when ApiError is created, but the &lt;code>.extend()&lt;/code> would be called only at
+the end of the gql route, when the gql result is created.&lt;/li>
 &lt;/ul>
 &lt;h2 id="apierror-conclusion">ApiError conclusion&lt;/h2>
-&lt;p>If I would use &lt;code>ErrorExtensions&lt;/code> and &lt;code>.extend()&lt;/code>, it would not be a big progress and it would loose me the control of optionally not showing the &lt;code>req_id&lt;/code> to the client. That could include future data connected to all errors that should not always be returned. Therefore I will keep this structure.
-But if I would know that adding the &lt;code>req_id&lt;/code> in every single response always is a good idea, I can see it would be better to use only one simple Error type, with the added risk of not having it type-checked if you would forget to add &lt;code>.extend()&lt;/code> at every response, not logging the error on the server.&lt;/p>
+&lt;p>If I would use &lt;code>ErrorExtensions&lt;/code> and &lt;code>.extend()&lt;/code>, it would not be a big progress
+and it would loose me the control of optionally not showing the &lt;code>req_id&lt;/code> to the
+client. That could include future data connected to all errors that should not
+always be returned. Therefore I will keep this structure. But if I would know
+that adding the &lt;code>req_id&lt;/code> in every single response always is a good idea, I can
+see it would be better to use only one simple Error type, with the added risk of
+not having it type-checked if you would forget to add &lt;code>.extend()&lt;/code> at every
+response, not logging the error on the server.&lt;/p>
 &lt;h1 id="logging">Logging&lt;/h1>
-&lt;p>I use the same idea from Jeremy Chone&amp;rsquo;s video. To build the response using the client-facing data in the error. Than saving the raw error using axum&amp;rsquo;s (http) response extensions, and extracting it back out for logging in one dedicated middleware layer &lt;code>mw_req_logger&lt;/code> for the server. This way, every single request has exactly one dedicated log, that can also include errors and further details.&lt;br>
+&lt;p>I use the same idea from Jeremy Chone&amp;rsquo;s video. To build the response using the
+client-facing data in the error. Than saving the raw error using axum&amp;rsquo;s (http)
+response extensions, and extracting it back out for logging in one dedicated
+middleware layer &lt;code>mw_req_logger&lt;/code> for the server. This way, every single request
+has exactly one dedicated log, that can also include errors and further
+details.&lt;br>
 I wanted to adhere to this even with the gql addition.&lt;/p>
-&lt;p>To achieve this with Gql, I couldn&amp;rsquo;t simply use &lt;code>impl IntoResponse for ApiError&lt;/code> as the rest routes are using, because the response is build by the Gql library. I had to find a way how to give the ApiError to gql, and later add it to the response extensions, so it gets picked up in the end the same way as the rest responses in the &lt;code>mw_req_logger&lt;/code>.&lt;/p>
-&lt;p>Because ApiError doesn&amp;rsquo;t implement Display, it does not have an automatic From impl for &lt;code>async_graphql::Error&lt;/code>. By writing it manually, I can in the same step store the raw error in serialized json inside the gql response structure under &amp;ldquo;error extensions&amp;rdquo;.&lt;/p>
+&lt;p>To achieve this with Gql, I couldn&amp;rsquo;t simply use &lt;code>impl IntoResponse for ApiError&lt;/code>
+as the rest routes are using, because the response is build by the Gql library.
+I had to find a way how to give the ApiError to gql, and later add it to the
+response extensions, so it gets picked up in the end the same way as the rest
+responses in the &lt;code>mw_req_logger&lt;/code>.&lt;/p>
+&lt;p>Because ApiError doesn&amp;rsquo;t implement Display, it does not have an automatic From
+impl for &lt;code>async_graphql::Error&lt;/code>. By writing it manually, I can in the same step
+store the raw error in serialized json inside the gql response structure under
+&amp;ldquo;error extensions&amp;rdquo;.&lt;/p>
 &lt;pre>&lt;code class="language-rust">// error.rs
 impl From&amp;lt;ApiError&amp;gt; for async_graphql::Error {
 fn from(value: ApiError) -&amp;gt; Self {
@@ -121,7 +234,10 @@ Self::new(value.error.to_string())
 }
 }
 &lt;/code>&lt;/pre>
-&lt;p>After the gql response is built, just before it is handed over to it&amp;rsquo;s axum &lt;code>IntoResponse&lt;/code> in the &lt;code>graphql_handler&lt;/code>, I extract the error, deserialized it, than turn it into the axum response with &lt;code>IntoResponse&lt;/code> and than I can store the extracted Error in the request extensions just like with the rest errors.&lt;/p>
+&lt;p>After the gql response is built, just before it is handed over to it&amp;rsquo;s axum
+&lt;code>IntoResponse&lt;/code> in the &lt;code>graphql_handler&lt;/code>, I extract the error, deserialized it,
+than turn it into the axum response with &lt;code>IntoResponse&lt;/code> and than I can store the
+extracted Error in the request extensions just like with the rest errors.&lt;/p>
 &lt;pre>&lt;code class="language-rust">// graphql.rs
 pub async fn graphql_handler(
 schema: Extension&amp;lt;ApiSchema&amp;gt;,
@@ -147,19 +263,26 @@ response.extensions_mut().insert(e);
 response
 }
 &lt;/code>&lt;/pre>
-&lt;p>I understand that this serde step is not ideal, but for now I don&amp;rsquo;t have a better solution and this works.&lt;/p>
+&lt;p>I understand that this serde step is not ideal, but for now I don&amp;rsquo;t have a
+better solution and this works.&lt;/p>
 &lt;h1 id="gql-and-db-integration">Gql and DB integration&lt;/h1>
 &lt;p>I am very happy with this.&lt;/p>
-&lt;p>In my previous company project, where we used MongoDb with Mongoose, Apollo Gql and TypeScript, to provide a table to gql, 4 different implementations of the type were used.&lt;/p>
+&lt;p>In my previous company project, where we used MongoDb with Mongoose, Apollo Gql
+and TypeScript, to provide a table to gql, 4 different implementations of the
+type were used.&lt;/p>
 &lt;ol>
 &lt;li>The Gql schema&lt;/li>
 &lt;li>The DB model schema&lt;/li>
 &lt;li>The TS type derived from the model - used for manipulation&lt;/li>
-&lt;li>A &amp;ldquo;plain&amp;rdquo; version of the type, without the id and all of the mongoose methods and metadata - used for arguments and returns of just the data&lt;/li>
+&lt;li>A &amp;ldquo;plain&amp;rdquo; version of the type, without the id and all of the mongoose methods
+and metadata - used for arguments and returns of just the data&lt;/li>
 &lt;/ol>
-&lt;p>I expected something similar, but thanks to rust having such a strong type system, allot of this is baked in. For simple objects, it is enough to have just one type.
-This is incredibly simple to look at, as easy (if not easier) to set up and use as rest, and fully type safe, with all the other gql benefits.&lt;/p>
-&lt;p>This is the gql route, it resolves in the &lt;code>.list_tickets()&lt;/code> function that is visible in the firs snippet on this page.&lt;/p>
+&lt;p>I expected something similar, but thanks to rust having such a strong type
+system, allot of this is baked in. For simple objects, it is enough to have just
+one type. This is incredibly simple to look at, as easy (if not easier) to set
+up and use as rest, and fully type safe, with all the other gql benefits.&lt;/p>
+&lt;p>This is the gql route, it resolves in the &lt;code>.list_tickets()&lt;/code> function that is
+visible in the firs snippet on this page.&lt;/p>
 &lt;pre>&lt;code class="language-rust">// graphql/query_root/tickets_query.rs
 impl TicketsQuery {
 async fn list(&amp;amp;self, ctx: &amp;amp;Context&amp;lt;'_&amp;gt;) -&amp;gt; Result&amp;lt;Vec&amp;lt;Ticket&amp;gt;&amp;gt; {
@@ -169,7 +292,8 @@ Ok(TicketService { db, ctx }.list_tickets().await?)
 }
 }
 &lt;/code>&lt;/pre>
-&lt;p>And this is the whole Ticket implementation. DB model, Gql schema and data type in one.&lt;/p>
+&lt;p>And this is the whole Ticket implementation. DB model, Gql schema and data type
+in one.&lt;/p>
 &lt;pre>&lt;code class="language-rust">// service/tickets.rs
 #[derive(Clone, Debug, Serialize, Deserialize, SimpleObject)]
 #[graphql(complex)]
@@ -186,7 +310,9 @@ self.id.as_ref().map(|t| &amp;amp;t.id).expect(&amp;quot;id&amp;quot;).to_raw()
 }
 }
 &lt;/code>&lt;/pre>
-&lt;p>The same struct can be used for creating the model with a random ID, because it is set as Option. It is possible to manually create a random Id, but I like this much better.&lt;/p>
+&lt;p>The same struct can be used for creating the model with a random ID, because it
+is set as Option. It is possible to manually create a random Id, but I like this
+much better.&lt;/p>
 &lt;pre>&lt;code class="language-rust">...
 pub async fn create_ticket(&amp;amp;self, ct_input: CreateTicketInput) -&amp;gt; ApiResult&amp;lt;Ticket&amp;gt; {
 self.db
@@ -202,40 +328,74 @@ title: ct_input.title,
 &lt;/code>&lt;/pre>
 &lt;h2 id="surrealdb-ids">SurrealDb Ids&lt;/h2>
 &lt;h3 id="undecided-1">Undecided&lt;/h3>
-&lt;p>The Id in surreal DB has the format &lt;code>table:id&lt;/code>. In the surrealDb library this is called a &lt;code>Thing&lt;/code>. This has advantages and disadvantages.
-I am not sure where I should use the full &amp;ldquo;Thing format&amp;rdquo;, and where just the wrapped &lt;code>id&lt;/code>.&lt;/p>
+&lt;p>The Id in surreal DB has the format &lt;code>table:id&lt;/code>. In the surrealDb library this is
+called a &lt;code>Thing&lt;/code>. This has advantages and disadvantages. I am not sure where I
+should use the full &amp;ldquo;Thing format&amp;rdquo;, and where just the wrapped &lt;code>id&lt;/code>.&lt;/p>
 &lt;h3 id="hiding-the-table-name">Hiding the table name&lt;/h3>
 &lt;h3 id="pros-2">pros&lt;/h3>
 &lt;ul>
 &lt;li>Doesn&amp;rsquo;t unnecessarily expose the table name.&lt;/li>
 &lt;li>Prevents mistaken &amp;ldquo;injection&amp;rdquo; where you access a record from another table&lt;/li>
-&lt;li>Slightly better resource access. The tuple resource &lt;code>.delete((table, id))&lt;/code> is also how the docs recommend it. Thing format has to be first parsed with &lt;code>thing()&lt;/code> and handled.&lt;/li>
+&lt;li>Slightly better resource access. The tuple resource &lt;code>.delete((table, id))&lt;/code> is
+also how the docs recommend it. Thing format has to be first parsed with
+&lt;code>thing()&lt;/code> and handled.&lt;/li>
 &lt;/ul>
 &lt;h3 id="cons-2">cons&lt;/h3>
 &lt;ul>
 &lt;li>Extracting the table from the DB result&lt;/li>
 &lt;/ul>
-&lt;p>In order to cover both gql and rest results, the mapping would have to be done for every result on the service level.
-Alternatively a gql scalar type could achieve this, but only for gql. With a new-type pattern &lt;code>WThing(Thing)&lt;/code> and a gql macro
-&lt;a href="https://async-graphql.github.io/async-graphql/en/custom_scalars.html" target="_blank" rel="noopener">#[Scalar]&lt;/a> for generating the scalar. Returning just the id in &lt;code>to_value&lt;/code> should work, but It would not make sense to than expect the full format in &lt;code>parse&lt;/code>. This part of the Trait would have to be left unimplemented, since we don&amp;rsquo;t want the full Id on the input.&lt;/p>
-&lt;p>I am not sure what the right decision here should be. But I think that the returned ids should have the same format as the expected input ids once decided.&lt;/p>
+&lt;p>In order to cover both gql and rest results, the mapping would have to be done
+for every result on the service level. Alternatively a gql scalar type could
+achieve this, but only for gql. With a new-type pattern &lt;code>WThing(Thing)&lt;/code> and a
+gql macro
+&lt;a href="https://async-graphql.github.io/async-graphql/en/custom_scalars.html" target="_blank" rel="noopener">#[Scalar]&lt;/a>
+for generating the scalar. Returning just the id in &lt;code>to_value&lt;/code> should work, but
+It would not make sense to than expect the full format in &lt;code>parse&lt;/code>. This part of
+the Trait would have to be left unimplemented, since we don&amp;rsquo;t want the full Id
+on the input.&lt;/p>
+&lt;p>I am not sure what the right decision here should be. But I think that the
+returned ids should have the same format as the expected input ids once decided.&lt;/p>
 &lt;h3 id="currently-where-from-here">Currently, where from here&amp;hellip;&lt;/h3>
-&lt;p>I do think that returning and expecting only the inner id is better. But currently SurrealDB, when queried with structs, always returns the full &lt;code>Thing&lt;/code>. This was confirmed to me in their discord. I would love if I could query with&lt;/p>
+&lt;p>I do think that returning and expecting only the inner id is better. But
+currently SurrealDB, when queried with structs, always returns the full &lt;code>Thing&lt;/code>.
+This was confirmed to me in their discord. I would love if I could query with&lt;/p>
 &lt;pre>&lt;code class="language-rust">pub struct Ticket {
 pub id: Option&amp;lt;surrealdb::sql::Id&amp;gt;, // This doesn't work currently!
 ...
 }
 &lt;/code>&lt;/pre>
-&lt;p>But the only way to get that currently is with &lt;code>SELECT meta::id(table:id), field1, field2 from tickets&lt;/code> I was told. But for the sake of gql I want to continue using structs.&lt;/p>
+&lt;p>But the only way to get that currently is with
+&lt;code>SELECT meta::id(table:id), field1, field2 from tickets&lt;/code> I was told. But for the
+sake of gql I want to continue using structs.&lt;/p>
 &lt;h3 id="gql-centric-db-access">Gql centric DB access&lt;/h3>
-&lt;p>This is what I would probably do if I used this template onward. I would probably not want to use the rest endpoints for querying the DB anyway. And if I for some reason absolutely needed it, the rest route could have a dedicated service that presents the IDs as desired.
-So I would just use it as it currently is. Maybe implementing that WThing scalar if writing the ComplexObject id field for every table would become too annoying for some reason. But it is not so bad I think. It also has the tiny benefit that this way, the schema is presented correctly as always returning the id field, id is not optional on return.
-I find it as one of the nicest parts of this setup, that it needs just one struct to init a whole new api route type.&lt;/p>
+&lt;p>This is what I would probably do if I used this template onward. I would
+probably not want to use the rest endpoints for querying the DB anyway. And if I
+for some reason absolutely needed it, the rest route could have a dedicated
+service that presents the IDs as desired. So I would just use it as it currently
+is. Maybe implementing that WThing scalar if writing the ComplexObject id field
+for every table would become too annoying for some reason. But it is not so bad
+I think. It also has the tiny benefit that this way, the schema is presented
+correctly as always returning the id field, id is not optional on return. I find
+it as one of the nicest parts of this setup, that it needs just one struct to
+init a whole new api route type.&lt;/p>
 &lt;h3 id="rest-centric-db-access">Rest centric DB access&lt;/h3>
-&lt;p>If you really need to access the DB IDs from many tables through rest and you need to have them in the inner id format, currently the most correct solution would be probably to use two objects. One &lt;code>DbTicket&lt;/code> with the full &lt;code>Thing&lt;/code> as received from the DB, and another &lt;code>Ticket&lt;/code> that would be used for the gql and rest responses. Impl From and calling into on the db type at the end of the service.&lt;/p>
+&lt;p>If you really need to access the DB IDs from many tables through rest and you
+need to have them in the inner id format, currently the most correct solution
+would be probably to use two objects. One &lt;code>DbTicket&lt;/code> with the full &lt;code>Thing&lt;/code> as
+received from the DB, and another &lt;code>Ticket&lt;/code> that would be used for the gql and
+rest responses. Impl From and calling into on the db type at the end of the
+service.&lt;/p>
 &lt;h2 id="conclusion">Conclusion&lt;/h2>
-&lt;p>In conclusion, Axum is very advanced and does seam ready for serious use. The same can be said about async_graphql, even though Im using it for slightly unorthodox experiments in this project (the error json juggling). I really wanted to try SurrealDb and this is hopefully not the last time Im trying it out. At least the versioning suggests that a v1.0 is right around the corner and hopefully its usage will get more standardized, the docs could be a little expanded and I believe it will get further attention in the future.
-A nice project. I didn&amp;rsquo;t encounter any strong deal-breakers. But un-surprisingly there are open questions regarding best-practices in such a new experimental Axum, Gql, Surreal, Rust Web Stack.&lt;/p></description></item><item><title>Rusty Woods</title><link>/cs/project/rusty_woods/</link><pubDate>Sun, 15 Jan 2023 00:00:00 +0000</pubDate><guid>/cs/project/rusty_woods/</guid><description>&lt;p>A 2D RPG-like groundwork with Bevy and LDtk.&lt;/p>
+&lt;p>In conclusion, Axum is very advanced and does seam ready for serious use. The
+same can be said about async_graphql, even though Im using it for slightly
+unorthodox experiments in this project (the error json juggling). I really
+wanted to try SurrealDb and this is hopefully not the last time Im trying it
+out. At least the versioning suggests that a v1.0 is right around the corner and
+hopefully its usage will get more standardized, the docs could be a little
+expanded and I believe it will get further attention in the future. A nice
+project. I didn&amp;rsquo;t encounter any strong deal-breakers. But un-surprisingly there
+are open questions regarding best-practices in such a new experimental Axum,
+Gql, Surreal, Rust Web Stack.&lt;/p></description></item><item><title>Rusty Woods</title><link>/cs/project/rusty_woods/</link><pubDate>Sun, 15 Jan 2023 00:00:00 +0000</pubDate><guid>/cs/project/rusty_woods/</guid><description>&lt;p>A 2D RPG-like groundwork with Bevy and LDtk.&lt;/p>
 &lt;h2 id="motivation">Motivation&lt;/h2>
 &lt;h3 id="curiosity">Curiosity&lt;/h3>
 &lt;p>A year and a half ago I saw a simple google promotion rpg-like game. I was surprised by the curiosity a simple game like that can create. Not only did I enjoy walking around in that small world, thinking how well some of the sprites turned out, but also how much time it had to take, even though it was released just as a weekly free easter-egg almost.&lt;/p>
