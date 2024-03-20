@@ -1535,6 +1535,10 @@ function getImports() {
         } catch {
             result = false;
         }
+
+        // Added by me: to focus the canvas after it loads, to immediately take input from the keyboard
+        document.getElementsByTagName("canvas")[0].focus();
+
         const ret = result;
         return ret;
     };
